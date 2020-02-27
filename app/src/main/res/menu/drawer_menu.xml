@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/circular"
+            android:icon="@drawable/ic_search"
+            android:title="@string/circulars" />
+
+        <item
+            android:id="@+id/stored"
+            android:icon="@drawable/ic_stored"
+            android:title="@string/stored" />
+
+        <item
+            android:id="@+id/ministry"
+            android:icon="@drawable/ic_ministry"
+            android:title="@string/ministry" />
+
+        <item
+            android:id="@+id/setting"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/settings" />
+        <item
+            android:id="@+id/about"
+            android:icon="@drawable/ic_about"
+            android:title="@string/about" />
+    </group>
+</menu>

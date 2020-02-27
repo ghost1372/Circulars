@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/circularFragment">
+
+    <fragment
+        android:id="@+id/circularFragment"
+        android:name="ir.mahdi.circulars.Fragments.CircularFragment"
+        android:label="@string/app_name"
+        tools:layout="circular_fragment" />
+    <fragment
+        android:id="@+id/ministryFragment"
+        android:name="ir.mahdi.circulars.Fragments.MinistryFragment"
+        android:label="@string/ministry"
+        tools:layout="/ministry_fragment" />
+    <fragment
+        android:id="@+id/storedFragment"
+        android:name="ir.mahdi.circulars.Fragments.StoredFragment"
+        android:label="@string/stored"
+        tools:layout="/stored_fragment">
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="ir.mahdi.circulars.Fragments.SettingFragment"
+        android:label="@string/settings"
+        tools:layout="/setting_fragment" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="ir.mahdi.circulars.Fragments.AboutFragment"
+        android:label="@string/about"
+        tools:layout="/about_fragment" />
+    <fragment
+        android:id="@+id/noVPNFragment"
+        android:name="ir.mahdi.circulars.Fragments.NoVPNFragment"
+        android:label="@string/noVPN"
+        tools:layout="/about_fragment" />
+    <fragment
+        android:id="@+id/pdfFragment"
+        android:name="ir.mahdi.circulars.Fragments.PdfFragment"
+        android:label="">
+        <argument
+            android:name="location"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageFragment"
+        android:name="ir.mahdi.circulars.Fragments.ImageFragment"
+        android:label=""
+        tools:layout="@layout/image_fragment">
+        <argument
+            android:name="location"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+</navigation>

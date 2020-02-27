@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:viewBindingIgnore="true"
+    tools:context=".MainActivity">
+    <include
+        layout="@layout/appbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ir.mahdi.circulars.CustomView.MaterialNavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:itemStyle="rounded_left"
+        android:background="?attr/BackgroundColor"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/drawer_header"
+        app:menu="@menu/drawer_menu">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginBottom="20dp"
+               android:orientation="horizontal">
+               <androidx.appcompat.widget.AppCompatImageView
+                   android:layout_width="24dp"
+                   android:layout_height="24dp"
+                   android:layout_marginRight="15dp"
+                   android:src="@drawable/ic_dark"/>
+               <com.google.android.material.switchmaterial.SwitchMaterial
+                   android:id="@+id/sw_theme"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_marginRight="30dp"
+                   android:layout_marginLeft="15dp"
+                   android:text="تم تاریک"/>
+           </LinearLayout>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/footer_version"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/footer_build"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"/>
+        </LinearLayout>
+
+    </ir.mahdi.circulars.CustomView.MaterialNavigationView>
+
+</androidx.drawerlayout.widget.DrawerLayout>

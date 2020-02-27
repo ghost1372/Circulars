@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MaterialNavigationView">
+        <attr name="itemStyle" format="enum">
+            <enum name="default_style" value="1" />
+            <enum name="rounded_right" value="2" />
+            <enum name="rounded_left" value="3" />
+            <enum name="rounded_rectangle" value="4" />
+        </attr>
+    </declare-styleable>
+    <attr name="PrimaryTextColor" format="color"/>
+    <attr name="SecondaryTextColor" format="color"/>
+    <attr name="TitleTextColor" format="color"/>
+    <attr name="BackgroundColor" format="color"/>
+    <attr name="MultiSelectState1Color" format="color"/>
+    <attr name="MultiSelectState2Color" format="color"/>
+</resources>

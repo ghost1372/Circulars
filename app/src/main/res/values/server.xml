@@ -1,0 +1,1388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="server">
+
+        //Omor Beynonmelal
+        <item>امور بین الملل مدارس خارج کشور</item>
+        //AZ
+
+        <item>آذربایجان شرقی← ناحیه 1 تبریز</item>
+        <item>آذربایجان شرقی← ناحیه 2 تبریز</item>
+        <item>آذربایجان شرقی← ناحیه 3 تبریز</item>
+        <item>آذربایجان شرقی← ناحیه 4 تبریز</item>
+        <item>آذربایجان شرقی← ناحیه 5 تبریز</item>
+        <item>آذربایجان شرقی← آذرشهر</item>
+        <item>آذربایجان شرقی← اسکو</item>
+        <item>آذربایجان شرقی← اهر</item>
+        <item>آذربایجان شرقی← ایلخچی</item>
+        <item>آذربایجان شرقی← بستان آباد</item>
+        <item>آذربایجان شرقی← بناب</item>
+        <item>آذربایجان شرقی← ترکمنچای</item>
+        <item>آذربایجان شرقی← تسوج</item>
+        <item>آذربایجان شرقی← تیکمه داش</item>
+        <item>آذربایجان شرقی← جلفا</item>
+        <item>آذربایجان شرقی← چاراویماق</item>
+        <item>آذربایجان شرقی← خاروانا</item>
+        <item>آذربایجان شرقی← خداآفرین</item>
+        <item>آذربایجان شرقی← خسروشاه</item>
+        <item>آذربایجان شرقی← خواجه</item>
+        <item>آذربایجان شرقی← سراب</item>
+        <item>آذربایجان شرقی← شبستر</item>
+        <item>آذربایجان شرقی← صوفیان</item>
+        <item>آذربایجان شرقی← عجب شیر</item>
+        <item>آذربایجان شرقی← عشایر</item>
+        <item>آذربایجان شرقی← کاغذکنان</item>
+        <item>آذربایجان شرقی← کلیبر</item>
+        <item>آذربایجان شرقی← کندوان</item>
+        <item>آذربایجان شرقی← گوکان</item>
+        <item>آذربایجان شرقی← مراغه</item>
+        <item>آذربایجان شرقی← مرند</item>
+        <item>آذربایجان شرقی← ملکان</item>
+        <item>آذربایجان شرقی← مهربان</item>
+        <item>آذربایجان شرقی← میانه</item>
+        <item>آذربایجان شرقی← نظرکهریز</item>
+        <item>آذربایجان شرقی← ورزقان</item>
+        <item>آذربایجان شرقی← هریس</item>
+        <item>آذربایجان شرقی← هشترود</item>
+        <item>آذربایجان شرقی← هوراند</item>
+
+        //AZ G
+        <item>آذربایجان غربی← آذربایجان غربی</item>
+        <item>آذربایجان غربی← ناحیه 1 ارومیه</item>
+        <item>آذربایجان غربی← ناحیه 2 ارومیه</item>
+        <item>آذربایجان غربی← انزل</item>
+        <item>آذربایجان غربی← خوی</item>
+        <item>آذربایجان غربی← چایپاره</item>
+        <item>آذربایجان غربی← ماکو</item>
+        <item>آذربایجان غربی← شوط</item>
+        <item>آذربایجان غربی← پلدشت</item>
+        <item>آذربایجان غربی← چالدران</item>
+        <item>آذربایجان غربی← سلماس</item>
+        <item>آذربایجان غربی← مهاباد</item>
+        <item>آذربایجان غربی← بوکان</item>
+        <item>آذربایجان غربی← میاندوآب</item>
+        <item>آذربایجان غربی← شاهین دژ</item>
+        <item>آذربایجان غربی← تکاب</item>
+        <item>آذربایجان غربی← پیرانشهر</item>
+        <item>آذربایجان غربی← سردشت</item>
+        <item>آذربایجان غربی← نقده</item>
+        <item>آذربایجان غربی← اشنویه</item>
+        <item>آذربایجان غربی← سیلوانا</item>
+        <item>آذربایجان غربی← مرحمت آباد</item>
+        <item>آذربایجان غربی← کشاورز</item>
+        <item>آذربایجان غربی← صومای</item>
+        <item>آذربایجان غربی← نازلو</item>
+        <item>آذربایجان غربی← آموزش و پرورش استثنایی</item>
+
+        //Ardabil
+        <item>اردبیل← اردبیل</item>
+        <item>اردبیل← ناحیه1</item>
+        <item>اردبیل← ناحیه2</item>
+        <item>اردبیل← ارشق</item>
+        <item>اردبیل← اصلاندوز</item>
+        <item>اردبیل← انگوت</item>
+        <item>اردبیل← بیله سوار</item>
+        <item>اردبیل← پارس آباد</item>
+        <item>اردبیل← خلخال</item>
+        <item>اردبیل← خورش رستم</item>
+        <item>اردبیل← سرعین</item>
+        <item>اردبیل← شاهرود</item>
+        <item>اردبیل← جعفرآباد</item>
+        <item>اردبیل← کوثر</item>
+        <item>اردبیل← لاهرود</item>
+        <item>اردبیل← مشگین شهر</item>
+        <item>اردبیل← گرمی</item>
+        <item>اردبیل ← نمین</item>
+        <item>اردبیل← نیر</item>
+        <item>اردبیل← هیر</item>
+
+        //Esfahan
+        <item>اصفهان← آران و بیدگل</item>
+        <item>اصفهان← اردستان</item>
+        <item>اصفهان← اصفهان ناحیه 1</item>
+        <item>اصفهان← اصفهان ناحیه 2</item>
+        <item>اصفهان← اصفهان ناحیه 3</item>
+        <item>اصفهان← اصفهان ناحیه 4</item>
+        <item>اصفهان← اصفهان ناحیه 5</item>
+        <item>اصفهان← اصفهان ناحیه 6</item>
+        <item>اصفهان← امامزاده</item>
+        <item>اصفهان← باغبهادران</item>
+        <item>اصفهان← برخوار</item>
+        <item>اصفهان← بن رود</item>
+        <item>اصفهان← بوئین و میاندشت</item>
+        <item>اصفهان← پیربکران</item>
+        <item>اصفهان← تیران وکرون</item>
+        <item>اصفهان← جرقویه سفلی</item>
+        <item>اصفهان← جرقویه علیا</item>
+        <item>اصفهان← جلگه</item>
+        <item>اصفهان← چادگان</item>
+        <item>اصفهان← خمینی شهر</item>
+        <item>اصفهان← خوانسار</item>
+        <item>اصفهان← خوروبیانک</item>
+        <item>اصفهان← دهاقان</item>
+        <item>اصفهان← زرین شهر</item>
+        <item>اصفهان← زواره</item>
+        <item>اصفهان← سمیرم</item>
+        <item>اصفهان← شاهین شهر</item>
+        <item>اصفهان← شهرضا</item>
+        <item>اصفهان← فریدن</item>
+        <item>اصفهان← فریدونشهر</item>
+        <item>اصفهان← فلاورجان</item>
+        <item>اصفهان← فولادشهر</item>
+        <item>اصفهان← کاشان</item>
+        <item>اصفهان← کوهپایه</item>
+        <item>اصفهان← گلپایگان</item>
+        <item>اصفهان← مبارکه</item>
+        <item>اصفهان← مهردشت</item>
+        <item>اصفهان← میمه</item>
+        <item>اصفهان← نائین</item>
+        <item>اصفهان← نجف آباد</item>
+        <item>اصفهان← نطنز</item>
+
+        //Alborz
+        <item>البرز← ناحیه 1</item>
+        <item>البرز← ناحیه 2</item>
+        <item>البرز← ناحیه 3</item>
+        <item>البرز← ناحیه 4</item>
+        <item>البرز← ساوجبلاغ</item>
+        <item>البرز← نظرآباد</item>
+        <item>البرز← اشتهارد</item>
+        <item>البرز← طالقان</item>
+
+        //Ilam
+        <item>ایلام← ایلام</item>
+        <item>ایلام← آبدانان</item>
+        <item>ایلام← دهلران</item>
+        <item>ایلام← دره شهر</item>
+        <item>ایلام← مهران</item>
+        <item>ایلام← ملکشاهی</item>
+        <item>ایلام← بدره</item>
+        <item>ایلام← سیروان</item>
+        <item>ایلام← چرداول</item>
+        <item>ایلام← ایوان</item>
+        <item>ایلام← زرین آباد</item>
+        <item>ایلام← چوار</item>
+        <item>ایلام← هلیان</item>
+        <item>ایلام← موسیان</item>
+
+        //Boshehr
+        <item>بوشهر← بوشهر</item>
+        <item>بوشهر← عسلویه</item>
+        <item>بوشهر← جم</item>
+        <item>بوشهر← کنگان</item>
+        <item>بوشهر← دیر</item>
+        <item>بوشهر← بردخون</item>
+        <item>بوشهر← کاکی</item>
+        <item>بوشهر← دشتی</item>
+        <item>بوشهر← دلوار</item>
+        <item>بوشهر← تنگستان</item>
+        <item>بوشهر← دشتستان</item>
+        <item>بوشهر← سعدآباد</item>
+        <item>بوشهر← آبپخش</item>
+        <item>بوشهر← شبانکاره</item>
+        <item>بوشهر← ریک</item>
+        <item>بوشهر← کنگاوه</item>
+        <item>بوشهر← دیلم</item>
+        <item>بوشهر← خارک</item>
+        <item>بوشهر← بوشهر</item>
+
+        //Tehran
+        <item>تهران← تهران</item>
+        <item>تهران← شهر قدس</item>
+        <item>تهران← شهریار</item>
+        <item>تهران← دماوند</item>
+        <item>تهران← جوادآباد</item>
+        <item>تهران← اسلامشهر</item>
+        <item>تهران← فشافویه</item>
+        <item>تهران← شهر ری یک</item>
+        <item>تهران← کهریزک</item>
+        <item>تهران← بهارستان یک</item>
+        <item>تهران← پاکدشت</item>
+        <item>تهران← پردیس</item>
+        <item>تهران← ملارد</item>
+        <item>تهران← فیروزکوه</item>
+        <item>تهران← پیشوا</item>
+        <item>تهران← رودهن</item>
+        <item>تهران← چهاردانگه</item>
+        <item>تهران← ورامین</item>
+        <item>تهران← شهر ری دو</item>
+        <item>تهران← قرچک</item>
+        <item>تهران← بهارستان دو</item>
+        <item>تهران← رباط کریم</item>
+
+        //ChaharMahal
+        <item>چهارمحال بختیاری← چهارمحال بختیاری</item>
+        <item>چهارمحال بختیاری← ناحیه 1 شهرکرد</item>
+        <item>چهارمحال بختیاری← ناحیه 2 شهرکرد</item>
+        <item>چهارمحال بختیاری← اردل</item>
+        <item>چهارمحال بختیاری← فارسان</item>
+        <item>چهارمحال بختیاری← بروجن</item>
+        <item>چهارمحال بختیاری← کوهرنگ</item>
+        <item>چهارمحال بختیاری← لردگان</item>
+        <item>چهارمحال بختیاری← کیار</item>
+        <item>چهارمحال بختیاری← سامان</item>
+        <item>چهارمحال بختیاری← بن</item>
+        <item>چهارمحال بختیاری← لاران</item>
+        <item>چهارمحال بختیاری← گندمان</item>
+        <item>چهارمحال بختیاری← فلارد</item>
+        <item>چهارمحال بختیاری← خانمیرزا</item>
+        <item>چهارمحال بختیاری← بلداجی</item>
+        <item>چهارمحال بختیاری← عشایر</item>
+        <item>چهارمحال بختیاری← میانکوه</item>
+
+        //Khorasan J
+        <item>خراسان جنوبی← خراسان جنوبی</item>
+        <item>خراسان جنوبی← بشرویه</item>
+        <item>خراسان جنوبی← بیرجند</item>
+        <item>خراسان جنوبی← خوسف</item>
+        <item>خراسان جنوبی← درمیان</item>
+        <item>خراسان جنوبی← دستگردان</item>
+        <item>خراسان جنوبی← زیرکوه</item>
+        <item>خراسان جنوبی← سرایان</item>
+        <item>خراسان جنوبی← سرپیشه</item>
+        <item>خراسان جنوبی← طبس</item>
+        <item>خراسان جنوبی← فردوس</item>
+        <item>خراسان جنوبی← قاینات</item>
+        <item>خراسان جنوبی← نهبندان</item>
+
+        //Khorasan Sh
+        <item>خراسان شمالی← شیروان</item>
+        <item>خراسان شمالی← بجنورد</item>
+        <item>خراسان شمالی← اسفراین</item>
+        <item>خراسان شمالی← رازوجرگلان</item>
+        <item>خراسان شمالی← بام و صفی آباد</item>
+        <item>خراسان شمالی← جاجرم</item>
+        <item>خراسان شمالی← فاروج</item>
+        <item>خراسان شمالی← گرمه</item>
+        <item>خراسان شمالی← مانه و سملقان</item>
+
+        //Khorasan Razavi
+        <item>خراسان رضوی← ناحیه یک</item>
+        <item>خراسان رضوی← ناحیه دو</item>
+        <item>خراسان رضوی← ناحیه سه</item>
+        <item>خراسان رضوی← ناحیه چهار</item>
+        <item>خراسان رضوی← ناحیه پنج</item>
+        <item>خراسان رضوی← ناحیه شش</item>
+        <item>خراسان رضوی← ناحیه هفت</item>
+        <item>خراسان رضوی← استثنائی</item>
+        <item>خراسان رضوی← احمدآباد</item>
+        <item>خراسان رضوی← باخرز</item>
+        <item>خراسان رضوی← بجستان</item>
+        <item>خراسان رضوی← بردسکن</item>
+        <item>خراسان رضوی← تایباد</item>
+        <item>خراسان رضوی← تبادکان</item>
+        <item>خراسان رضوی← تحت جلگه</item>
+        <item>خراسان رضوی← تربت جام</item>
+        <item>خراسان رضوی← تربت حیدریه</item>
+        <item>خراسان رضوی← جغتای</item>
+        <item>خراسان رضوی← جلگه رخ</item>
+        <item>خراسان رضوی← جوین</item>
+        <item>خراسان رضوی← چناران</item>
+        <item>خراسان رضوی← خلیل آباد</item>
+        <item>خراسان رضوی← خواف</item>
+        <item>خراسان رضوی← خوشاب</item>
+        <item>خراسان رضوی← داورزن</item>
+        <item>خراسان رضوی← درگز</item>
+        <item>خراسان رضوی← رشتخوار</item>
+        <item>خراسان رضوی← رضویه</item>
+        <item>خراسان رضوی← زاوه</item>
+        <item>خراسان رضوی← زبرخان</item>
+        <item>خراسان رضوی← سبزوار</item>
+        <item>خراسان رضوی← سرخس</item>
+        <item>خراسان رضوی← سرولایت</item>
+        <item>خراسان رضوی← ششتمد</item>
+        <item>خراسان رضوی← صالح آباد</item>
+        <item>خراسان رضوی← طرقبه</item>
+        <item>خراسان رضوی← فریمان</item>
+        <item>خراسان رضوی← قوچان</item>
+        <item>خراسان رضوی← کلات</item>
+        <item>خراسان رضوی← کوهسرخ</item>
+        <item>خراسان رضوی← کاشمر</item>
+        <item>خراسان رضوی← کدکن</item>
+        <item>خراسان رضوی← گلبهار</item>
+        <item>خراسان رضوی← گناباد</item>
+        <item>خراسان رضوی← مه ولات</item>
+        <item>خراسان رضوی← میان جلگه</item>
+        <item>خراسان رضوی← نوخندان</item>
+        <item>خراسان رضوی← نیشابور</item>
+
+        //Khozestan
+        <item>خوزستان← خوزستان</item>
+        <item>خوزستان← ناحیه 1</item>
+        <item>خوزستان← ناحیه 2</item>
+        <item>خوزستان← ناحیه 3</item>
+        <item>خوزستان← ناحیه 4</item>
+        <item>خوزستان← عشایری خوزستان</item>
+        <item>خوزستان← استثنایی</item>
+        <item>خوزستان← باوی</item>
+        <item>خوزستان← کارون</item>
+        <item>خوزستان← آبادان</item>
+        <item>خوزستان← اروندکنار</item>
+        <item>خوزستان← ایذه</item>
+        <item>خوزستان← دهدز</item>
+        <item>خوزستان← باغملک</item>
+        <item>خوزستان← صیدون</item>
+        <item>خوزستان← بهبهان</item>
+        <item>خوزستان← خرمشهر</item>
+        <item>خوزستان← زیدون</item>
+        <item>خوزستان← آغاجاری</item>
+        <item>خوزستان← دزفول</item>
+        <item>خوزستان← شوش</item>
+        <item>خوزستان← اندیمشک</item>
+        <item>خوزستان← دشت آزادگان</item>
+        <item>خوزستان← بستان</item>
+        <item>خوزستان← هویزه</item>
+        <item>خوزستان← رامهرمز</item>
+        <item>خوزستان← رامشیر</item>
+        <item>خوزستان← شادگان</item>
+        <item>خوزستان← بندرماهشهر</item>
+        <item>خوزستان← بندر امام خمینی</item>
+        <item>خوزستان← هندیجان</item>
+        <item>خوزستان← مسجد سلیمان</item>
+        <item>خوزستان← لالی</item>
+        <item>خوزستان← هفتکل</item>
+        <item>خوزستان← شوشتر</item>
+        <item>خوزستان← گتوند</item>
+        <item>خوزستان← امیدیه</item>
+        <item>خوزستان← اتدیکا</item>
+        <item>خوزستان← سردشت</item>
+        <item>خوزستان← الوار گرمسیری</item>
+        <item>خوزستان← شاوور</item>
+        <item>خوزستان← جمیدیه</item>
+
+        //zanjan
+        <item>زنجان← زنجان</item>
+        <item>زنجان← بزینه رود</item>
+        <item>زنجان← خدابنده</item>
+        <item>زنجان← ناحیه 1 زنجان</item>
+        <item>زنجان← ناحیه 2 زنجان</item>
+        <item>زنجان← ابهر</item>
+        <item>زنجان← افشار</item>
+        <item>زنجان← انگوران</item>
+        <item>زنجان← ایجرود</item>
+        <item>زنجان← خرمدره</item>
+        <item>زنجان← زنجان رود</item>
+        <item>زنجان← سجاس رود</item>
+        <item>زنجان← سلطانیه</item>
+        <item>زنجان← طارم</item>
+        <item>زنجان← ماهنشان</item>
+
+        //Semnan
+        <item>سمنان← سمنان</item>
+        <item>سمنان← شاهرود</item>
+        <item>سمنان← دامغان</item>
+        <item>سمنان← گرمسار</item>
+        <item>سمنان← سرخه</item>
+        <item>سمنان← مهدی شهر</item>
+        <item>سمنان← میامی</item>
+        <item>سمنان← آرادان</item>
+        <item>سمنان← امیرآباد</item>
+        <item>سمنان← بسطام</item>
+        <item>سمنان← بیارجمند</item>
+
+        //Sistan
+        <item>سیستان و بلوچستان← ناحیه 1 زاهدان</item>
+        <item>سیستان و بلوچستان← ناحیه 1 زاهدان</item>
+
+        //Qazvin
+        <item>قزوین← قزوین</item>
+        <item>قزوین← تاکستان</item>
+        <item>قزوین← ضیاآباد</item>
+        <item>قزوین← ناحیه یک</item>
+        <item>قزوین← ناحیه دو</item>
+        <item>قزوین← آبیک</item>
+        <item>قزوین← آوج</item>
+        <item>قزوین← بویین زهرا</item>
+        <item>قزوین← الموت شرقی</item>
+        <item>قزوین← الموت غربی</item>
+        <item>قزوین← طارم سفلی</item>
+        <item>قزوین← خرمدشت</item>
+        <item>قزوین← البرز</item>
+        <item>قزوین← اسفرورین</item>
+        <item>قزوین← شال</item>
+
+        //Qom
+        <item>قم← ناحیه یک</item>
+        <item>قم← ناحیه دو</item>
+        <item>قم← ناحیه سه</item>
+        <item>قم← ناحیه چهار</item>
+        <item>قم← کهک</item>
+        <item>قم← جعفرآباد</item>
+        <item>قم← خلجستان</item>
+
+        //Kordestan
+        <item>کردستان← کردستان</item>
+        <item>کردستان← ناحیه یک سنندج</item>
+        <item>کردستان← ناحیه دو سنندج</item>
+        <item>کردستان← سقز</item>
+        <item>کردستان← بانه</item>
+        <item>کردستان← مریوان</item>
+        <item>کردستان← قروه</item>
+        <item>کردستان← بیجار</item>
+        <item>کردستان← دیواندره</item>
+        <item>کردستان← کامیاران</item>
+        <item>کردستان← دهگلان</item>
+        <item>کردستان← سروآباد</item>
+        <item>کردستان← سریش آباد</item>
+        <item>کردستان← موچش</item>
+        <item>کردستان← کرانی</item>
+        <item>کردستان← زیویه</item>
+        <item>کردستان← کلاترزان</item>
+
+
+        //Kerman
+        <item>کرمان← کرمان</item>
+        <item>کرمان← استثنایی</item>
+        <item>کرمان← عشایری</item>
+        <item>کرمان← ارزوئیه</item>
+        <item>کرمان← انار</item>
+        <item>کرمان← بافت</item>
+        <item>کرمان← بردسیر</item>
+        <item>کرمان← بم</item>
+        <item>کرمان← جیرفت</item>
+        <item>کرمان← چترود</item>
+        <item>کرمان← رابر</item>
+        <item>کرمان← راور</item>
+        <item>کرمان← راین</item>
+        <item>کرمان← رفسنجان</item>
+        <item>کرمان← رودبار جنوب</item>
+        <item>کرمان← ریگان</item>
+        <item>کرمان← زرند</item>
+        <item>کرمان← سیرجان</item>
+        <item>کرمان← شهداد</item>
+        <item>کرمان← شهربابک</item>
+        <item>کرمان← عنبرآباد</item>
+        <item>کرمان← فاریاب</item>
+        <item>کرمان← فهرج</item>
+        <item>کرمان← قلعه گنج</item>
+        <item>کرمان← کشکوئیه</item>
+        <item>کرمان← کوهبنان</item>
+        <item>کرمان← کهنوج</item>
+        <item>کرمان← گلباف</item>
+        <item>کرمان← ماهان</item>
+        <item>کرمان← منوجان</item>
+        <item>کرمان← ناحیه یک</item>
+        <item>کرمان← ناحیه دو</item>
+        <item>کرمان← نرماشیر</item>
+        <item>کرمان← نوق</item>
+
+        //KermanShah
+        <item>کرمانشاه← کرمانشاه</item>
+        <item>کرمانشاه← ناحیه یک</item>
+        <item>کرمانشاه← ناحیه دو</item>
+        <item>کرمانشاه← ناحیه سه</item>
+        <item>کرمانشاه← اسلام آباد غرب</item>
+        <item>کرمانشاه← باینگان</item>
+        <item>کرمانشاه← بیستون</item>
+        <item>کرمانشاه← پاوه</item>
+        <item>کرمانشاه← ثلاث باباجانی</item>
+        <item>کرمانشاه← جوانرود</item>
+        <item>کرمانشاه← حمیل</item>
+        <item>کرمانشاه← دالاهو</item>
+        <item>کرمانشاه← دینور</item>
+        <item>کرمانشاه← روانسر</item>
+        <item>کرمانشاه← سرپل ذهاب</item>
+        <item>کرمانشاه← سنقر کلیایی</item>
+        <item>کرمانشاه← صحنه</item>
+        <item>کرمانشاه← قصر شیرین</item>
+        <item>کرمانشاه← کنگاور</item>
+        <item>کرمانشاه← گواور</item>
+        <item>کرمانشاه← گهواره</item>
+        <item>کرمانشاه← گیلانغرب</item>
+        <item>کرمانشاه← ماهیدشت</item>
+        <item>کرمانشاه← نوسود</item>
+        <item>کرمانشاه← هرسین</item>
+
+        //KohKilo
+        <item>کهگیلویه و بویراحمد← کهگیلویه و بویراحمد</item>
+        <item>کهگیلویه و بویراحمد← بویراحمد</item>
+        <item>کهگیلویه و بویراحمد← بهمئی</item>
+        <item>کهگیلویه و بویراحمد← لوداب</item>
+        <item>کهگیلویه و بویراحمد← عشایر</item>
+        <item>کهگیلویه و بویراحمد← دیشموک</item>
+        <item>کهگیلویه و بویراحمد← مارگون</item>
+        <item>کهگیلویه و بویراحمد← چاروسا</item>
+        <item>کهگیلویه و بویراحمد← باشت</item>
+        <item>کهگیلویه و بویراحمد← چرام</item>
+        <item>کهگیلویه و بویراحمد← لنده</item>
+        <item>کهگیلویه و بویراحمد← گچساران</item>
+        <item>کهگیلویه و بویراحمد← دهدشت</item>
+        <item>کهگیلویه و بویراحمد← دنا</item>
+
+        //golestan
+        <item>گلستان← گلستان</item>
+        <item>گلستان← آزادشهر</item>
+        <item>گلستان← آق قلا</item>
+        <item>گلستان← بندرترکمن</item>
+        <item>گلستان← بندرگز</item>
+        <item>گلستان← رامیان</item>
+        <item>گلستان← علی آبادکتول</item>
+        <item>گلستان← کردکوی</item>
+        <item>گلستان← کلاله</item>
+        <item>گلستان← گالیکش</item>
+        <item>گلستان← گرگان</item>
+        <item>گلستان← گمیشان</item>
+        <item>گلستان← گنبد کاووس</item>
+        <item>گلستان← مراوه تپه</item>
+        <item>گلستان← مینودشت</item>
+
+        //Gilan
+        <item>گیلان← گیلان</item>
+        <item>گیلان← ناحیه 1</item>
+        <item>گیلان← ناحیه 2</item>
+        <item>گیلان← استارا</item>
+        <item>گیلان← استانه</item>
+        <item>گیلان← اطاقور</item>
+        <item>گیلان← املش</item>
+        <item>گیلان← انزلی</item>
+        <item>گیلان← تالش</item>
+        <item>گیلان← تولمات</item>
+        <item>گیلان← چابکسر</item>
+        <item>گیلان← خشکبیجار</item>
+        <item>گیلان← خمام</item>
+        <item>گیلان← دیلمان</item>
+        <item>گیلان← رحمت آباد و بلوکات</item>
+        <item>گیلان← رحیم آباد</item>
+        <item>گیلان← رضوانشهر</item>
+        <item>گیلان← رودبار</item>
+        <item>گیلان← رودبنه</item>
+        <item>گیلان← رودسر</item>
+        <item>گیلان← سنگر</item>
+        <item>گیلان← سیاهکل</item>
+        <item>گیلان← شفت</item>
+        <item>گیلان← صومعه سرا</item>
+        <item>گیلان← عمارلو</item>
+        <item>گیلان← فومن</item>
+        <item>گیلان← کلاچای</item>
+        <item>گیلان← کوچصفهان</item>
+        <item>گیلان← کومله</item>
+        <item>گیلان← کیاشهر</item>
+        <item>گیلان← لاهیجان</item>
+        <item>گیلان← لشت نشا</item>
+        <item>گیلان← لنگرود</item>
+        <item>گیلان← ماسال</item>
+
+
+        //Lorestan
+        <item>لرستان← لرستان</item>
+        <item>لرستان← ازنا</item>
+        <item>لرستان← استثنایی</item>
+        <item>لرستان← الشتر</item>
+        <item>لرستان← الیگودرز</item>
+        <item>لرستان← بروجرد</item>
+        <item>لرستان← پیرانشهر</item>
+        <item>لرستان← پاپی</item>
+        <item>لرستان← پلدختر</item>
+        <item>لرستان← چگنی</item>
+        <item>لرستان← ناحیه یک خرم آباد</item>
+        <item>لرستان← دورود</item>
+        <item>لرستان← رومشکان</item>
+        <item>لرستان← زاغه</item>
+        <item>لرستان← سیلاخور</item>
+        <item>لرستان← طرحان</item>
+        <item>لرستان← ززوماهرو</item>
+        <item>لرستان← عشایری</item>
+        <item>لرستان← کاکاوند</item>
+        <item>لرستان← کوهدشت</item>
+        <item>لرستان← معمولان</item>
+        <item>لرستان← نورآباد</item>
+        <item>لرستان← ویسیان</item>
+        <item>لرستان← ناحیه دو خرم آباد</item>
+
+        //Mazan
+        <item>مازندران← مازندران</item>
+        <item>مازندران← سیمرغ</item>
+        <item>مازندران← آمل</item>
+        <item>مازندران← بابلسر</item>
+        <item>مازندران← تنکابن</item>
+        <item>مازندران← چالوس</item>
+        <item>مازندران← شیرگاه</item>
+        <item>مازندران← ساری 1</item>
+        <item>مازندران← عباس آباد</item>
+        <item>مازندران← قائمشهر</item>
+        <item>مازندران← نور</item>
+        <item>مازندران← گلوگاه</item>
+        <item>مازندران← محمودآباد</item>
+        <item>مازندران← چمستان</item>
+        <item>مازندران← میانرود</item>
+        <item>مازندران← بندپی غربی</item>
+        <item>مازندران← کجور</item>
+        <item>مازندران← چهاردانگه</item>
+        <item>مازندران← دودانگه</item>
+        <item>مازندران← ساری 2</item>
+        <item>مازندران← بابل</item>
+        <item>مازندران← بهشهر</item>
+        <item>مازندران← جویبار</item>
+        <item>مازندران← رامسر</item>
+        <item>مازندران← لاریجان</item>
+        <item>مازندران← سوادکوه</item>
+        <item>مازندران← فریدونکنار</item>
+        <item>مازندران← نوشهر</item>
+        <item>مازندران← نکا</item>
+        <item>مازندران← بهنمیر</item>
+        <item>مازندران← بندپی شرقی</item>
+        <item>مازندران← کلاردشت</item>
+        <item>مازندران← بلده</item>
+
+        //Markazi
+        <item>مرکزی← مرکزی</item>
+        <item>مرکزی← محلات</item>
+        <item>مرکزی← نوبران</item>
+        <item>مرکزی← فراهان</item>
+        <item>مرکزی← کمیجان</item>
+        <item>مرکزی← شازند</item>
+        <item>مرکزی← سربند</item>
+        <item>مرکزی← ساوه</item>
+        <item>مرکزی← زرندیه</item>
+        <item>مرکزی← دلیجان</item>
+        <item>مرکزی← خنداب</item>
+        <item>مرکزی← خمین</item>
+        <item>مرکزی← تفرش</item>
+        <item>مرکزی← آشتیان</item>
+        <item>مرکزی← ناحیه 1 اراک</item>
+        <item>مرکزی← ناحیه 2 اراک</item>
+
+        //Hormozgan
+        <item>هرمزگان← هرمزگان</item>
+        <item>هرمزگان← بستک</item>
+        <item>هرمزگان← بشاگرد</item>
+        <item>هرمزگان← بندرخمیر</item>
+        <item>هرمزگان← بندرلنگه</item>
+        <item>هرمزگان← ناحیه یک بندرعباس</item>
+        <item>هرمزگان← ناحیه دو بندرعباس</item>
+        <item>هرمزگان← پارسیان</item>
+        <item>هرمزگان← جاسک</item>
+        <item>هرمزگان← جناح</item>
+        <item>هرمزگان← حاجی آباد</item>
+        <item>هرمزگان← رودان</item>
+        <item>هرمزگان← رودخانه</item>
+        <item>هرمزگان← سندرک</item>
+        <item>هرمزگان← سیریک</item>
+        <item>هرمزگان← شهاب</item>
+        <item>هرمزگان← فین</item>
+        <item>هرمزگان← قشم</item>
+        <item>هرمزگان← کیش</item>
+        <item>هرمزگان← میناب</item>
+        <item>هرمزگان← هرمز</item>
+
+        //Hamadan
+        <item>همدان← همدان</item>
+        <item>همدان← ناحیه یک همدان</item>
+        <item>همدان← ناحیه دو همدان</item>
+        <item>همدان← اسدآباد</item>
+        <item>همدان← رزن</item>
+        <item>همدان← بهار</item>
+        <item>همدان← کبودرآهنگ</item>
+        <item>همدان← ملایر</item>
+        <item>همدان← تویسرکان</item>
+        <item>همدان← نهاوند</item>
+        <item>همدان← فامنین</item>
+        <item>همدان← قهاوند</item>
+        <item>همدان← سردرود</item>
+        <item>همدان← سامن</item>
+        <item>همدان← خزل</item>
+        <item>همدان← جوکار</item>
+        <item>همدان← گل تپه</item>
+        <item>همدان← قروه درجزین</item>
+        <item>همدان← قلقل رود</item>
+        <item>همدان← لالجین</item>
+
+        //Yazd
+        <item>یزد← یزد</item>
+
+
+    </string-array>
+    <string-array name="url">
+
+        //Omor Beynonmelal
+        <item>http://mbm.medu.gov.ir</item>
+
+        //AZ
+
+        <item>http://1801.ea.medu.ir</item>
+        <item>http://1802.ea.medu.ir</item>
+        <item>http://1803.ea.medu.ir</item>
+        <item>http://1804.ea.medu.ir</item>
+        <item>http://1805.ea.medu.ir</item>
+        <item>http://1813.ea.medu.ir</item>
+        <item>http://1810.ea.medu.ir</item>
+        <item>http://1832.ea.medu.ir</item>
+        <item>http://1895.ea.medu.ir</item>
+        <item>http://1815.ea.medu.ir</item>
+        <item>http://1861.ea.medu.ir</item>
+        <item>http://1879.ea.medu.ir</item>
+        <item>http://1869.ea.medu.ir</item>
+        <item>http://1891.ea.medu.ir</item>
+        <item>http://1867.ea.medu.ir</item>
+        <item>http://1887.ea.medu.ir</item>
+        <item>http://1836.ea.medu.ir</item>
+        <item>http://1837.ea.medu.ir</item>
+        <item>http://1825.ea.medu.ir</item>
+        <item>http://1823.ea.medu.ir</item>
+        <item>http://1854.ea.medu.ir</item>
+        <item>http://1817.ea.medu.ir</item>
+        <item>http://1818.ea.medu.ir</item>
+        <item>http://1859.ea.medu.ir</item>
+        <item>http://1889.ea.medu.ir</item>
+        <item>http://1838.ea.medu.ir</item>
+        <item>http://1839.ea.medu.ir</item>
+        <item>http://1878.ea.medu.ir</item>
+        <item>http://1827.ea.medu.ir</item>
+        <item>http://1857.ea.medu.ir</item>
+        <item>http://1865.ea.medu.ir</item>
+        <item>http://1863.ea.medu.ir</item>
+        <item>http://1821.ea.medu.ir</item>
+        <item>http://1877.ea.medu.ir</item>
+        <item>http://1893.ea.medu.ir</item>
+        <item>http://1835.ea.medu.ir</item>
+        <item>http://1820.ea.medu.ir</item>
+        <item>http://1884.ea.medu.ir</item>
+        <item>http://1833.ea.medu.ir</item>
+
+        //AZ G
+        <item>http://wa.medu.ir</item>
+        <item>http://nah1.wa.medu.ir</item>
+        <item>http://nah2.wa.medu.ir</item>
+        <item>http://anz.wa.medu.ir</item>
+        <item>http://khy.wa.medu.ir</item>
+        <item>http://chi.wa.medu.ir</item>
+        <item>http://mak.wa.medu.ir</item>
+        <item>http://sht.wa.medu.ir</item>
+        <item>http://pol.wa.medu.ir</item>
+        <item>http://chd.wa.medu.ir</item>
+        <item>http://slm.wa.medu.ir</item>
+        <item>http://mah.wa.medu.ir</item>
+        <item>http://buk.wa.medu.ir</item>
+        <item>http://mian.wa.medu.ir</item>
+        <item>http://shd.wa.medu.ir</item>
+        <item>http://tek.wa.medu.ir</item>
+        <item>http://pir.wa.medu.ir</item>
+        <item>http://sar.wa.medu.ir</item>
+        <item>http://nag.wa.medu.ir</item>
+        <item>http://osh.wa.medu.ir/portal/home.php?ocode=1000000143</item>
+        <item>http://slv.wa.medu.ir</item>
+        <item>http://mar.wa.medu.ir</item>
+        <item>http://ksh.wa.medu.ir</item>
+        <item>http://som.wa.medu.ir</item>
+        <item>http://naz.wa.medu.ir</item>
+        <item>http://es.wa.medu.ir</item>
+
+        //Ardabil
+        <item>http://arta.medu.ir</item>
+        <item>http://1901.arta.medu.ir</item>
+        <item>http://1902.arta.medu.ir</item>
+        <item>http://1945.arta.medu.ir</item>
+        <item>http://1936.arta.medu.ir</item>
+        <item>http://1942.arta.medu.ir</item>
+        <item>http://1935.arta.medu.ir</item>
+        <item>http://1932.arta.medu.ir</item>
+        <item>http://1917.arta.medu.ir</item>
+        <item>http://1920.arta.medu.ir</item>
+        <item>http://1949.arta.medu.ir</item>
+        <item>http://1923.arta.medu.ir</item>
+        <item>http://1947.arta.medu.ir</item>
+        <item>http://1926.arta.medu.ir</item>
+        <item>http://1951.arta.medu.ir</item>
+        <item>http://1938.arta.medu.ir</item>
+        <item>http://1929.arta.medu.ir</item>
+        <item>http://1914.arta.medu.ir</item>
+        <item>http://1911.arta.medu.ir</item>
+        <item>http://1940.arta.medu.ir</item>
+
+        //Esfahan
+        <item>http://isf73.isf.medu.ir</item>
+        <item>http://isf26.isf.medu.ir</item>
+        <item>http://isf01.isf.medu.ir</item>
+        <item>http://isf02.isf.medu.ir</item>
+        <item>http://isf03.isf.medu.ir</item>
+        <item>http://isf04.isf.medu.ir</item>
+        <item>http://isf05.isf.medu.ir</item>
+        <item>http://isf30.isf.medu.ir</item>
+        <item>http://isf87.isf.medu.ir</item>
+        <item>http://isf33.isf.medu.ir</item>
+        <item>http://isf24.isf.medu.ir</item>
+        <item>http://isf83.isf.medu.ir</item>
+        <item>http://isf43.isf.medu.ir</item>
+        <item>http://isf74.isf.medu.ir</item>
+        <item>http://isf64.isf.medu.ir</item>
+        <item>http://isf13.isf.medu.ir</item>
+        <item>http://isf17.isf.medu.ir</item>
+        <item>http://isf81.isf.medu.ir</item>
+        <item>http://isf41.isf.medu.ir</item>
+        <item>http://isf66.isf.medu.ir</item>
+        <item>http://isf50.isf.medu.ir</item>
+        <item>http://isf59.isf.medu.ir</item>
+        <item>http://isf37.isf.medu.ir</item>
+        <item>http://isf28.isf.medu.ir</item>
+        <item>http://isf85.isf.medu.ir</item>
+        <item>http://isf48.isf.medu.ir</item>
+        <item>http://isf20.isf.medu.ir</item>
+        <item>http://isf35.isf.medu.ir</item>
+        <item>http://isf39.isf.medu.ir</item>
+        <item>http://isf46.isf.medu.ir</item>
+        <item>http://isf45.isf.medu.ir</item>
+        <item>http://isf29.isf.medu.ir</item>
+        <item>http://kashanedu.ir</item>
+        <item>http://isf15.isf.medu.ir</item>
+        <item>http://isf53.isf.medu.ir</item>
+        <item>http://isf31.isf.medu.ir</item>
+        <item>http://isf75.isf.medu.ir</item>
+        <item>http://isf22.isf.medu.ir</item>
+        <item>http://isf56.isf.medu.ir</item>
+        <item>http://isf61.isf.medu.ir</item>
+        <item>http://isf79.isf.medu.ir</item>
+
+        //Alborz
+        <item>http://karaj1.alborz.medu.ir</item>
+        <item>http://karaj2.alborz.medu.ir</item>
+        <item>http://karaj3.alborz.medu.ir</item>
+        <item>http://karaj4.alborz.medu.ir</item>
+        <item>http://savojbolagh.alborz.medu.ir</item>
+        <item>http://nazarabad.alborz.medu.ir</item>
+        <item>http://eshtehard.alborz.medu.ir</item>
+        <item>http://taleghan.alborz.medu.ir</item>
+
+        //Ilam
+        <item>http://elam.medu.ir</item>
+        <item>http://abdanan.ilam.medu.ir</item>
+        <item>http://dehloran.ilam.medu.ir</item>
+        <item>http://dareshahr.ilam.medu.ir</item>
+        <item>http://mehran.ilam.medu.ir</item>
+        <item>http://malekshahi.ilam.medu.ir</item>
+        <item>http://badre.ilam.medu.ir</item>
+        <item>http://shirvan.ilam.medu.ir</item>
+        <item>http://chardavol.ilam.medu.ir</item>
+        <item>http://eyvan.ilam.medu.ir</item>
+        <item>http://zarinabad.ilam.medu.ir</item>
+        <item>http://chavar.ilam.medu.ir</item>
+        <item>http://holeilan.ilam.medu.ir</item>
+        <item>http://mosian.ilam.medu.ir</item>
+
+        //Boshehr
+        <item>http://bushehr.medu.ir</item>
+        <item>http://asaloyeh.bushehr.medu.ir</item>
+        <item>http://jam.bushehr.medu.ir</item>
+        <item>http://kangan.bushehr.medu.ir</item>
+        <item>http://dayer.bushehr.medu.ir</item>
+        <item>http://bordekhon.bushehr.medu.ir</item>
+        <item>http://kaki.bushehr.medu.ir</item>
+        <item>http://dashti.bushehr.medu.ir</item>
+        <item>http://delvar.bushehr.medu.ir</item>
+        <item>http://tangestan.bushehr.medu.ir</item>
+        <item>http://dashtestan.bushehr.medu.ir</item>
+        <item>http://saadabad.bushehr.medu.ir</item>
+        <item>http://abpakhsh.bushehr.medu.ir</item>
+        <item>http://shabankareh.bushehr.medu.ir</item>
+        <item>http://rig.bushehr.medu.ir</item>
+        <item>http://genaveh.bushehr.medu.ir</item>
+        <item>http://deylam.bushehr.medu.ir</item>
+        <item>http://khark.bushehr.medu.ir</item>
+        <item>http://bu.bushehr.medu.ir</item>
+
+        //Tehran
+        <item>http://teo.medu.ir</item>
+        <item>http://1217.teo.medu.ir</item>
+        <item>http://1251.teo.medu.ir</item>
+        <item>http://1281.teo.medu.ir</item>
+        <item>http://1273.teo.medu.ir</item>
+        <item>http://1292.teo.medu.ir</item>
+        <item>http://1211.teo.medu.ir</item>
+        <item>http://1220.teo.medu.ir</item>
+        <item>http://1215.teo.medu.ir</item>
+        <item>http://1294.teo.medu.ir</item>
+        <item>http://1275.teo.medu.ir</item>
+        <item>http://1296.teo.medu.ir</item>
+        <item>http://1253.teo.medu.ir</item>
+        <item>http://1285.teo.medu.ir</item>
+        <item>http://1287.teo.medu.ir</item>
+        <item>http://1283.teo.medu.ir</item>
+        <item>http://1289.teo.medu.ir</item>
+        <item>http://1271.teo.medu.ir</item>
+        <item>http://1221.teo.medu.ir</item>
+        <item>http://1272.teo.medu.ir</item>
+        <item>http://1295.teo.medu.ir</item>
+        <item>http://1255.teo.medu.ir</item>
+
+        //ChaharMahal
+        <item>http://chb.medu.ir</item>
+        <item>http://sh1.chb.medu.ir</item>
+        <item>http://sh2.chb.medu.ir</item>
+        <item>http://ardal.chb.medu.ir</item>
+        <item>http://farsan.chb.medu.ir</item>
+        <item>http://boroojen.chb.medu.ir</item>
+        <item>http://koohrang.chb.medu.ir</item>
+        <item>http://lordegan.chb.medu.ir</item>
+        <item>http://kiear.chb.medu.ir</item>
+        <item>http://saman.chb.medu.ir</item>
+        <item>http://ben.chb.medu.ir</item>
+        <item>http://laran.chb.medu.ir</item>
+        <item>http://gandoman.chb.medu.ir</item>
+        <item>http://felard.chb.medu.ir</item>
+        <item>http://khanmirza.chb.medu.ir</item>
+        <item>http://boldaji.chb.medu.ir</item>
+        <item>http://ashayer.chb.medu.ir</item>
+        <item>http://miankooh.chb.medu.ir</item>
+
+        //Khorasan J
+        <item>http://skh.medu.ir</item>
+        <item>http://boshroye.skh.medu.ir</item>
+        <item>http://birjand.skh.medu.ir</item>
+        <item>http://khusf.skh.medu.ir</item>
+        <item>http://darmiyan.skh.medu.ir</item>
+        <item>http://dastgardan.skh.medu.ir</item>
+        <item>http://zirkoh.skh.medu.ir</item>
+        <item>http://sarayan.skh.medu.ir</item>
+        <item>http://sarbishe.skh.medu.ir</item>
+        <item>http://tabas.skh.medu.ir</item>
+        <item>http://ferdos.skh.medu.ir</item>
+        <item>http://qaen.skh.medu.ir</item>
+        <item>http://nehbandan.skh.medu.ir</item>
+
+        //Khorasan Sh
+        <item>http://shirvan.khn.medu.ir</item>
+        <item>http://bojnord.khn.medu.ir</item>
+        <item>http://esfarayen.khn.medu.ir</item>
+        <item>http://razojargalan.khn.medu.ir</item>
+        <item>http://bamosafiabad.khn.medu.ir</item>
+        <item>http://jajarm.khn.medu.ir</item>
+        <item>http://farooj.khn.medu.ir</item>
+        <item>http://garme.khn.medu.ir</item>
+        <item>http://2126.khn.medu.ir</item>
+
+        //Khorasan Razavi
+        <item>http://n1.razavi.medu.ir</item>
+        <item>http://n2.razavi.medu.ir</item>
+        <item>http://n3.razavi.medu.ir</item>
+        <item>http://n4.razavi.medu.ir</item>
+        <item>http://n5.razavi.medu.ir</item>
+        <item>http://n6.razavi.medu.ir</item>
+        <item>http://n7.razavi.medu.ir</item>
+        <item>http://es.razavi.medu.ir</item>
+        <item>http://ahmadabad.razavi.medu.ir</item>
+        <item>http://bakharz.razavi.medu.ir</item>
+        <item>http://bajestan.razavi.medu.ir</item>
+        <item>http://bardaskan.razavi.medu.ir</item>
+        <item>http://taybad.razavi.medu.ir</item>
+        <item>http://tabadkan.razavi.medu.ir</item>
+        <item>http://firoozeh.razavi.medu.ir</item>
+        <item>http://jam.razavi.medu.ir</item>
+        <item>http://heydarieh.razavi.medu.ir</item>
+        <item>http://joghatay.razavi.medu.ir</item>
+        <item>http://rokh.razavi.medu.ir</item>
+        <item>http://jovein.razavi.medu.ir</item>
+        <item>http://chenaran.razavi.medu.ir</item>
+        <item>http://khalilabad.razavi.medu.ir</item>
+        <item>http://khaf.razavi.medu.ir</item>
+        <item>http://khooshab.razavi.medu.ir</item>
+        <item>http://davarzan.razavi.medu.ir</item>
+        <item>http://daregaz.razavi.medu.ir</item>
+        <item>http://roshtkhar.razavi.medu.ir</item>
+        <item>http://razavieh.razavi.medu.ir</item>
+        <item>http://zaveh.razavi.medu.ir</item>
+        <item>http://zebarkhan.razavi.medu.ir</item>
+        <item>http://sabzevar.razavi.medu.ir</item>
+        <item>http://sarakhs.razavi.medu.ir</item>
+        <item>http://sarvelayat.razavi.medu.ir</item>
+        <item>http://sheshtamad.razavi.medu.ir</item>
+        <item>http://salehabad.razavi.medu.ir</item>
+        <item>http://torghabeh.razavi.medu.ir</item>
+        <item>http://fariman.razavi.medu.ir</item>
+        <item>http://quchan.razavi.medu.ir</item>
+        <item>http://kalat.razavi.medu.ir</item>
+        <item>http://koohsorkh.razavi.medu.ir</item>
+        <item>http://kashmar.razavi.medu.ir</item>
+        <item>http://kadkan.razavi.medu.ir</item>
+        <item>http://golbahar.razavi.medu.ir</item>
+        <item>http://gonabad.razavi.medu.ir</item>
+        <item>http://mahvelat.razavi.medu.ir</item>
+        <item>http://mianjolgeh.razavi.medu.ir</item>
+        <item>http://nokhandan.razavi.medu.ir</item>
+        <item>http://neyshabour.razavi.medu.ir</item>
+
+        //Khozestan
+        <item>http://khouz.medu.ir</item>
+        <item>http://3601.khouz.medu.ir</item>
+        <item>http://3602.khouz.medu.ir</item>
+        <item>http://3603.khouz.medu.ir</item>
+        <item>http://3604.khouz.medu.ir</item>
+        <item>http://3688.khouz.medu.ir</item>
+        <item>http://estn.khouz.medu.ir</item>
+        <item>http://3608.khouz.medu.ir</item>
+        <item>http://3606.khouz.medu.ir</item>
+        <item>http://3609.khouz.medu.ir</item>
+        <item>http://3613.khouz.medu.ir</item>
+        <item>http://3616.khouz.medu.ir</item>
+        <item>http://3617.khouz.medu.ir</item>
+        <item>http://3619.khouz.medu.ir</item>
+        <item>http://3620.khouz.medu.ir</item>
+        <item>http://3622.khouz.medu.ir</item>
+        <item>http://3627.khouz.medu.ir</item>
+        <item>http://3624.khouz.medu.ir</item>
+        <item>http://3625.khouz.medu.ir</item>
+        <item>http://3630.khouz.medu.ir</item>
+        <item>http://3633.khouz.medu.ir</item>
+        <item>http://3636.khouz.medu.ir</item>
+        <item>http://3639.khouz.medu.ir</item>
+        <item>http://3642.khouz.medu.ir</item>
+        <item>http://3645.khouz.medu.ir</item>
+        <item>http://3649.khouz.medu.ir</item>
+        <item>http://3651.khouz.medu.ir</item>
+        <item>http://3654.khouz.medu.ir</item>
+        <item>http://3657.khouz.medu.ir</item>
+        <item>http://3660.khouz.medu.ir</item>
+        <item>http://3663.khouz.medu.ir</item>
+        <item>http://3665.khouz.medu.ir</item>
+        <item>http://3668.khouz.medu.ir</item>
+        <item>http://3670.khouz.medu.ir</item>
+        <item>http://3673.khouz.medu.ir</item>
+        <item>http://3676.khouz.medu.ir</item>
+        <item>http://3677.khouz.medu.ir</item>
+        <item>http://3678.khouz.medu.ir</item>
+        <item>http://3680.khouz.medu.ir</item>
+        <item>http://3690.khouz.medu.ir</item>
+        <item>http://3692.khouz.medu.ir</item>
+        <item>http://3694.khouz.medu.ir</item>
+
+        //zanjan
+        <item>http://zanjan.medu.ir</item>
+        <item>http://5743.zanjan.medu.ir</item>
+        <item>http://5723.zanjan.medu.ir</item>
+        <item>http://5701.zanjan.medu.ir</item>
+        <item>http://5702.zanjan.medu.ir</item>
+        <item>http://5711.zanjan.medu.ir</item>
+        <item>http://5725.zanjan.medu.ir</item>
+        <item>http://5745.zanjan.medu.ir</item>
+        <item>http://5734.zanjan.medu.ir</item>
+        <item>http://5712.zanjan.medu.ir</item>
+        <item>http://5731.zanjan.medu.ir</item>
+        <item>http://5747.zanjan.medu.ir</item>
+        <item>http://5714.zanjan.medu.ir</item>
+        <item>http://5705.zanjan.medu.ir</item>
+        <item>http://5708.zanjan.medu.ir</item>
+
+        //Semnan
+        <item>http://sem.semnan.medu.ir</item>
+        <item>http://shahrood.semnan.medu.ir</item>
+        <item>http://damghan.semnan.medu.ir</item>
+        <item>http://garmsar.semnan.medu.ir</item>
+        <item>http://sorkheh.semnan.medu.ir</item>
+        <item>http://mahdishahr.semnan.medu.ir</item>
+        <item>http://mayamei.semnan.medu.ir</item>
+        <item>http://aradan.semnan.medu.ir</item>
+        <item>http://amirabad.semnan.medu.ir</item>
+        <item>http://bastam.semnan.medu.ir</item>
+        <item>http://beyarjomand.semnan.medu.ir</item>
+
+
+        //Sistan
+        <item>http://4901.sb.medu.ir</item>
+        <item>http://4902.sb.medu.ir</item>
+
+        //Qazvin
+        <item>http://caspian.medu.ir</item>
+        <item>http://4617.caspian.medu.ir</item>
+        <item>http://4620.caspian.medu.ir</item>
+        <item>http://4628.caspian.medu.ir</item>
+        <item>http://4629.caspian.medu.ir</item>
+        <item>http://4630.caspian.medu.ir</item>
+        <item>http://4633.caspian.medu.ir</item>
+        <item>http://4636.caspian.medu.ir</item>
+        <item>http://4639.caspian.medu.ir</item>
+        <item>http://4640.caspian.medu.ir</item>
+        <item>http://4641.caspian.medu.ir</item>
+        <item>http://4643.caspian.medu.ir</item>
+        <item>http://4645.caspian.medu.ir</item>
+        <item>http://4647.caspian.medu.ir</item>
+        <item>http://4649.caspian.medu.ir</item>
+
+        //Qom
+        <item>http://n1.qom.medu.ir</item>
+        <item>http://n2.qom.medu.ir</item>
+        <item>http://n3.qom.medu.ir</item>
+        <item>http://n4.qom.medu.ir</item>
+        <item>http://kahak.qom.medu.ir</item>
+        <item>http://jafarabad.qom.medu.ir</item>
+        <item>http://khalajestan.qom.medu.ir</item>
+
+        //Kordestan
+        <item>http://kurd.medu.ir</item>
+        <item>http://san1.kurd.medu.ir</item>
+        <item>http://san2.kurd.medu.ir</item>
+        <item>http://sgh.kurd.medu.ir</item>
+        <item>http://bnh.kurd.medu.ir</item>
+        <item>http://mar.kurd.medu.ir</item>
+        <item>http://ghr.kurd.medu.ir</item>
+        <item>http://bij.kurd.medu.ir</item>
+        <item>http://dvn.kurd.medu.ir</item>
+        <item>http://kam.kurd.medu.ir</item>
+        <item>http://dhg.kurd.medu.ir</item>
+        <item>http://sar.kurd.medu.ir</item>
+        <item>http://sri.kurd.medu.ir</item>
+        <item>http://mch.kurd.medu.ir</item>
+        <item>http://krn.kurd.medu.ir</item>
+        <item>http://ziv.kurd.medu.ir</item>
+        <item>http://klt.kurd.medu.ir</item>
+
+        //Kerman
+        <item>http://kerman.medu.ir</item>
+        <item>http://est.kerman.medu.ir</item>
+        <item>http://ash.kerman.medu.ir</item>
+        <item>http://orz.kerman.medu.ir</item>
+        <item>http://anr.kerman.medu.ir</item>
+        <item>http://bft.kerman.medu.ir</item>
+        <item>http://brd.kerman.medu.ir</item>
+        <item>http://bam.kerman.medu.ir</item>
+        <item>http://jrf.kerman.medu.ir</item>
+        <item>http://chr.kerman.medu.ir</item>
+        <item>http://rbr.kerman.medu.ir</item>
+        <item>http://rvr.kerman.medu.ir</item>
+        <item>http://ryn.kerman.medu.ir</item>
+        <item>http://rfs.kerman.medu.ir</item>
+        <item>http://rud.kerman.medu.ir</item>
+        <item>http://rgn.kerman.medu.ir</item>
+        <item>http://zrn.kerman.medu.ir</item>
+        <item>http://srn.kerman.medu.ir</item>
+        <item>http://shd.kerman.medu.ir</item>
+        <item>http://shr.kerman.medu.ir</item>
+        <item>http://anb.kerman.medu.ir</item>
+        <item>http://frb.kerman.medu.ir</item>
+        <item>http://fhr.kerman.medu.ir</item>
+        <item>http://gln.kerman.medu.ir</item>
+        <item>http://ksh.kerman.medu.ir</item>
+        <item>http://kuh.kerman.medu.ir</item>
+        <item>http://khn.kerman.medu.ir</item>
+        <item>http://glb.kerman.medu.ir</item>
+        <item>http://mhn.kerman.medu.ir</item>
+        <item>http://mnj.kerman.medu.ir</item>
+        <item>http://kn1.kerman.medu.ir</item>
+        <item>http://kn2.kerman.medu.ir</item>
+        <item>http://nrm.kerman.medu.ir</item>
+        <item>http://nog.kerman.medu.ir</item>
+
+        //KermanShah
+        <item>http://kermanshah.medu.ir</item>
+        <item>http://nah1.kermanshah.medu.ir</item>
+        <item>http://nah2.kermanshah.medu.ir</item>
+        <item>http://nah3.kermanshah.medu.ir</item>
+        <item>http://eslamabadgharb.kermanshah.medu.ir</item>
+        <item>http://bayangan.kermanshah.medu.ir</item>
+        <item>http://bisotun.kermanshah.medu.ir</item>
+        <item>http://paveh.kermanshah.medu.ir</item>
+        <item>http://salas.kermanshah.medu.ir</item>
+        <item>http://javanrud.kermanshah.medu.ir</item>
+        <item>http://homail.kermanshah.medu.ir</item>
+        <item>http://dalahoo.kermanshah.medu.ir</item>
+        <item>http://dinevar.kermanshah.medu.ir</item>
+        <item>http://ravansar.kermanshah.medu.ir</item>
+        <item>http://sarpolzahab.kermanshah.medu.ir</item>
+        <item>http://sonqor.kermanshah.medu.ir</item>
+        <item>http://sahneh.kermanshah.medu.ir</item>
+        <item>http://qasrshirin.kermanshah.medu.ir</item>
+        <item>http://kangavar.kermanshah.medu.ir</item>
+        <item>http://govaver.kermanshah.medu.ir</item>
+        <item>http://gahvareh.kermanshah.medu.ir</item>
+        <item>http://gilangharb.kermanshah.medu.ir</item>
+        <item>http://mahidasht.kermanshah.medu.ir</item>
+        <item>http://nosoud.kermanshah.medu.ir</item>
+        <item>http://harsin.kermanshah.medu.ir</item>
+
+        //KohKilo
+        <item>http://kb.medu.ir</item>
+        <item>http://4259.kb.medu.ir</item>
+        <item>http://4269.kb.medu.ir</item>
+        <item>http://4280.kb.medu.ir</item>
+        <item>http://4288.kb.medu.ir</item>
+        <item>http://4282.kb.medu.ir</item>
+        <item>http://4278.kb.medu.ir</item>
+        <item>http://4277.kb.medu.ir</item>
+        <item>http://4275.kb.medu.ir</item>
+        <item>http://4266.kb.medu.ir</item>
+        <item>http://4264.kb.medu.ir</item>
+        <item>http://4271.kb.medu.ir</item>
+        <item>http://4263.kb.medu.ir</item>
+        <item>http://4261.kb.medu.ir</item>
+
+        //golestan
+        <item>http://golestan.medu.ir</item>
+        <item>http://azadshahr.golestan.medu.ir</item>
+        <item>http://aghghala.golestan.medu.ir</item>
+        <item>http://bandartorkman.golestan.medu.ir</item>
+        <item>http://bandargaz.golestan.medu.ir</item>
+        <item>http://ramian.golestan.medu.ir</item>
+        <item>http://aliabad.golestan.medu.ir</item>
+        <item>http://kordkuy.golestan.medu.ir</item>
+        <item>http://kalaleh.golestan.medu.ir</item>
+        <item>http://galikesh.golestan.medu.ir</item>
+        <item>http://gorgan.golestan.medu.ir</item>
+        <item>http://gomishan.golestan.medu.ir</item>
+        <item>http://gonbad.golestan.medu.ir</item>
+        <item>http://maraveh.golestan.medu.ir</item>
+        <item>http://minoodasht.golestan.medu.ir</item>
+
+        //Gilan
+        <item>http://guilan.medu.ir</item>
+        <item>http://3701.gilan.medu.ir</item>
+        <item>http://3702.gilan.medu.ir</item>
+        <item>http://3764.gilan.medu.ir</item>
+        <item>http://3750.gilan.medu.ir</item>
+        <item>http://3770.gilan.medu.ir</item>
+        <item>http://3728.gilan.medu.ir</item>
+        <item>http://3716.gilan.medu.ir</item>
+        <item>http://3733.gilan.medu.ir</item>
+        <item>http://3747.gilan.medu.ir</item>
+        <item>http://3774.gilan.medu.ir</item>
+        <item>http://3707.gilan.medu.ir</item>
+        <item>http://3706.gilan.medu.ir</item>
+        <item>http://3724.gilan.medu.ir</item>
+        <item>http://3768.gilan.medu.ir</item>
+        <item>http://3730.gilan.medu.ir</item>
+        <item>http://3735.gilan.medu.ir</item>
+        <item>http://3759.gilan.medu.ir</item>
+        <item>http://3772.gilan.medu.ir</item>
+        <item>http://3725.gilan.medu.ir</item>
+        <item>http://3713.gilan.medu.ir</item>
+        <item>http://3722.gilan.medu.ir</item>
+        <item>http://3742.gilan.medu.ir</item>
+        <item>http://3745.gilan.medu.ir</item>
+        <item>http://3761.gilan.medu.ir</item>
+        <item>http://3740.gilan.medu.ir</item>
+        <item>http://3727.gilan.medu.ir</item>
+        <item>http://3708.gilan.medu.ir</item>
+        <item>http://3766.gilan.medu.ir</item>
+        <item>http://3753.gilan.medu.ir</item>
+        <item>http://3719.gilan.medu.ir</item>
+        <item>http://3711.gilan.medu.ir</item>
+        <item>http://3756.gilan.medu.ir</item>
+        <item>http://3737.gilan.medu.ir</item>
+
+        //Lorestan
+        <item>http://lorestan.medu.ir</item>
+        <item>http://azn.lorestan.medu.ir</item>
+        <item>http://est.lorestan.medu.ir</item>
+        <item>http://als.lorestan.medu.ir</item>
+        <item>http://alg.lorestan.medu.ir</item>
+        <item>http://bru.lorestan.medu.ir</item>
+        <item>http://byr.lorestan.medu.ir</item>
+        <item>http://pop.lorestan.medu.ir</item>
+        <item>http://pol.lorestan.medu.ir</item>
+        <item>http://chg.lorestan.medu.ir</item>
+        <item>http://kh1.lorestan.medu.ir</item>
+        <item>http://dur.lorestan.medu.ir</item>
+        <item>http://rom.lorestan.medu.ir</item>
+        <item>http://zgh.lorestan.medu.ir</item>
+        <item>http://slk.lorestan.medu.ir</item>
+        <item>http://tar.lorestan.medu.ir</item>
+        <item>http://zaz.lorestan.medu.ir</item>
+        <item>http://ash.lorestan.medu.ir</item>
+        <item>http://kak.lorestan.medu.ir</item>
+        <item>http://koh.lorestan.medu.ir</item>
+        <item>http://mam.lorestan.medu.ir</item>
+        <item>http://nor.lorestan.medu.ir</item>
+        <item>http://vey.lorestan.medu.ir</item>
+        <item>http://kh2.lorestan.medu.ir</item>
+
+        //Mazan
+        <item>http://mazand.medu.ir</item>
+        <item>http://simorgh.mazand.medu.ir</item>
+        <item>http://amol.mazand.medu.ir</item>
+        <item>http://babolsar.mazand.medu.ir</item>
+        <item>http://tonekabon.mazand.medu.ir</item>
+        <item>http://chalus.mazand.medu.ir</item>
+        <item>http://shirgah.mazand.medu.ir?ocode=100038255</item>
+        <item>http://sari1.mazand.medu.ir</item>
+        <item>http://abbasabad.mazand.medu.ir</item>
+        <item>http://qaemshahr.mazand.medu.ir</item>
+        <item>http://nur.mazand.medu.ir</item>
+        <item>http://galugah.mazand.medu.ir</item>
+        <item>http://haraz.mazand.medu.ir</item>
+        <item>http://chamestan.mazand.medu.ir</item>
+        <item>http://miandorod.mazand.medu.ir</item>
+        <item>http://bpgharbi.mazand.medu.ir</item>
+        <item>http://kojoor.mazand.medu.ir</item>
+        <item>http://chardangeh.mazand.medu.ir</item>
+        <item>http://dodangeh.mazand.medu.ir</item>
+        <item>http://sari2.mazand.medu.ir</item>
+        <item>http://babol.mazand.medu.ir</item>
+        <item>http://behshahr.mazand.medu.ir</item>
+        <item>http://juybar.mazand.medu.ir</item>
+        <item>http://ramsar.mazand.medu.ir</item>
+        <item>http://larijan.mazand.medu.ir</item>
+        <item>http://savadkuh.mazand.medu.ir</item>
+        <item>http://fkenar.mazand.medu.ir</item>
+        <item>http://nowshahr.mazand.medu.ir</item>
+        <item>http://neka.mazand.medu.ir</item>
+        <item>http://bahnemir.mazand.medu.ir</item>
+        <item>http://bpsharghi.mazand.medu.ir</item>
+        <item>http://kelardasht.mazand.medu.ir</item>
+        <item>http://baladeh.mazand.medu.ir</item>
+
+
+        //Markazi
+        <item>http://markazi.medu.ir</item>
+        <item>http://mahallat.markazi.medu.ir/portal/home.php?ocode=17209102</item>
+        <item>http://nobaran.markazi.medu.ir/portal/home.php?ocode=17009505</item>
+        <item>http://farahan.markazi.medu.ir/portal/home.php?ocode=16709800</item>
+        <item>http://komijan.markazi.medu.ir/portal/home.php?ocode=1000000475</item>
+        <item>http://shazand.markazi.medu.ir/portal/home.php?ocode=90158008</item>
+        <item>http://sarband.markazi.medu.ir/portal/home.php?ocode=17520208</item>
+        <item>http://saveh.markazi.medu.ir/portal/home.php?ocode=16825007</item>
+        <item>http://zarand.markazi.medu.ir/portal/home.php?ocode=16910408</item>
+        <item>http://delijan.markazi.medu.ir/portal/home.php?ocode=16314609</item>
+        <item>http://khondab.markazi.medu.ir/portal/home.php?ocode=16416702</item>
+        <item>http://khomein.markazi.medu.ir/portal/home.php?ocode=17129100</item>
+        <item>http://tafresh.markazi.medu.ir/portal/home.php?ocode=16610203</item>
+        <item>http://ashtiyan.markazi.medu.ir/portal/home.php?ocode=16508006</item>
+        <item>http://arak1.markazi.medu.ir/portal/home.php?ocode=16133600</item>
+        <item>http://arak2.markazi.medu.ir/portal/home.php?ocode=16221108</item>
+
+
+        //Hormozgan
+        <item>http://hormozgan.medu.ir</item>
+        <item>http://bastak.hormozgan.medu.ir</item>
+        <item>http://bashagard.hormozgan.medu.ir</item>
+        <item>http://khamir.hormozgan.medu.ir</item>
+        <item>http://bndlengeh.hormozgan.medu.ir</item>
+        <item>http://nahiye1.hormozgan.medu.ir</item>
+        <item>http://nahiye2.hormozgan.medu.ir</item>
+        <item>http://parsiyan.hormozgan.medu.ir</item>
+        <item>http://jask.hormozgan.medu.ir</item>
+        <item>http://jenah.hormozgan.medu.ir</item>
+        <item>http://hajiabad.hormozgan.medu.ir</item>
+        <item>http://roodan.hormozgan.medu.ir</item>
+        <item>http://roudkhaneh.hormozgan.medu.ir</item>
+        <item>http://senderk.hormozgan.medu.ir</item>
+        <item>http://sirik.hormozgan.medu.ir</item>
+        <item>http://shahab.hormozgan.medu.ir</item>
+        <item>http://fin.hormozgan.medu.ir</item>
+        <item>http://qeshm.hormozgan.medu.ir</item>
+        <item>http://kish.hormozgan.medu.ir</item>
+        <item>http://minab.hormozgan.medu.ir</item>
+        <item>http://hormoz.hormozgan.medu.ir</item>
+
+
+        //Hamadan
+        <item>http://hamedan.medu.ir</item>
+        <item>http://n1.hamedan.medu.ir</item>
+        <item>http://n2.hamedan.medu.ir</item>
+        <item>http://asd.hamedan.medu.ir</item>
+        <item>http://raz.hamedan.medu.ir</item>
+        <item>http://bah.hamedan.medu.ir</item>
+        <item>http://kab.hamedan.medu.ir</item>
+        <item>http://mal.hamedan.medu.ir</item>
+        <item>http://toy.hamedan.medu.ir</item>
+        <item>http://nah.hamedan.medu.ir</item>
+        <item>http://fam.hamedan.medu.ir</item>
+        <item>http://gah.hamedan.medu.ir</item>
+        <item>http://sar.hamedan.medu.ir</item>
+        <item>http://samn.hamedan.medu.ir</item>
+        <item>http://khz.hamedan.medu.ir</item>
+        <item>http://jkr.hamedan.medu.ir</item>
+        <item>http://gol.hamedan.medu.ir</item>
+        <item>http://ghr.hamedan.medu.ir</item>
+        <item>http://ghl.hamedan.medu.ir</item>
+        <item>http://laj.hamedan.medu.ir</item>
+
+        //Yazd
+        <item>http://yazd.medu.ir</item>
+    </string-array>
+</resources>

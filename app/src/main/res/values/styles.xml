@@ -1,0 +1,70 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Theme.AppCompat.Light.DarkActionBar -->
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">#fff</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="PrimaryTextColor">@color/PrimaryTextColor</item>
+        <item name="SecondaryTextColor">@color/SecondaryTextColor</item>
+        <item name="TitleTextColor">@color/PrimaryTextColor</item>
+        <item name="BackgroundColor">#fff</item>
+        <item name="MultiSelectState1Color">@color/gray20</item>
+        <item name="MultiSelectState2Color">@android:color/white</item>
+
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransation</item>
+    </style>
+
+    <style name="AppThemeDark" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">#2196F3</item>
+        <item name="colorPrimaryDark">#303030</item>
+        <item name="colorAccent">#03A9F4</item>
+        <item name="PrimaryTextColor">#F4F4F6</item>
+        <item name="SecondaryTextColor">@color/gray20</item>
+        <item name="TitleTextColor">@color/gray20</item>
+        <item name="BackgroundColor">#303030</item>
+        <item name="MultiSelectState1Color">@color/bg_circle_default</item>
+        <item name="MultiSelectState2Color">#121212</item>
+
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransation</item>
+    </style>
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+    </style>
+
+
+    <style name="AppThemeDark.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+    </style>
+
+    <style name="Light" parent="AppTheme.NoActionBar"/>
+    <style name="Dark" parent="AppThemeDark.NoActionBar"/>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
+
+    <style name="Widget" parent="@android:style/Widget" />
+
+    <style name="Widget.NavigationView" parent="@style/Widget.MaterialComponents.NavigationView">
+        <item name="itemBackground">@drawable/navigation_item_background_default</item>
+        <item name="itemHorizontalPadding">@dimen/nav_item_horizontal_padding</item>
+    </style>
+
+    <style name="SearchView" parent="Widget.AppCompat.SearchView">
+        <item name="colorControlActivated">@color/gray20</item>
+        <item name="colorControlNormal">@color/gray20</item>
+    </style>
+
+    <style name="WindowAnimationTransation">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+</resources>
