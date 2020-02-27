@@ -1,4 +1,8 @@
 # Circulars-v9.0
+
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/ghost1372/Circulars-v9.0?color=green&label=Release)
+![GitHub](https://img.shields.io/github/license/ghost1372/Circulars-v9.0?color=purple&label=License)
+
 <div dir="rtl">
 نمایش بخشنامه مناطق مختلف سازمان آموزش و پرورش- نسخه 9
   
@@ -18,11 +22,11 @@
 - Dark and Light Theme
 - Kotlin
 - AndroidX
+- ViewBinding
 
+## <div dir="rtl"> کامپایل</div>
 
-
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/ghost1372/Circulars-v9.0?color=green&label=Release)
-![GitHub](https://img.shields.io/github/license/ghost1372/Circulars-v9.0?color=purple&label=License)
+<div dir="rtl"> برای کامپایل بدلیل استفاده از ویژگی ViewBinding شما نیاز به اندروید استودیو حداقل نسخه 3.6 دارید</div>
 
 ## <div dir="rtl"> دانلود از کافه بازار
 
