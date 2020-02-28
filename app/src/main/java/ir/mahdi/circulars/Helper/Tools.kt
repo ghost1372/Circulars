@@ -50,6 +50,15 @@ class Tools {
         }
     }
 
+    // Return Ministry Path
+    fun _PathMinistry(context: Context?): String? {
+        return if (Build.VERSION.SDK_INT >= 29) { // because of new storage privacy in Android >= Q
+            context?.externalCacheDir!!.path + "/بخشنامه/وزارت/" + Prefs(context).getServerIndex() + "/"
+        } else {
+            "/sdcard/بخشنامه/وزارت/" + Prefs(context!!).getServerIndex() + "/"
+        }
+    }
+
     // Set Application Language for RTL or LTR for example we can pass "fa" and our app will be RTL
     fun setLanguage(lang: String, context: Context?) {
         val localeNew = Locale(lang)
@@ -139,7 +148,7 @@ class Tools {
         // we need to hide toolbar items we dont need searchview
         (activity as MainActivity).toolbarElementsVisiblity(false)
 
-        var bundle = bundleOf(Tools().FILE_KEY to path) // passing argument to a bundle
+        var bundle = bundleOf(FILE_KEY to path) // passing argument to a bundle
         if (ext == "pdf"){
             navController.navigate(R.id.pdfFragment, bundle)
         }else if (ext == "xls" || ext == "xlsx" || ext == "csv" || ext == "doc" || ext == "docx") {
@@ -193,15 +202,17 @@ class Tools {
 
     // Extract Compressed File with P7ZipApi
     fun runCommand(
-        cmd: String,
-        RemoveRaw: String,
-        TitleForPdf: String,
-        context: Context,
+        path: String,
+        titleForPdf: String,
         navController: NavController,
         activity: Activity,
         view: View,
         dialog : MaterialDialog
     ) {
+
+        // Extract Compressed File
+        var cmd: String = getExtractCmd(path + _RawFileName, path + titleForPdf)
+
         io.reactivex.Observable.create(object : ObservableOnSubscribe<Int?> {
             override fun subscribe(e: ObservableEmitter<Int?>) {
                 val ret = P7ZipApi.executeCommand(cmd)
@@ -212,17 +223,17 @@ class Tools {
             .subscribe(object : io.reactivex.functions.Consumer<Int?>{
                 override fun accept(integer: Int?) {
                     try {
-                        val file = File(Tools()._Path(context).toString() + TitleForPdf)
+                        val file = File(path + titleForPdf)
 
                         if (file.exists()) {
-                            val fileToDelete = File(RemoveRaw)
+                            val fileToDelete = File(path + _RawFileName)
                             fileToDelete.delete()
                         }
                         else
                         {
                             //if file not exist so it must be pdf because it cant extracted
                             //select raw file for renaming
-                            val fileToMovePdf = File(RemoveRaw)
+                            val fileToMovePdf = File(path + _RawFileName)
                             //select path for pdf
                             val destination = File("$file.pdf")
                             //rename raw to pdf in new path
@@ -254,11 +265,11 @@ class Tools {
 
     // Show File Chooser
     fun showFileChooser(initalPath: String, activity: Activity, context: Context, navController: NavController) {
-        if (Tools().isStoragePermissionGranted(activity,context)){
+        if (isStoragePermissionGranted(activity,context)){
             var initDirectory: File = File(initalPath)
             MaterialDialog(context).show {
                 fileChooser(context, allowFolderCreation = false,initialDirectory = initDirectory) { _, file ->
-                    Tools().navigate(file.absolutePath, file.extension, navController, activity, view)
+                    navigate(file.absolutePath, file.extension, navController, activity, view)
                 }
                 negativeButton(R.string.cancelTask)
                 positiveButton(R.string.preview)

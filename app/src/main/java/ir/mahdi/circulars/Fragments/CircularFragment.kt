@@ -307,15 +307,9 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                                         status.setText(getString(R.string.downloadCompleted))
                                         positiveButton(R.string.preview)
 
-                                        // Extract Compressed File
-                                        val cmd: String = Tools().getExtractCmd(
-                                            Tools()._Path(context).toString() + Tools()._RawFileName,
-                                            Tools()._Path(context) + title
-                                        )
                                         Tools().runCommand(
-                                            cmd,
-                                            Tools()._Path(context).toString() + Tools()._RawFileName,
-                                            title,context,navController,activity!!,view,dialog
+                                            Tools()._Path(context).toString(),
+                                            title,navController,activity!!,view,dialog
                                         )
 
                                         is_File_Exist = true

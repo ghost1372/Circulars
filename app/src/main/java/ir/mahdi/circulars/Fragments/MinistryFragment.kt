@@ -185,9 +185,9 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                             date = cols.get(3).text()
 
                             val existCirculars =
-                                File(Tools()._Path(context).toString() + title)
+                                File(Tools()._PathMinistry(context).toString() + title)
                             val existCircularsPdf =
-                                File(Tools()._Path(context).toString() + title + ".pdf")
+                                File(Tools()._PathMinistry(context).toString() + title + ".pdf")
                             if (existCirculars.exists() || existCircularsPdf.exists()) {
                                 status = getString(R.string.downloaded_Message)
                             }
@@ -225,8 +225,8 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
     // On RecyclerView item Clicked
     override fun onCircularSelected(item: CircularModel?) {
         var file: String = item!!.title
-        var exist_pdf: File = File(Tools()._Path(context) + file + ".pdf")
-        var exist_compressed: File = File(Tools()._Path(context) + file)
+        var exist_pdf: File = File(Tools()._PathMinistry(context) + file + ".pdf")
+        var exist_compressed: File = File(Tools()._PathMinistry(context) + file)
 
         // If PDF File Exist, So Selected File is a PDF and We Can Navigate to Show pdf
         if (exist_pdf.exists()) {
@@ -238,7 +238,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
             if (exist_compressed.exists()){
 
                 // If Compressed File Exist we can Show File Chooser
-                Tools().showFileChooser(Tools()._Path(context) + file, activity!!, context!!, navController)
+                Tools().showFileChooser(Tools()._PathMinistry(context) + file, activity!!, context!!, navController)
             }
             else
             {
@@ -284,7 +284,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
 
                         downloadId = download(
                             "http://edari.medu.ir/" + link,
-                            Tools()._Path(context),
+                            Tools()._PathMinistry(context),
                             Tools()._RawFileName
                         )
                             .build()
@@ -310,15 +310,9 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                                         status.setText(getString(R.string.downloadCompleted))
                                         positiveButton(R.string.preview)
 
-                                        // Extract Compressed File
-                                        val cmd: String = Tools().getExtractCmd(
-                                            Tools()._Path(context).toString() + Tools()._RawFileName,
-                                            Tools()._Path(context) + title
-                                        )
                                         Tools().runCommand(
-                                            cmd,
-                                            Tools()._Path(context).toString() + Tools()._RawFileName,
-                                            title,context,navController,activity!!,view,dialog
+                                            Tools()._PathMinistry(context).toString(),
+                                            title,navController,activity!!,view,dialog
                                         )
 
                                         is_File_Exist = true
@@ -338,7 +332,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                     } else {
                         // File Exist And We Show File Chooser
                         dismiss()
-                        Tools().showFileChooser(Tools()._Path(context) + title, activity!!, context!!, navController)
+                        Tools().showFileChooser(Tools()._PathMinistry(context) + title, activity!!, context, navController)
                     }
                 }
             }
