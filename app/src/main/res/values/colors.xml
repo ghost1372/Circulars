@@ -32,4 +32,11 @@
 
     <color name="gray20">#cccccc</color>
     <color name="darkselected">#303030</color>
+
+    <color name="vcolorPrimary">#3f51b5</color>
+    <color name="vcolorPrimaryDark">#303f9f</color>
+    <color name="vcolorAccent">#ff5252</color>
+    <color name="vcolorTextPrimary">#212121</color>
+    <color name="vcolorTextSecondary">#757575</color>
+
 </resources>

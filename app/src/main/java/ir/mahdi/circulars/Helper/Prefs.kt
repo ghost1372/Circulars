@@ -4,12 +4,12 @@ import android.content.Context
 import android.content.SharedPreferences
 
 class Prefs(val context: Context) {
-    private val PREFS_NAME = "User_Data"
-    private val SERVER = "SERVER"
-    private val IS_FIRST_RUN = "IS_FIRST_RUN"
-    private val IS_Dark = "IS_DARK"
-    private val SWITCH_MODE = "SWITCH_MODE"
-    private val SWITCH_MODE_MESSAGE = "SWITCH_MODE_MESSAGE"
+    private val PREFS_NAME = "User_Data_KEY"
+    private val SERVER = "SERVER_KEY"
+    private val IS_FIRST_RUN = "IS_FIRST_RUN_KEY"
+    private val IS_Dark = "IS_DARK_KEY"
+    private val SWITCH_MODE = "SWITCH_MODE_KEY"
+    private val SWITCH_MODE_MESSAGE = "SWITCH_MODE_MESSAGE_KEY"
 
     val sharedPref: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
