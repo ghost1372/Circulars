@@ -55,4 +55,6 @@
 
     <string name="titleEMG">اطلاعیه مهم</string>
     <string name="positiveEMG">مطالعه کردم</string>
+    <string name="tabState">بخشنامه های مناطق</string>
+    <string name="tabMinistry">بخشنامه های وزارت</string>
 </resources>
