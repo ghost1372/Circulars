@@ -9,6 +9,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.content.res.Resources
+import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.StrictMode
@@ -18,7 +19,14 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.files.fileChooser
 import com.google.android.material.snackbar.Snackbar
+import com.hzy.libp7zip.P7ZipApi
+import io.reactivex.ObservableEmitter
+import io.reactivex.ObservableOnSubscribe
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import ir.mahdi.circulars.BuildConfig
 import ir.mahdi.circulars.MainActivity
 import ir.mahdi.circulars.R
@@ -164,5 +172,97 @@ class Tools {
         val del =
             File(_Path(context) + _TempFileName)
         if (del.exists()) del.delete()
+    }
+
+    // Get Random Color
+    fun getRandomMaterialColor(typeColor: String, resources: Resources, activity: Activity): Int {
+        var returnColor: Int = Color.GRAY
+        val arrayId = resources.getIdentifier(
+            "mdcolor_$typeColor",
+            "array",
+            activity.packageName
+        )
+        if (arrayId != 0) {
+            val colors = resources.obtainTypedArray(arrayId)
+            val index = (Math.random() * colors.length()).toInt()
+            returnColor = colors.getColor(index, Color.GRAY)
+            colors.recycle()
+        }
+        return returnColor
+    }
+
+    // Extract Compressed File with P7ZipApi
+    fun runCommand(
+        cmd: String,
+        RemoveRaw: String,
+        TitleForPdf: String,
+        context: Context,
+        navController: NavController,
+        activity: Activity,
+        view: View,
+        dialog : MaterialDialog
+    ) {
+        io.reactivex.Observable.create(object : ObservableOnSubscribe<Int?> {
+            override fun subscribe(e: ObservableEmitter<Int?>) {
+                val ret = P7ZipApi.executeCommand(cmd)
+                e.onNext(ret)
+            }
+
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : io.reactivex.functions.Consumer<Int?>{
+                override fun accept(integer: Int?) {
+                    try {
+                        val file = File(Tools()._Path(context).toString() + TitleForPdf)
+
+                        if (file.exists()) {
+                            val fileToDelete = File(RemoveRaw)
+                            fileToDelete.delete()
+                        }
+                        else
+                        {
+                            //if file not exist so it must be pdf because it cant extracted
+                            //select raw file for renaming
+                            val fileToMovePdf = File(RemoveRaw)
+                            //select path for pdf
+                            val destination = File("$file.pdf")
+                            //rename raw to pdf in new path
+                            fileToMovePdf.renameTo(destination)
+
+                            dialog.dismiss()
+                            //load pdf
+                            navigate(destination.toString(),"pdf" ,navController,activity,view)
+                        }
+                    }
+                    catch (e:Exception){}
+                }
+            })
+    }
+
+    // P7ZipApi Command
+    fun getExtractCmd(archivePath: String, outPath: String): String {
+        return String.format("7z x '%s' '-o%s' -aoa", archivePath, outPath);
+    }
+
+    // Fix IlegalCharacter and Limit to 120 Character
+    fun FixIlegalCharacter(value: String): String { // if text contain / character it must be removed
+        var value = value
+        if (value.contains("/")) value = value.replace("/".toRegex(), "")
+        // check if characters are more than 120 or not becuase folder name cant be more than 127 (127 chars is 254 bytes)
+        if (value.length > 120) value = value.substring(0, 120)
+        return value
+    }
+
+    // Show File Chooser
+    fun showFileChooser(initalPath: String, activity: Activity, context: Context, navController: NavController) {
+        if (Tools().isStoragePermissionGranted(activity,context)){
+            var initDirectory: File = File(initalPath)
+            MaterialDialog(context).show {
+                fileChooser(context, allowFolderCreation = false,initialDirectory = initDirectory) { _, file ->
+                    Tools().navigate(file.absolutePath, file.extension, navController, activity, view)
+                }
+                negativeButton(R.string.cancelTask)
+                positiveButton(R.string.preview)
+            }
+        }
     }
 }

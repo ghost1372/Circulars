@@ -1,6 +1,5 @@
 package ir.mahdi.circulars.Fragments
 
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -19,18 +18,12 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
-import com.afollestad.materialdialogs.files.fileChooser
 import com.downloader.OnCancelListener
 import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
 import com.downloader.PRDownloader.download
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
-import com.hzy.libp7zip.P7ZipApi
-import io.reactivex.ObservableEmitter
-import io.reactivex.ObservableOnSubscribe
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import ir.mahdi.circulars.Adapter.CircularAdapter
 import ir.mahdi.circulars.Helper.DividerItemDecoration
 import ir.mahdi.circulars.Helper.NullHostNameVerifier
@@ -111,7 +104,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
             Tools().setLanguage("fa",context)
 
             binding.swipeRefresh.setOnRefreshListener(this)
-            binding.swipeRefresh.setColorSchemeColors(getRandomMaterialColor("400"))
+            binding.swipeRefresh.setColorSchemeColors(Tools().getRandomMaterialColor("400",resources,activity!!))
 
             // Init ArrayList
             itemsData = ArrayList()
@@ -188,7 +181,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                            val strhref: String = href.attr("href")
                            var status: String = ""
 
-                           val fixedName: String = FixIlegalCharacter(cols[2].text())
+                           val fixedName: String = Tools().FixIlegalCharacter(cols[2].text())
                            val existCirculars =
                                File(Tools()._Path(context).toString() + fixedName)
                            val existCircularsPdf =
@@ -197,7 +190,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                                status = getString(R.string.downloaded_Message)
                            }
                            if (strhref.contains("fileLoader"))
-                               itemsData.add(CircularModel(fixedName,status,cols.get(3).text(),strhref,getRandomMaterialColor("400"),false))
+                               itemsData.add(CircularModel(fixedName,status,cols.get(3).text(),strhref,Tools().getRandomMaterialColor("400",resources,activity!!),false))
 
                        }
                    }
@@ -242,7 +235,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
             if (exist_compressed.exists()){
 
                 // If Compressed File Exist we can Show File Chooser
-                showFileChooser(Tools()._Path(context) + file)
+                Tools().showFileChooser(Tools()._Path(context) + file, activity!!, context!!, navController)
             }
             else
             {
@@ -315,14 +308,14 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                                         positiveButton(R.string.preview)
 
                                         // Extract Compressed File
-                                        val cmd: String = getExtractCmd(
+                                        val cmd: String = Tools().getExtractCmd(
                                             Tools()._Path(context).toString() + Tools()._RawFileName,
                                             Tools()._Path(context) + title
                                         )
-                                        runCommand(
+                                        Tools().runCommand(
                                             cmd,
                                             Tools()._Path(context).toString() + Tools()._RawFileName,
-                                            title
+                                            title,context,navController,activity!!,view,dialog
                                         )
 
                                         is_File_Exist = true
@@ -342,7 +335,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                     } else {
                         // File Exist And We Show File Chooser
                         dismiss()
-                        showFileChooser(Tools()._Path(context) + title)
+                        Tools().showFileChooser(Tools()._Path(context) + title, activity!!, context, navController)
                     }
                 }
             }
@@ -359,15 +352,6 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
         titleDesc.setText(title)
     }
 
-    // Fix IlegalCharacter and Limit to 120 Character
-    private fun FixIlegalCharacter(value: String): String { // if text contain / character it must be removed
-        var value = value
-        if (value.contains("/")) value = value.replace("/".toRegex(), "")
-        // check if characters are more than 120 or not becuase folder name cant be more than 127 (127 chars is 254 bytes)
-        if (value.length > 120) value = value.substring(0, 120)
-        return value
-    }
-
     // Return Base Url like http://www.test.com
     fun getBaseUrl() : String{
         return resources.getStringArray(R.array.url)[Prefs(context!!).getServerIndex()]
@@ -376,84 +360,6 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
     // Swipe Refresh
     override fun onRefresh() {
         getCirculars()
-    }
-
-    // Get Random Color
-    private fun getRandomMaterialColor(typeColor: String): Int {
-        var returnColor: Int = Color.GRAY
-        val arrayId = resources.getIdentifier(
-            "mdcolor_$typeColor",
-            "array",
-            activity!!.packageName
-        )
-        if (arrayId != 0) {
-            val colors = resources.obtainTypedArray(arrayId)
-            val index = (Math.random() * colors.length()).toInt()
-            returnColor = colors.getColor(index, Color.GRAY)
-            colors.recycle()
-        }
-        return returnColor
-    }
-
-    // Show File Chooser
-    private fun showFileChooser(initalPath: String) {
-        if (Tools().isStoragePermissionGranted(activity,context!!)){
-            var initDirectory: File = File(initalPath)
-            MaterialDialog(context!!).show {
-                fileChooser(context, allowFolderCreation = false,initialDirectory = initDirectory) { _, file ->
-                    Tools().navigate(file.absolutePath, file.extension, navController, activity, view)
-                }
-                negativeButton(R.string.cancelTask)
-                positiveButton(R.string.preview)
-            }
-        }
-    }
-
-    // Extract Compressed File with P7ZipApi
-    private fun runCommand(
-        cmd: String,
-        RemoveRaw: String,
-        TitleForPdf: String
-    ) {
-        io.reactivex.Observable.create(object : ObservableOnSubscribe<Int?>{
-            override fun subscribe(e: ObservableEmitter<Int?>) {
-                val ret = P7ZipApi.executeCommand(cmd)
-                e.onNext(ret)
-            }
-
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : io.reactivex.functions.Consumer<Int?>{
-                override fun accept(integer: Int?) {
-                    try {
-                        val file = File(Tools()._Path(context).toString() + TitleForPdf)
-
-                        if (file.exists()) {
-                            val fileToDelete = File(RemoveRaw)
-                            fileToDelete.delete()
-                        }
-                        else
-                        {
-                            //if file not exist so it must be pdf because it cant extracted
-                            //select raw file for renaming
-                            val fileToMovePdf = File(RemoveRaw)
-                            //select path for pdf
-                            val destination = File("$file.pdf")
-                            //rename raw to pdf in new path
-                            fileToMovePdf.renameTo(destination)
-
-                            dialog.dismiss()
-                            //load pdf
-                            Tools().navigate(destination.toString(),"pdf" ,navController,activity,view!!)
-                        }
-                    }
-                    catch (e:Exception){}
-                }
-            })
-    }
-
-    // P7ZipApi Command
-    fun getExtractCmd(archivePath: String, outPath: String): String {
-        return String.format("7z x '%s' '-o%s' -aoa", archivePath, outPath);
     }
 
     override fun onDestroy() {

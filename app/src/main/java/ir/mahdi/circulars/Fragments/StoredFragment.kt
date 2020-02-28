@@ -13,8 +13,6 @@ import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.selection.StableIdKeyProvider
 import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.files.fileChooser
 import com.google.android.material.textfield.TextInputEditText
 import ir.mahdi.circulars.Adapter.MyItemDetailsLookup
 import ir.mahdi.circulars.Adapter.OfflineAdapter
@@ -269,20 +267,6 @@ class StoredFragment : Fragment(), CoroutineScope, OfflineAdapter.CircularsAdapt
         }
     }
 
-    // Open File Chooser
-    private fun showFileChooser(initalPath: String) {
-       if (Tools().isStoragePermissionGranted(activity,context!!)){
-           var initDirectory: File = File(initalPath)
-           MaterialDialog(context!!).show {
-               fileChooser(context, allowFolderCreation = false,initialDirectory = initDirectory) { _, file ->
-                   Tools().navigate(file.absolutePath, file.extension,navController, activity, view)
-               }
-               negativeButton(R.string.cancelTask)
-               positiveButton(R.string.preview)
-           }
-       }
-    }
-
     // On RecyclerView item Clicked
     override fun onCircularSelected(item: OfflineModel?) {
 
@@ -293,7 +277,7 @@ class StoredFragment : Fragment(), CoroutineScope, OfflineAdapter.CircularsAdapt
            if (file == "pdf"){
                Tools().navigate(Tools()._Path(context) + item.name, file, navController, activity, view!!)
            }else{
-               showFileChooser(Tools()._Path(context)+ item.name)
+               Tools().showFileChooser(Tools()._Path(context)+ item.name, activity!!, context!!, navController)
            }
        }
     }

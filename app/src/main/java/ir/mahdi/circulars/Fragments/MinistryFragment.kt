@@ -1,6 +1,5 @@
 package ir.mahdi.circulars.Fragments
 
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -20,18 +19,12 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
-import com.afollestad.materialdialogs.files.fileChooser
 import com.downloader.OnCancelListener
 import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
 import com.downloader.PRDownloader.download
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
-import com.hzy.libp7zip.P7ZipApi
-import io.reactivex.ObservableEmitter
-import io.reactivex.ObservableOnSubscribe
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import ir.mahdi.circulars.Adapter.CircularAdapter
 import ir.mahdi.circulars.Helper.DividerItemDecoration
 import ir.mahdi.circulars.Helper.NullHostNameVerifier
@@ -55,10 +48,6 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
     private lateinit var binding: MinistryFragmentBinding
     lateinit var navController: NavController
 
-    // We Need This Variables Because of Fixing Fragment ReCreating View Issue
-    var hasInitializedRootView = false
-    private var rootView: View? = null
-
     var itemsData = ArrayList<CircularModel>() // All Item Go here
     lateinit var adapter: CircularAdapter
 
@@ -78,19 +67,9 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        if (rootView == null) {
-            // Inflate the layout for this fragment
-            binding = MinistryFragmentBinding.inflate(inflater, container, false)
-            rootView = binding.root
-        } else {
-            // Do not inflate the layout again.
-            // The returned View of onCreateView will be added into the fragment.
-            // However it is not allowed to be added twice even if the parent is same.
-            // So we must remove rootView from the existing parent view group
-            // (it will be added back).
-            (rootView?.getParent() as? ViewGroup)?.removeView(rootView)
-        }
-        return rootView
+        binding = MinistryFragmentBinding.inflate(inflater, container,false)
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -103,36 +82,31 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
         // Get Curent Region Text
         (activity as MainActivity).currentRegion.setText(Tools().getCurrentRegion(context))
 
-        // This Section Only works once the view is created
-        if (!hasInitializedRootView) {
-            hasInitializedRootView = true
+        // Change Application layout to RTL
+        Tools().setLanguage("fa",context)
 
-            // Change Application layout to RTL
-            Tools().setLanguage("fa",context)
+        binding.swipeRefresh.setOnRefreshListener(this)
+        binding.swipeRefresh.setColorSchemeColors(Tools().getRandomMaterialColor("400",resources,activity!!))
 
-            binding.swipeRefresh.setOnRefreshListener(this)
-            binding.swipeRefresh.setColorSchemeColors(getRandomMaterialColor("400"))
+        // Init ArrayList
+        itemsData = ArrayList()
 
-            // Init ArrayList
-            itemsData = ArrayList()
+        // Fix SSl Certification Issue
+        HttpsURLConnection.setDefaultHostnameVerifier(NullHostNameVerifier())
 
-            // Fix SSl Certification Issue
-            HttpsURLConnection.setDefaultHostnameVerifier(NullHostNameVerifier())
-
-            binding.rc.apply {
-                layoutManager = LinearLayoutManager(activity)
-                setHasFixedSize(true)
-                addItemDecoration(
-                    DividerItemDecoration(context,
-                        LinearLayoutManager.VERTICAL, 60,0)
-                )
-                adapter = CircularAdapter(itemsData, this@MinistryFragment)
-            }
-
-            binding.swipeRefresh.post(
-                kotlinx.coroutines.Runnable { onRefresh() }
+        binding.rc.apply {
+            layoutManager = LinearLayoutManager(activity)
+            setHasFixedSize(true)
+            addItemDecoration(
+                DividerItemDecoration(context,
+                    LinearLayoutManager.VERTICAL, 60,0)
             )
+            adapter = CircularAdapter(itemsData, this@MinistryFragment)
         }
+
+        binding.swipeRefresh.post(
+            kotlinx.coroutines.Runnable { onRefresh() }
+        )
     }
 
     // Init SearchView
@@ -140,7 +114,6 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
 
         // Show SearchView
         (activity as MainActivity).toolbarElementsVisiblity(true)
-
         var searchView = activity?.findViewById<TextInputEditText>(R.id.search_input_text)
         searchView?.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {}
@@ -208,7 +181,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
 //                                date = cols.get(3).text()
 //                            }
                             isAnnounement = false
-                            title = FixIlegalCharacter(cols[2].text())
+                            title = Tools().FixIlegalCharacter(cols[2].text())
                             date = cols.get(3).text()
 
                             val existCirculars =
@@ -219,7 +192,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                                 status = getString(R.string.downloaded_Message)
                             }
 
-                            itemsData.add(CircularModel(title,status,date,strhref,getRandomMaterialColor("400"), isAnnounement))
+                            itemsData.add(CircularModel(title,status,date,strhref,Tools().getRandomMaterialColor("400",resources,activity!!), isAnnounement))
 //                            itemsData.sortByDescending {
 //                                it.date
 //                            }
@@ -265,7 +238,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
             if (exist_compressed.exists()){
 
                 // If Compressed File Exist we can Show File Chooser
-                showFileChooser(Tools()._Path(context) + file)
+                Tools().showFileChooser(Tools()._Path(context) + file, activity!!, context!!, navController)
             }
             else
             {
@@ -338,14 +311,14 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                                         positiveButton(R.string.preview)
 
                                         // Extract Compressed File
-                                        val cmd: String = getExtractCmd(
+                                        val cmd: String = Tools().getExtractCmd(
                                             Tools()._Path(context).toString() + Tools()._RawFileName,
                                             Tools()._Path(context) + title
                                         )
-                                        runCommand(
+                                        Tools().runCommand(
                                             cmd,
                                             Tools()._Path(context).toString() + Tools()._RawFileName,
-                                            title
+                                            title,context,navController,activity!!,view,dialog
                                         )
 
                                         is_File_Exist = true
@@ -365,7 +338,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                     } else {
                         // File Exist And We Show File Chooser
                         dismiss()
-                        showFileChooser(Tools()._Path(context) + title)
+                        Tools().showFileChooser(Tools()._Path(context) + title, activity!!, context!!, navController)
                     }
                 }
             }
@@ -382,96 +355,9 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
         titleDesc.setText(title)
     }
 
-    // Extract Compressed File with P7ZipApi
-    private fun runCommand(
-        cmd: String,
-        RemoveRaw: String,
-        TitleForPdf: String
-    ) {
-        io.reactivex.Observable.create(object : ObservableOnSubscribe<Int?> {
-            override fun subscribe(e: ObservableEmitter<Int?>) {
-                val ret = P7ZipApi.executeCommand(cmd)
-                e.onNext(ret)
-            }
-
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : io.reactivex.functions.Consumer<Int?>{
-                override fun accept(integer: Int?) {
-                    try {
-                        val file = File(Tools()._Path(context).toString() + TitleForPdf)
-
-                        if (file.exists()) {
-                            val fileToDelete = File(RemoveRaw)
-                            fileToDelete.delete()
-                        }
-                        else
-                        {
-                            //if file not exist so it must be pdf because it cant extracted
-                            //select raw file for renaming
-                            val fileToMovePdf = File(RemoveRaw)
-                            //select path for pdf
-                            val destination = File("$file.pdf")
-                            //rename raw to pdf in new path
-                            fileToMovePdf.renameTo(destination)
-
-                            dialog.dismiss()
-                            //load pdf
-                            Tools().navigate(destination.toString(),"pdf" ,navController,activity,view!!)
-                        }
-                    }
-                    catch (e:Exception){}
-                }
-            })
-    }
-
-    // P7ZipApi Command
-    fun getExtractCmd(archivePath: String, outPath: String): String {
-        return String.format("7z x '%s' '-o%s' -aoa", archivePath, outPath);
-    }
-
-    // Fix IlegalCharacter and Limit to 120 Character
-    private fun FixIlegalCharacter(value: String): String { // if text contain / character it must be removed
-        var value = value
-        if (value.contains("/")) value = value.replace("/".toRegex(), "")
-        // check if characters are more than 120 or not becuase folder name cant be more than 127 (127 chars is 254 bytes)
-        if (value.length > 120) value = value.substring(0, 120)
-        return value
-    }
-
     // Swipe Refresh
     override fun onRefresh() {
         getCirculars()
-    }
-
-    // Get Random Color
-    private fun getRandomMaterialColor(typeColor: String): Int {
-        var returnColor: Int = Color.GRAY
-        val arrayId = resources.getIdentifier(
-            "mdcolor_$typeColor",
-            "array",
-            activity!!.packageName
-        )
-        if (arrayId != 0) {
-            val colors = resources.obtainTypedArray(arrayId)
-            val index = (Math.random() * colors.length()).toInt()
-            returnColor = colors.getColor(index, Color.GRAY)
-            colors.recycle()
-        }
-        return returnColor
-    }
-    // Show File Chooser
-    //Todo:
-    private fun showFileChooser(initalPath: String) {
-        if (Tools().isStoragePermissionGranted(activity,context!!)){
-            var initDirectory: File = File(initalPath)
-            MaterialDialog(context!!).show {
-                fileChooser(context, allowFolderCreation = false,initialDirectory = initDirectory) { _, file ->
-                    Tools().navigate(file.absolutePath, file.extension, navController, activity, view)
-                }
-                negativeButton(R.string.cancelTask)
-                positiveButton(R.string.preview)
-            }
-        }
     }
 
     override fun onDestroy() {
@@ -483,5 +369,4 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
         super.onDestroyView()
         job.cancel()
     }
-
 }
