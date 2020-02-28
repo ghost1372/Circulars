@@ -80,4 +80,7 @@ dependencies {
     implementation 'com.pushpole.android:pushsdk:1.7.0'
 
     implementation 'org.jsoup:jsoup:1.12.2'
+
+    implementation 'com.facebook.fresco:fresco:2.1.0'
+
 }

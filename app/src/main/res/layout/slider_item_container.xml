@@ -5,12 +5,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="15dp">
-<androidx.appcompat.widget.AppCompatImageView
+<com.facebook.drawee.view.SimpleDraweeView
     android:id="@+id/imageSlideIcon"
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="1"
-    android:contentDescription="app name"/>
+    android:layout_weight="1" />
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"

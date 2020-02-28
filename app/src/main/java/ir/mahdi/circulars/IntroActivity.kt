@@ -4,10 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.view.Window
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
 import androidx.viewpager2.widget.ViewPager2
@@ -54,7 +55,7 @@ class IntroActivity : AppCompatActivity() {
             ),
             IntroSliderModel(
                 "پشتیبانی سریع",
-                "مشکل داری؟ ما در کمترین زمان به سوالاتت پاسخ میدیم",
+                "مشکل داری؟ ما در سریعترین زمان به سوالاتت پاسخ میدیم",
                 R.drawable.slider5
             )
         )
@@ -62,16 +63,15 @@ class IntroActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.intro_activity)
-
-//        if (Prefs(applicationContext).getIsFirstRun()){
-//            initIntro()
-//        }else{
-//            startMainActivity()
-//        }
-
-        initIntro()
-
+        if (Prefs(applicationContext).getIsFirstRun()){
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            setContentView(R.layout.intro_activity)
+            initIntro()
+        }else{
+            startMainActivity()
+        }
     }
 
     fun initIntro(){

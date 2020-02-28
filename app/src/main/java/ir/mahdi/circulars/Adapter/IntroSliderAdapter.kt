@@ -3,12 +3,11 @@ package ir.mahdi.circulars.Adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.facebook.drawee.view.SimpleDraweeView
 import com.google.android.material.textview.MaterialTextView
 import ir.mahdi.circulars.Model.IntroSliderModel
 import ir.mahdi.circulars.R
-import kotlinx.android.synthetic.main.slider_item_container.view.*
 
 class IntroSliderAdapter(private val introSlides: List<IntroSliderModel>) :
     RecyclerView.Adapter<IntroSliderAdapter.IntroSliderViewholder>(){
@@ -27,12 +26,12 @@ class IntroSliderAdapter(private val introSlides: List<IntroSliderModel>) :
     inner class IntroSliderViewholder(view: View) : RecyclerView.ViewHolder(view){
         private val textTitle = view.findViewById<MaterialTextView>(R.id.textTitle)
         private val textDescription = view.findViewById<MaterialTextView>(R.id.textDescription)
-        private val imageIcon = view.findViewById<AppCompatImageView>(R.id.imageSlideIcon)
+        private val imageIcon = view.findViewById<SimpleDraweeView>(R.id.imageSlideIcon)
 
         fun bind(introSlides: IntroSliderModel) {
             textTitle.text = introSlides.title
             textDescription.text = introSlides.description
-            imageIcon.setImageResource(introSlides.icon)
+            imageIcon.setActualImageResource(introSlides.icon)
         }
     }
 }
