@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
+import io.github.inflationx.calligraphy3.CalligraphyUtils
 import ir.mahdi.circulars.R
 import ir.mahdi.circulars.databinding.StoredFragmentBinding
 
@@ -35,17 +35,37 @@ class StoredFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.pager.setAdapter(ViewPager2Adapter(fragmentManager, lifecycle))
+        binding.pager.setAdapter(ViewPager2Adapter())
         TabLayoutMediator(binding.tabLayout, binding.pager, TabLayoutMediator.TabConfigurationStrategy{tab, position ->
             when (position) {
                 0 -> tab.text = getString(R.string.tabState)
                 1 -> tab.text = getString(R.string.tabMinistry)
             }
         }).attach()
-
+        
+        changeTabsFont()
     }
 
-    private inner class ViewPager2Adapter(fm: FragmentManager?, lifecycle: Lifecycle) : FragmentStateAdapter(fm!!, lifecycle) {
+    // Calligraphy Cant Change TabLayout Font, so We Need Some Codes to do this
+    fun changeTabsFont() {
+        val vg = binding.tabLayout.getChildAt(0) as ViewGroup
+        val tabsCount = vg.childCount
+        for (j in 0 until tabsCount) {
+            val vgTab = vg.getChildAt(j) as ViewGroup
+            val tabChildsCount = vgTab.childCount
+            for (i in 0 until tabChildsCount) {
+                val tabViewChild = vgTab.getChildAt(i)
+                if (tabViewChild is TextView) {
+                    CalligraphyUtils.applyFontToTextView(
+                        binding.tabLayout.context,
+                        tabViewChild,
+                        "fonts/IRANSansMobile.ttf"
+                    )
+                }
+            }
+        }
+    }
+    private inner class ViewPager2Adapter() : FragmentStateAdapter(this) {
         private val int_items = 2
 
         override fun createFragment(position: Int): Fragment {
