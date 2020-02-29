@@ -14,6 +14,7 @@ import ir.mahdi.circulars.Helper.Tools
 import ir.mahdi.circulars.MainActivity
 import ir.mahdi.circulars.R
 import ir.mahdi.circulars.databinding.SettingFragmentBinding
+import kotlinx.android.synthetic.main.image_fragment.*
 
 class SettingFragment : Fragment() {
 
@@ -37,6 +38,7 @@ class SettingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).toolbarElementsVisiblity(false)
         init()
     }
 

@@ -179,18 +179,20 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                            val cols: Elements = row.select("td")
                            val href: Elements = row.select("a")
                            val strhref: String = href.attr("href")
-                           var status: String = ""
 
-                           val fixedName: String = Tools().FixIlegalCharacter(cols[2].text())
+                           var status: String = ""
+                           var date: String = cols.get(3).text()
+                           val title: String = Tools().FixIlegalCharacter(cols[2].text())
+
                            val existCirculars =
-                               File(Tools()._Path(context).toString() + fixedName)
+                               File(Tools()._Path(context).toString() + title)
                            val existCircularsPdf =
-                               File(Tools()._Path(context).toString() + fixedName + ".pdf")
+                               File(Tools()._Path(context).toString() + title + ".pdf")
                            if (existCirculars.exists() || existCircularsPdf.exists()) {
                                status = getString(R.string.downloaded_Message)
                            }
                            if (strhref.contains("fileLoader"))
-                               itemsData.add(CircularModel(fixedName,status,cols.get(3).text(),strhref,Tools().getRandomMaterialColor("400",resources,activity!!),false))
+                               itemsData.add(CircularModel(title, status, date, strhref, Tools().getRandomMaterialColor("400",resources,activity!!)))
 
                        }
                    }

@@ -45,6 +45,10 @@ import kotlin.coroutines.CoroutineContext
 
 class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, CoroutineScope, SwipeRefreshLayout.OnRefreshListener {
 
+    // We Need This Variables Because of Fixing Fragment ReCreating View Issue
+    var hasInitializedRootView = false
+    private var rootView: View? = null
+
     private lateinit var binding: MinistryFragmentBinding
     lateinit var navController: NavController
 
@@ -67,9 +71,19 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = MinistryFragmentBinding.inflate(inflater, container,false)
-        val view = binding.root
-        return view
+        if (rootView == null) {
+            // Inflate the layout for this fragment
+            binding = MinistryFragmentBinding.inflate(inflater, container, false)
+            rootView = binding.root
+        } else {
+            // Do not inflate the layout again.
+            // The returned View of onCreateView will be added into the fragment.
+            // However it is not allowed to be added twice even if the parent is same.
+            // So we must remove rootView from the existing parent view group
+            // (it will be added back).
+            (rootView?.getParent() as? ViewGroup)?.removeView(rootView)
+        }
+        return rootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -82,31 +96,34 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
         // Get Curent Region Text
         (activity as MainActivity).currentRegion.setText(Tools().getCurrentRegion(context))
 
-        // Change Application layout to RTL
-        Tools().setLanguage("fa",context)
+        if (!hasInitializedRootView) {
+            hasInitializedRootView = true
+            // Change Application layout to RTL
+            Tools().setLanguage("fa",context)
 
-        binding.swipeRefresh.setOnRefreshListener(this)
-        binding.swipeRefresh.setColorSchemeColors(Tools().getRandomMaterialColor("400",resources,activity!!))
+            binding.swipeRefresh.setOnRefreshListener(this)
+            binding.swipeRefresh.setColorSchemeColors(Tools().getRandomMaterialColor("400",resources,activity!!))
 
-        // Init ArrayList
-        itemsData = ArrayList()
+            // Init ArrayList
+            itemsData = ArrayList()
 
-        // Fix SSl Certification Issue
-        HttpsURLConnection.setDefaultHostnameVerifier(NullHostNameVerifier())
+            // Fix SSl Certification Issue
+            HttpsURLConnection.setDefaultHostnameVerifier(NullHostNameVerifier())
 
-        binding.rc.apply {
-            layoutManager = LinearLayoutManager(activity)
-            setHasFixedSize(true)
-            addItemDecoration(
-                DividerItemDecoration(context,
-                    LinearLayoutManager.VERTICAL, 60,0)
+            binding.rc.apply {
+                layoutManager = LinearLayoutManager(activity)
+                setHasFixedSize(true)
+                addItemDecoration(
+                    DividerItemDecoration(context,
+                        LinearLayoutManager.VERTICAL, 60,0)
+                )
+                adapter = CircularAdapter(itemsData, this@MinistryFragment)
+            }
+
+            binding.swipeRefresh.post(
+                kotlinx.coroutines.Runnable { onRefresh() }
             )
-            adapter = CircularAdapter(itemsData, this@MinistryFragment)
         }
-
-        binding.swipeRefresh.post(
-            kotlinx.coroutines.Runnable { onRefresh() }
-        )
     }
 
     // Init SearchView
@@ -162,27 +179,10 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                             val cols: Elements = row.select("td")
                             val href: Elements = row.select("a")
                             val strhref: String = href.attr("href")
-                            var status: String = ""
-                            var date: String = ""
-                            var title: String = ""
-                            var isAnnounement = false
 
-                            //Todo:
-//                            // Title and Date Location is Different in this two table
-//                            if (myTable.id().equals("announcement-table"))
-//                            {
-//                                isAnnounement = true
-//                                title = FixIlegalCharacter(cols[1].text())
-//                                date = cols.get(2).text()
-//                            }
-//                            else if (myTable.id().equals("circular-table")){
-//                                isAnnounement = false
-//                                title = FixIlegalCharacter(cols[2].text())
-//                                date = cols.get(3).text()
-//                            }
-                            isAnnounement = false
-                            title = Tools().FixIlegalCharacter(cols[2].text())
-                            date = cols.get(3).text()
+                            var status: String = ""
+                            var date: String = cols.get(3).text()
+                            var title: String = Tools().FixIlegalCharacter(cols[2].text())
 
                             val existCirculars =
                                 File(Tools()._PathMinistry(context).toString() + title)
@@ -192,10 +192,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                                 status = getString(R.string.downloaded_Message)
                             }
 
-                            itemsData.add(CircularModel(title,status,date,strhref,Tools().getRandomMaterialColor("400",resources,activity!!), isAnnounement))
-//                            itemsData.sortByDescending {
-//                                it.date
-//                            }
+                            itemsData.add(CircularModel(title,status,date,strhref,Tools().getRandomMaterialColor("400",resources,activity!!)))
                         }
                     }
                 }catch (e: Exception){
@@ -245,7 +242,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                 // If Compressed File Not Exist So We Need To Download it
                 if (Tools().isStoragePermissionGranted(activity,context!!)) {
                     is_File_Exist = false
-                    showCustomViewDialog(file, item.link, item.isAnnouncement)
+                    showCustomViewDialog(file, item.link)
                 }
             }
         }
@@ -258,7 +255,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
     var is_Busy = false // If File is Downloading We Cant Use Same Button Again
     lateinit var dialog: MaterialDialog
 
-    private fun showCustomViewDialog(title: String, link: String, isAnnouncement: Boolean) {
+    private fun showCustomViewDialog(title: String, link: String) {
         dialog = MaterialDialog(context!!, BottomSheet(LayoutMode.WRAP_CONTENT))
 
         // Setup custom view content
