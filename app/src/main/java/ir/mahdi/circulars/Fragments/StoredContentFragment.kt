@@ -2,9 +2,8 @@ package ir.mahdi.circulars.Fragments
 
 import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -14,7 +13,6 @@ import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.selection.StableIdKeyProvider
 import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.textfield.TextInputEditText
 import ir.mahdi.circulars.Adapter.MyItemDetailsLookup
 import ir.mahdi.circulars.Adapter.OfflineAdapter
 import ir.mahdi.circulars.Helper.DividerItemDecoration
@@ -224,17 +222,14 @@ class StoredContentFragment : Fragment(), CoroutineScope, OfflineAdapter.Circula
         // Show SearchView
         (activity as MainActivity).toolbarElementsVisiblity(true)
 
-        var searchView = activity?.findViewById<TextInputEditText>(R.id.search_input_text)
-        searchView?.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable) {}
-            override fun beforeTextChanged(
-                s: CharSequence, start: Int,
-                count: Int, after: Int) {
+        var searchView = activity?.findViewById<SearchView>(R.id.searchView)
+        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
             }
-            override fun onTextChanged(
-                s: CharSequence, start: Int,
-                before: Int, count: Int) {
+            override fun onQueryTextChange(s: String?): Boolean {
                 ofAdapter.filter.filter(s.toString())
+                return true
             }
         })
     }

@@ -1,12 +1,11 @@
 package ir.mahdi.circulars.Fragments
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.core.widget.ContentLoadingProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -23,7 +22,6 @@ import com.downloader.OnCancelListener
 import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
 import com.downloader.PRDownloader.download
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
 import ir.mahdi.circulars.Adapter.CircularAdapter
 import ir.mahdi.circulars.Helper.DividerItemDecoration
@@ -131,19 +129,16 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
 
         // Show SearchView
         (activity as MainActivity).toolbarElementsVisiblity(true)
-        var searchView = activity?.findViewById<TextInputEditText>(R.id.search_input_text)
-        searchView?.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable) {}
-            override fun beforeTextChanged(
-                s: CharSequence, start: Int,
-                count: Int, after: Int) {
+        var searchView = activity?.findViewById<SearchView>(R.id.searchView)
+        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
             }
-            override fun onTextChanged(
-                s: CharSequence, start: Int,
-                before: Int, count: Int) {
+            override fun onQueryTextChange(s: String?): Boolean {
                 if (::adapter.isInitialized){
                     adapter.filter.filter(s.toString())
                 }
+                return true
             }
         })
     }

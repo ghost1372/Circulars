@@ -25,11 +25,11 @@
                 android:layout_width="wrap_content"
                 android:textColor="?attr/SecondaryTextColor"
                 android:layout_height="match_parent" />
-            <ir.mahdi.circulars.CustomView.SearchView
+            <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:theme="@style/SearchView"
+                app:queryHint="@string/search_hint"
                 app:showDividers="none" />
         </androidx.appcompat.widget.Toolbar>
 

@@ -1,15 +1,14 @@
 package ir.mahdi.circulars
 
-import android.app.Activity
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -26,7 +25,6 @@ import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
 import com.pushpole.sdk.PushPole
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
-import ir.mahdi.circulars.CustomView.SearchView
 import ir.mahdi.circulars.Helper.Prefs
 import ir.mahdi.circulars.Helper.Tools
 import kotlin.system.exitProcess
@@ -47,11 +45,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var icMoon: AppCompatImageView
     lateinit var swTheme: SwitchMaterial
     lateinit var drawer: DrawerLayout
-
-    // SearchView
     lateinit var searchView: SearchView
-    lateinit var close_Search: View
-    lateinit var open_Search: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (Prefs(applicationContext).getIsDark()){
@@ -70,9 +64,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         txtCurrent_Region = findViewById(R.id.currentRegion)
         swTheme = findViewById(R.id.sw_theme)
         searchView = findViewById(R.id.searchView)
-        close_Search = findViewById(R.id.close_search_button)
-        open_Search = findViewById(R.id.open_search_button)
-
 
         val headerview: View = navigation.getHeaderView(0)
         icMoon =
@@ -123,15 +114,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     // hide or show current server text when SearchView is open/close
     fun currentServerVisibility(){
-        close_Search.setOnClickListener{
-            searchView.closeSearch()
-            txtCurrent_Region.visibility = View.VISIBLE
-            hideKeyboard()
-        }
-        open_Search.setOnClickListener{
-            searchView.openSearch()
+        searchView.setOnCloseListener(object : SearchView.OnCloseListener {
+            override fun onClose(): Boolean {
+                txtCurrent_Region.visibility = View.VISIBLE
+                return false
+            }
+        })
+
+        searchView.setOnSearchClickListener{
             txtCurrent_Region.visibility = View.GONE
-            hideKeyboard()
         }
     }
 
@@ -180,25 +171,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     // hide or show SearchView and CurrentRegion text
     fun toolbarElementsVisiblity(isVisible: Boolean){
        if (isVisible){
-           searchView.visibility = View.VISIBLE
            txtCurrent_Region.visibility = View.VISIBLE
+           searchView.visibility = View.VISIBLE
        }else{
-           searchView.visibility = View.GONE
            txtCurrent_Region.visibility = View.GONE
-           hideKeyboard()
+           searchView.visibility = View.GONE
        }
-    }
-
-    fun hideKeyboard() {
-        val imm: InputMethodManager =
-            getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        //Find the currently focused view, so we can grab the correct window token from it.
-        var view = currentFocus
-        //If no view currently has focus, create a new one, just so we can grab a window token from it
-        if (view == null) {
-            view = View(this)
-        }
-        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     // Handle Drawer item selected
@@ -230,11 +208,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onSupportNavigateUp(): Boolean {
+        searchView.onActionViewCollapsed()
         return NavigationUI.navigateUp(
             Navigation.findNavController(this, R.id.nav_host_fragment),
             drawer
         )
-        return false
     }
 
     // Set Application Font
@@ -264,6 +242,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onBackPressed() {
+        searchView.onActionViewCollapsed()
         if (drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START)
         }else{
