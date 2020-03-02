@@ -5,5 +5,6 @@ class CircularModel (
     var status: String,
     var date: String,
     var link: String,
-    var color: Int
+    var color: Int,
+    var server: String
 )

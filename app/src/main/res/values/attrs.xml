@@ -14,4 +14,5 @@
     <attr name="BackgroundColor" format="color"/>
     <attr name="MultiSelectState1Color" format="color"/>
     <attr name="MultiSelectState2Color" format="color"/>
+    <attr name="DividerColor" format="color"/>
 </resources>

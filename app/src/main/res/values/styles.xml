@@ -12,6 +12,7 @@
         <item name="BackgroundColor">#fff</item>
         <item name="MultiSelectState1Color">@color/gray20</item>
         <item name="MultiSelectState2Color">@android:color/white</item>
+        <item name="DividerColor">#E3E3E3</item>
 
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransation</item>
     </style>
@@ -26,6 +27,7 @@
         <item name="BackgroundColor">#303030</item>
         <item name="MultiSelectState1Color">@color/bg_circle_default</item>
         <item name="MultiSelectState2Color">#121212</item>
+        <item name="DividerColor">#424242</item>
 
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransation</item>
     </style>

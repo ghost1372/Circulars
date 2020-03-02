@@ -39,7 +39,8 @@ class StoredFragment : Fragment() {
         TabLayoutMediator(binding.tabLayout, binding.pager, TabLayoutMediator.TabConfigurationStrategy{tab, position ->
             when (position) {
                 0 -> tab.text = getString(R.string.tabState)
-                1 -> tab.text = getString(R.string.tabMinistry)
+                1 -> tab.text = getString(R.string.tabMultiServer)
+                2 -> tab.text = getString(R.string.tabMinistry)
             }
         }).attach()
         
@@ -66,13 +67,14 @@ class StoredFragment : Fragment() {
         }
     }
     private inner class ViewPager2Adapter() : FragmentStateAdapter(this) {
-        private val int_items = 2
+        private val int_items = 3
 
         override fun createFragment(position: Int): Fragment {
             var fragment: Fragment? = null
             when (position) {
-                0 -> fragment = StoredContentFragment.newInstance(false)
-                1 -> fragment = StoredContentFragment.newInstance(true)
+                0 -> fragment = StoredContentFragment.newInstance(0)
+                1 -> fragment = StoredContentFragment.newInstance(1)
+                2 -> fragment = StoredContentFragment.newInstance(2)
             }
             return fragment!!
         }

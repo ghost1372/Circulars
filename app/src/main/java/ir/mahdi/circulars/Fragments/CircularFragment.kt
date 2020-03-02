@@ -53,6 +53,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
 
     var itemsData = ArrayList<CircularModel>() // All Item Go here
     lateinit var adapter: CircularAdapter
+    var _path: String? = String()
 
     // Coroutine Stuffs
     private var job: Job = Job()
@@ -87,6 +88,12 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (Prefs(context!!).getIsMultiServer()){
+            _path = Tools()._PathMultiServer(context)
+        }else{
+            _path = Tools()._Path(context)
+        }
 
         navController = Navigation.findNavController(activity!!, R.id.nav_host_fragment)
         initSearch()
@@ -161,41 +168,10 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
 
         lifecycleScope.launch {
             val operation = async(Dispatchers.IO) {
-               try {
-                   var doc: Document = Jsoup.connect(url).timeout(0).maxBodySize(0).ignoreHttpErrors(true).get()
-                   val table: Elements = doc.select("table[class=\"table table-striped table-hover\"]")
-                   for (myTable in table) {
-                       val rows: Elements = myTable.select("tr")
-                       withContext(Dispatchers.Main){
-                           binding.progress.isIndeterminate = false
-                       }
-                       for (i in 1 until rows.size) {
-                           binding.progress.progress = i
-                           val row: Element = rows.get(i)
-                           val cols: Elements = row.select("td")
-                           val href: Elements = row.select("a")
-                           val strhref: String = href.attr("href")
-
-                           var status: String = ""
-                           var date: String = cols.get(3).text()
-                           val title: String = Tools().FixIlegalCharacter(cols[2].text())
-
-                           val existCirculars =
-                               File(Tools()._Path(context).toString() + title)
-                           val existCircularsPdf =
-                               File(Tools()._Path(context).toString() + title + ".pdf")
-                           if (existCirculars.exists() || existCircularsPdf.exists()) {
-                               status = getString(R.string.downloaded_Message)
-                           }
-                           if (strhref.contains("fileLoader"))
-                               itemsData.add(CircularModel(title, status, date, strhref, Tools().getRandomMaterialColor("400",resources,activity!!)))
-
-                       }
-                   }
-               }catch (e: Exception){
-                   withContext(Dispatchers.Main){
-                       navController.navigate(R.id.noVPNFragment)
-                   }
+               if (Prefs(context!!).getIsMultiServer()){
+                   MultiServer()
+               }else{
+                   SingleServer(url)
                }
             }
             operation.await() // wait for result of I/O operation without blocking the main thread
@@ -216,12 +192,96 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
             }
         }
     }
+    suspend fun MultiServer(){
+        val arrUrl: Array<String> = resources.getStringArray(R.array.url_multi)
+        val arrServer: Array<String> = resources.getStringArray(R.array.server_multi)
+        try {
+            for (urlx in Prefs(context!!).getMultiServers()!!.iterator()){
+
+                var doc: Document = Jsoup.connect(arrUrl[urlx]).timeout(0).maxBodySize(0).ignoreHttpErrors(true).get()
+                val table: Elements = doc.select("table[class=\"table table-striped table-hover\"]")
+                for (myTable in table) {
+                    val rows: Elements = myTable.select("tr")
+                    withContext(Dispatchers.Main){
+                        binding.progress.isIndeterminate = false
+                    }
+                    for (i in 1 until rows.size) {
+                        binding.progress.progress = i
+                        val row: Element = rows.get(i)
+                        val cols: Elements = row.select("td")
+                        val href: Elements = row.select("a")
+                        val strhref: String = href.attr("href")
+
+                        var server: String = arrServer[urlx]
+                        var status: String = ""
+                        var date: String = cols.get(3).text()
+                        val title: String = Tools().FixIlegalCharacter(cols[2].text())
+
+                        val existCirculars =
+                            File(_path + title)
+                        val existCircularsPdf =
+                            File(_path + title + ".pdf")
+                        if (existCirculars.exists() || existCircularsPdf.exists()) {
+                            status = getString(R.string.downloaded_Message)
+                        }
+                        if (strhref.contains("fileLoader"))
+                            itemsData.add(CircularModel(title, status, date, strhref, Tools().getRandomMaterialColor("400",resources,activity!!), server))
+
+                    }
+                }
+                itemsData.sortByDescending { it.date }
+            }
+
+        }catch (e: Exception){
+            withContext(Dispatchers.Main){
+                navController.navigate(R.id.noVPNFragment)
+            }
+        }
+    }
+    suspend fun SingleServer(url: String){
+        try {
+            var doc: Document = Jsoup.connect(url).timeout(0).maxBodySize(0).ignoreHttpErrors(true).get()
+            val table: Elements = doc.select("table[class=\"table table-striped table-hover\"]")
+            for (myTable in table) {
+                val rows: Elements = myTable.select("tr")
+                withContext(Dispatchers.Main){
+                    binding.progress.isIndeterminate = false
+                }
+                for (i in 1 until rows.size) {
+                    binding.progress.progress = i
+                    val row: Element = rows.get(i)
+                    val cols: Elements = row.select("td")
+                    val href: Elements = row.select("a")
+                    val strhref: String = href.attr("href")
+
+                    var status: String = ""
+                    var date: String = cols.get(3).text()
+                    val title: String = Tools().FixIlegalCharacter(cols[2].text())
+
+                    val existCirculars =
+                        File(_path + title)
+                    val existCircularsPdf =
+                        File(_path + title + ".pdf")
+                    if (existCirculars.exists() || existCircularsPdf.exists()) {
+                        status = getString(R.string.downloaded_Message)
+                    }
+                    if (strhref.contains("fileLoader"))
+                        itemsData.add(CircularModel(title, status, date, strhref, Tools().getRandomMaterialColor("400",resources,activity!!),""))
+
+                }
+            }
+        }catch (e: Exception){
+            withContext(Dispatchers.Main){
+                navController.navigate(R.id.noVPNFragment)
+            }
+        }
+    }
 
     // On RecyclerView item Clicked
     override fun onCircularSelected(item: CircularModel?) {
         var file: String = item!!.title
-        var exist_pdf: File = File(Tools()._Path(context) + file + ".pdf")
-        var exist_compressed: File = File(Tools()._Path(context) + file)
+        var exist_pdf: File = File(_path + file + ".pdf")
+        var exist_compressed: File = File(_path + file)
 
         // If PDF File Exist, So Selected File is a PDF and We Can Navigate to Show pdf
         if (exist_pdf.exists()) {
@@ -233,7 +293,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
             if (exist_compressed.exists()){
 
                 // If Compressed File Exist we can Show File Chooser
-                Tools().showFileChooser(Tools()._Path(context) + file, activity!!, context!!, navController)
+                Tools().showFileChooser(_path + file, activity!!, context!!, navController)
             }
             else
             {
@@ -279,7 +339,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
 
                         downloadId = download(
                             getBaseUrl() + link,
-                            Tools()._Path(context),
+                            _path,
                             Tools()._RawFileName
                         )
                             .build()
@@ -306,7 +366,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                                         positiveButton(R.string.preview)
 
                                         Tools().runCommand(
-                                            Tools()._Path(context).toString(),
+                                            _path.toString(),
                                             title,navController,activity!!,view,dialog
                                         )
 
@@ -327,7 +387,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                     } else {
                         // File Exist And We Show File Chooser
                         dismiss()
-                        Tools().showFileChooser(Tools()._Path(context) + title, activity!!, context, navController)
+                        Tools().showFileChooser(_path + title, activity!!, context, navController)
                     }
                 }
             }

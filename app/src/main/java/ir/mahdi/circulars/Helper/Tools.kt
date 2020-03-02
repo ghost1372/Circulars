@@ -13,6 +13,7 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.StrictMode
+import android.text.TextUtils
 import android.view.View
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
@@ -33,6 +34,7 @@ import ir.mahdi.circulars.R
 import java.io.File
 import java.net.URLConnection
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class Tools {
@@ -59,6 +61,15 @@ class Tools {
         }
     }
 
+    // Return MultiServer directory
+    fun _PathMultiServer(context: Context?): String? {
+        return if (Build.VERSION.SDK_INT >= 29) { // because of new storage privacy in Android >= Q
+            context?.externalCacheDir!!.path + "/بخشنامه/چندسرور/" + Prefs(context).getServerIndex() + "/"
+        } else {
+            "/sdcard/بخشنامه/چندسرور/" + Prefs(context!!).getServerIndex() + "/"
+        }
+    }
+
     // Set Application Language for RTL or LTR for example we can pass "fa" and our app will be RTL
     fun setLanguage(lang: String, context: Context?) {
         val localeNew = Locale(lang)
@@ -77,6 +88,16 @@ class Tools {
     // Return Current Region Text
     fun getCurrentRegion(context: Context?) : String {
         return context!!.resources.getStringArray(R.array.server)[Prefs(context).getServerIndex()]
+    }
+
+    // Return Current Multi Region Text
+    fun getCurrentMultiRegion(context: Context?) : String {
+        val arrServer: Array<String> = context!!.resources.getStringArray(R.array.server_multi)
+        var arrText: String = ""
+        for (item in Prefs(context).getMultiServers()!!.iterator()){
+            arrText += " " + arrServer[item]
+        }
+        return arrText
     }
 
     // Check if Storage Permission Granted or not and if not ask from user to grant it

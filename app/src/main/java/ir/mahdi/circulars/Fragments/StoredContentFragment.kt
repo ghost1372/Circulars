@@ -33,8 +33,7 @@ class StoredContentFragment : Fragment(), CoroutineScope, OfflineAdapter.Circula
     lateinit var optionMenu: Menu // We Need Hide or Show Some Menu
 
     // for Argument Passed from another View
-    private var isMinistrySection = false
-    private val IS_MINISTRY_SECTION_KEY = "IS_MINISTRY_SECTION_KEY"
+    private val STORED_SECTION_KEY = "STORED_SECTION_KEY"
 
     // Multi Select
     var isMultiSelect = false // We need to Multi Select Item for Deleting so we need Selection State
@@ -44,6 +43,7 @@ class StoredContentFragment : Fragment(), CoroutineScope, OfflineAdapter.Circula
 
     var itemsData = ArrayList<OfflineModel>()
     val ofAdapter = OfflineAdapter(this)
+    var _path: String? = String()
 
     // Coroutine Stuffs
     private var job: Job = Job()
@@ -51,10 +51,10 @@ class StoredContentFragment : Fragment(), CoroutineScope, OfflineAdapter.Circula
         get() = Dispatchers.Main + job
 
     companion object {
-        fun newInstance(is_MinistrySection : Boolean): StoredContentFragment {
+        fun newInstance(Section_Key : Int): StoredContentFragment {
             return StoredContentFragment().apply {
                 arguments = Bundle().apply {
-                    putBoolean(IS_MINISTRY_SECTION_KEY, is_MinistrySection)
+                    putInt(STORED_SECTION_KEY, Section_Key)
                 }
             }
         }
@@ -62,8 +62,13 @@ class StoredContentFragment : Fragment(), CoroutineScope, OfflineAdapter.Circula
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        arguments?.getBoolean(IS_MINISTRY_SECTION_KEY)?.let {
-            isMinistrySection = it
+        arguments?.getInt(STORED_SECTION_KEY)?.let {
+            if (it == 0)
+                _path = Tools()._Path(context)
+            else if (it == 1)
+                _path = Tools()._PathMultiServer(context)
+            else
+                _path = Tools()._PathMinistry(context)
         }
     }
 
@@ -159,7 +164,7 @@ class StoredContentFragment : Fragment(), CoroutineScope, OfflineAdapter.Circula
 
         // if All Item Select we can easily Delete Whole Folder
         if (isSelectAll){
-            val dir = File(if(isMinistrySection)Tools()._PathMinistry(context) else Tools()._Path(context))
+            val dir = File(_path)
             if (dir.isDirectory()) {
                 deleteAll(dir)
                 itemsData.clear()
@@ -173,7 +178,7 @@ class StoredContentFragment : Fragment(), CoroutineScope, OfflineAdapter.Circula
             }.toList()
 
             list.forEach{
-                var dir = File((if(isMinistrySection)Tools()._PathMinistry(context) else Tools()._Path(context)) + it.name)
+                var dir = File(_path + it.name)
                 if (dir.isDirectory){
                     deleteAll(dir)
                 }else{
@@ -245,7 +250,7 @@ class StoredContentFragment : Fragment(), CoroutineScope, OfflineAdapter.Circula
         lifecycleScope.launch {
             val operation = async(Dispatchers.IO) {
                 if (Tools().isStoragePermissionGranted(activity,context!!)){
-                    var file: File = File(if(isMinistrySection)Tools()._PathMinistry(context) else Tools()._Path(context))
+                    var file: File = File(_path)
                     if (!file.listFiles().isNullOrEmpty()){
                         if (file.isDirectory() == false) {
                             return@async;
@@ -286,9 +291,9 @@ class StoredContentFragment : Fragment(), CoroutineScope, OfflineAdapter.Circula
 
             var file: String = File(item!!.name).extension
             if (file == "pdf"){
-                Tools().navigate((if(isMinistrySection)Tools()._PathMinistry(context) else Tools()._Path(context)) + item.name, file, navController, activity, view!!)
+                Tools().navigate(_path + item.name, file, navController, activity, view!!)
             }else{
-                Tools().showFileChooser((if(isMinistrySection)Tools()._PathMinistry(context) else Tools()._Path(context)) + item.name, activity!!, context!!, navController)
+                Tools().showFileChooser(_path + item.name, activity!!, context!!, navController)
             }
         }
     }

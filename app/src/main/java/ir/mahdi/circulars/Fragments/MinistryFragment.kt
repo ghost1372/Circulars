@@ -187,7 +187,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                                 status = getString(R.string.downloaded_Message)
                             }
 
-                            itemsData.add(CircularModel(title,status,date,strhref,Tools().getRandomMaterialColor("400",resources,activity!!)))
+                            itemsData.add(CircularModel(title,status,date,strhref,Tools().getRandomMaterialColor("400",resources,activity!!),""))
                         }
                     }
                 }catch (e: Exception){

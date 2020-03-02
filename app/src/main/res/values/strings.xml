@@ -57,7 +57,10 @@
     <string name="positiveEMG">مطالعه کردم</string>
     <string name="tabState">بخشنامه های مناطق</string>
     <string name="tabMinistry">بخشنامه های وزارت</string>
+    <string name="tabMultiServer">بخشنامه های چندسروری</string>
 
     <string name="sliderNext">بعدی</string>
     <string name="sliderSkip">رد کن</string>
+    <string name="theme">پوسته</string>
+    <string name="select_MultiServer">استفاده از چند سرور همزمان</string>
 </resources>
