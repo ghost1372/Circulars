@@ -193,8 +193,8 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
         }
     }
     suspend fun MultiServer(){
-        val arrUrl: Array<String> = resources.getStringArray(R.array.url_multi)
-        val arrServer: Array<String> = resources.getStringArray(R.array.server_multi)
+        val arrUrl: Array<String> = resources.getStringArray(R.array.url)
+        val arrServer: Array<String> = resources.getStringArray(R.array.server)
         try {
             for (urlx in Prefs(context!!).getMultiServers()!!.iterator()){
 

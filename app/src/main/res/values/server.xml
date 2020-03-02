@@ -1385,16 +1385,4 @@
         //Yazd
         <item>http://yazd.medu.ir</item>
     </string-array>
-
-    <string-array name="server_multi">
-        <item>بزینه رود</item>
-        <item>خدابنده</item>
-        <item>سجاس رود</item>
-    </string-array>
-    <string-array name="url_multi">
-        <item>http://5723.zanjan.medu.ir</item>
-        <item>http://5701.zanjan.medu.ir</item>
-        <item>http://5747.zanjan.medu.ir</item>
-    </string-array>
-
 </resources>

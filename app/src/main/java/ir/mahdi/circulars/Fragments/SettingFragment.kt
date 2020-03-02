@@ -96,7 +96,7 @@ class SettingFragment : Fragment() {
             title(R.string.select_region)
 
             listItemsMultiChoice(
-                R.array.server_multi
+                R.array.server
             ) { _, indices, text ->
                 Prefs(context).setMultiServers(indices.joinToString())
                 binding.txtCurrentMultiServer.setText(Tools().getCurrentMultiRegion(context))

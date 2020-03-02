@@ -92,7 +92,7 @@ class Tools {
 
     // Return Current Multi Region Text
     fun getCurrentMultiRegion(context: Context?) : String {
-        val arrServer: Array<String> = context!!.resources.getStringArray(R.array.server_multi)
+        val arrServer: Array<String> = context!!.resources.getStringArray(R.array.server)
         var arrText: String = ""
         for (item in Prefs(context).getMultiServers()!!.iterator()){
             arrText += " " + arrServer[item]
