@@ -143,7 +143,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Select First Item for Default
         onNavigationItemSelected(navigation.menu.getItem(0))
 
-        txtCurrent_Region.setText(Tools().getCurrentRegion(applicationContext))
+        if (Prefs(applicationContext).getIsMultiServer()){
+            txtCurrent_Region.setText("")
+        }else{
+            txtCurrent_Region.setText(Tools().getCurrentRegion(applicationContext))
+        }
 
         // set Drawer Footer items text
         txtVersion.setText(getString(R.string.version, BuildConfig.VERSION_NAME))
