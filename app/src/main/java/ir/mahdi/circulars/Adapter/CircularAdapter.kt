@@ -42,8 +42,14 @@ class CircularAdapter (private val itemsCells: ArrayList<CircularModel>, private
         holder.itemView.txt_Title.text = itemsFilterList[position].title
         holder.itemView.txt_Status.text = itemsFilterList[position].status
         holder.itemView.txt_Date.text = itemsFilterList[position].date
+        holder.itemView.txt_Region.text = itemsFilterList[position].server
 
-        holder.itemView.icon_text.setText(itemsFilterList[position].title.substring( 0 , 1 ));
+        if (Prefs(context).getIsMultiServer())
+            holder.itemView.txt_Region.visibility = View.VISIBLE
+        else
+            holder.itemView.txt_Region.visibility = View.GONE
+
+        holder.itemView.icon_text.text = itemsFilterList[position].title.substring( 0 , 1 )
         holder.itemView.icon_profile.setImageResource(R.drawable.bg_circle)
 
         // If Theme is Not Dark We set Colors for Icon and If Theme is Dark We Dont Need Colors

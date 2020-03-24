@@ -53,6 +53,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
 
     var itemsData = ArrayList<CircularModel>() // All Item Go here
     lateinit var adapter: CircularAdapter
+    var _path: String? = String()
 
     // Coroutine Stuffs
     private var job: Job = Job()
@@ -80,7 +81,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
             // However it is not allowed to be added twice even if the parent is same.
             // So we must remove rootView from the existing parent view group
             // (it will be added back).
-            (rootView?.getParent() as? ViewGroup)?.removeView(rootView)
+            (rootView?.parent as? ViewGroup)?.removeView(rootView)
         }
         return rootView
     }
@@ -88,11 +89,17 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (Prefs(context!!).getIsMultiServer()){
+            _path = Tools()._PathMultiServer(context)
+        }else{
+            _path = Tools()._Path(context)
+        }
+
         navController = Navigation.findNavController(activity!!, R.id.nav_host_fragment)
         initSearch()
 
         // Get Curent Region Text
-        (activity as MainActivity).currentRegion.setText(Tools().getCurrentRegion(context))
+        (activity as MainActivity).currentRegion.text = Tools().getCurrentRegion(context, false)
 
         // This Section Only works once the view is created
         if (!hasInitializedRootView) {
@@ -150,7 +157,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
         binding.lytNoitem.visibility = View.GONE
         binding.rc.visibility = View.GONE
         binding.lytProgress.visibility = View.VISIBLE
-        binding.progress.progress = 0;
+        binding.progress.progress = 0
         binding.progress.isIndeterminate = true
 
         itemsData.clear()
@@ -161,41 +168,10 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
 
         lifecycleScope.launch {
             val operation = async(Dispatchers.IO) {
-               try {
-                   var doc: Document = Jsoup.connect(url).timeout(0).maxBodySize(0).ignoreHttpErrors(true).get()
-                   val table: Elements = doc.select("table[class=\"table table-striped table-hover\"]")
-                   for (myTable in table) {
-                       val rows: Elements = myTable.select("tr")
-                       withContext(Dispatchers.Main){
-                           binding.progress.isIndeterminate = false
-                       }
-                       for (i in 1 until rows.size) {
-                           binding.progress.progress = i
-                           val row: Element = rows.get(i)
-                           val cols: Elements = row.select("td")
-                           val href: Elements = row.select("a")
-                           val strhref: String = href.attr("href")
-
-                           var status: String = ""
-                           var date: String = cols.get(3).text()
-                           val title: String = Tools().FixIlegalCharacter(cols[2].text())
-
-                           val existCirculars =
-                               File(Tools()._Path(context).toString() + title)
-                           val existCircularsPdf =
-                               File(Tools()._Path(context).toString() + title + ".pdf")
-                           if (existCirculars.exists() || existCircularsPdf.exists()) {
-                               status = getString(R.string.downloaded_Message)
-                           }
-                           if (strhref.contains("fileLoader"))
-                               itemsData.add(CircularModel(title, status, date, strhref, Tools().getRandomMaterialColor("400",resources,activity!!)))
-
-                       }
-                   }
-               }catch (e: Exception){
-                   withContext(Dispatchers.Main){
-                       navController.navigate(R.id.noVPNFragment)
-                   }
+               if (Prefs(context!!).getIsMultiServer()){
+                   MultiServer()
+               }else{
+                   SingleServer(url)
                }
             }
             operation.await() // wait for result of I/O operation without blocking the main thread
@@ -216,16 +192,100 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
             }
         }
     }
+    suspend fun MultiServer(){
+        val arrUrl: Array<String> = resources.getStringArray(R.array.url)
+        val arrServer: Array<String> = resources.getStringArray(R.array.server)
+        try {
+            for (urlx in Prefs(context!!).getMultiServers()!!.iterator()){
+
+                var doc: Document = Jsoup.connect(arrUrl[urlx]).timeout(0).maxBodySize(0).ignoreHttpErrors(true).get()
+                val table: Elements = doc.select("table[class=\"table table-striped table-hover\"]")
+                for (myTable in table) {
+                    val rows: Elements = myTable.select("tr")
+                    withContext(Dispatchers.Main){
+                        binding.progress.isIndeterminate = false
+                    }
+                    for (i in 1 until rows.size) {
+                        binding.progress.progress = i
+                        val row: Element = rows[i]
+                        val cols: Elements = row.select("td")
+                        val href: Elements = row.select("a")
+                        val strhref: String = href.attr("href")
+
+                        var server: String = arrServer[urlx]
+                        var status: String = ""
+                        var date: String = cols[3].text()
+                        val title: String = Tools().FixIlegalCharacter(cols[2].text())
+
+                        val existCirculars =
+                            File(_path + title)
+                        val existCircularsPdf =
+                            File("$_path$title.pdf")
+                        if (existCirculars.exists() || existCircularsPdf.exists()) {
+                            status = getString(R.string.downloaded_Message)
+                        }
+                        if (strhref.contains("fileLoader"))
+                            itemsData.add(CircularModel(title, status, date, strhref, Tools().getRandomMaterialColor("400",resources,activity!!), server))
+
+                    }
+                }
+                itemsData.sortByDescending { it.date }
+            }
+
+        }catch (e: Exception){
+            withContext(Dispatchers.Main){
+                navController.navigate(R.id.noVPNFragment)
+            }
+        }
+    }
+    suspend fun SingleServer(url: String){
+        try {
+            var doc: Document = Jsoup.connect(url).timeout(0).maxBodySize(0).ignoreHttpErrors(true).get()
+            val table: Elements = doc.select("table[class=\"table table-striped table-hover\"]")
+            for (myTable in table) {
+                val rows: Elements = myTable.select("tr")
+                withContext(Dispatchers.Main){
+                    binding.progress.isIndeterminate = false
+                }
+                for (i in 1 until rows.size) {
+                    binding.progress.progress = i
+                    val row: Element = rows[i]
+                    val cols: Elements = row.select("td")
+                    val href: Elements = row.select("a")
+                    val strhref: String = href.attr("href")
+
+                    var status: String = ""
+                    var date: String = cols[3].text()
+                    val title: String = Tools().FixIlegalCharacter(cols[2].text())
+
+                    val existCirculars =
+                        File(_path + title)
+                    val existCircularsPdf =
+                        File("$_path$title.pdf")
+                    if (existCirculars.exists() || existCircularsPdf.exists()) {
+                        status = getString(R.string.downloaded_Message)
+                    }
+                    if (strhref.contains("fileLoader"))
+                        itemsData.add(CircularModel(title, status, date, strhref, Tools().getRandomMaterialColor("400",resources,activity!!),""))
+
+                }
+            }
+        }catch (e: Exception){
+            withContext(Dispatchers.Main){
+                navController.navigate(R.id.noVPNFragment)
+            }
+        }
+    }
 
     // On RecyclerView item Clicked
     override fun onCircularSelected(item: CircularModel?) {
         var file: String = item!!.title
-        var exist_pdf: File = File(Tools()._Path(context) + file + ".pdf")
-        var exist_compressed: File = File(Tools()._Path(context) + file)
+        var exist_pdf: File = File("$_path$file.pdf")
+        var exist_compressed: File = File(_path + file)
 
         // If PDF File Exist, So Selected File is a PDF and We Can Navigate to Show pdf
         if (exist_pdf.exists()) {
-            Tools().navigate( exist_pdf.absolutePath, "pdf",navController,activity,view!!);
+            Tools().navigate( exist_pdf.absolutePath, "pdf",navController,activity,view!!)
         }
         else
         {
@@ -233,7 +293,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
             if (exist_compressed.exists()){
 
                 // If Compressed File Exist we can Show File Chooser
-                Tools().showFileChooser(Tools()._Path(context) + file, activity!!, context!!, navController)
+                Tools().showFileChooser(_path + file, activity!!, context!!, navController)
             }
             else
             {
@@ -264,12 +324,12 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
             positiveButton(R.string.download) { dialog ->
 
                 // is_Busy = False So We Need to Download or Show File Chooser, If is_Busy = True, Download Button Not Work Until Download Finish
-                if (is_Busy == false) {
+                if (!is_Busy) {
                     // If File Not Exist We Need To Download it
-                    if (is_File_Exist == false) {
+                    if (!is_File_Exist) {
                         val status: MaterialTextView =
                             dialog.getCustomView().findViewById(R.id.sheet_status)
-                        val sheet_progress: ContentLoadingProgressBar =
+                        val sheetProgress: ContentLoadingProgressBar =
                             dialog.getCustomView().findViewById(R.id.sheet_progress)
 
                         dialog.cancelable(false) // While Downloading User Cant Cancel Dialog, Only Cancel Button Work for Canceling
@@ -279,21 +339,21 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
 
                         downloadId = download(
                             getBaseUrl() + link,
-                            Tools()._Path(context),
+                            _path,
                             Tools()._RawFileName
                         )
                             .build()
                             .setOnProgressListener { progress ->
                                 val progressPercent =
                                     progress.currentBytes * 100 / progress.totalBytes
-                                sheet_progress.setProgress(progressPercent.toInt())
+                                sheetProgress.progress = progressPercent.toInt()
                                 positiveButton(R.string.wait)
                                 is_Busy = true
                             }
                             .setOnCancelListener(object : OnCancelListener {
                                 override fun onCancel() {
                                     status.setText(R.string.cancel)
-                                    binding.progress.setProgress(0)
+                                    binding.progress.progress = 0
                                     is_File_Exist = false
                                     is_Busy = false
                                 }
@@ -302,11 +362,11 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                                 override fun onDownloadComplete() {
                                     try {
                                         dialog.cancelable(true)
-                                        status.setText(getString(R.string.downloadCompleted))
+                                        status.text = getString(R.string.downloadCompleted)
                                         positiveButton(R.string.preview)
 
                                         Tools().runCommand(
-                                            Tools()._Path(context).toString(),
+                                            _path.toString(),
                                             title,navController,activity!!,view,dialog
                                         )
 
@@ -318,8 +378,8 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                                 }
 
                                 override fun onError(error: com.downloader.Error?) {
-                                    status.setText(getString(R.string.error))
-                                    binding.progress.setProgress(0)
+                                    status.text = getString(R.string.error)
+                                    binding.progress.progress = 0
                                     is_File_Exist = false
                                     is_Busy = false
                                 }
@@ -327,13 +387,13 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                     } else {
                         // File Exist And We Show File Chooser
                         dismiss()
-                        Tools().showFileChooser(Tools()._Path(context) + title, activity!!, context, navController)
+                        Tools().showFileChooser(_path + title, activity!!, context, navController)
                     }
                 }
             }
 
             negativeButton(R.string.cancelTask) {
-                PRDownloader.cancel(downloadId);
+                PRDownloader.cancel(downloadId)
                 is_File_Exist = false
                 dismiss()
             }
@@ -341,7 +401,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
 
         val customView = dialog.getCustomView()
         val titleDesc: MaterialTextView = customView.findViewById(R.id.sheet_Desc)
-        titleDesc.setText(title)
+        titleDesc.text = title
     }
 
     // Return Base Url like http://www.test.com

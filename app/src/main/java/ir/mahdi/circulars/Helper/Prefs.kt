@@ -10,6 +10,8 @@ class Prefs(val context: Context) {
     private val IS_Dark = "IS_DARK_KEY"
     private val SWITCH_MODE = "SWITCH_MODE_KEY"
     private val SWITCH_MODE_MESSAGE = "SWITCH_MODE_MESSAGE_KEY"
+    private val MULTI_SERVER_MODE = "MULTI_SERVER_MODE_KEY"
+    private val MULTI_SERVER = "MULTI_SERVER_KEY"
 
     val sharedPref: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
@@ -41,6 +43,30 @@ class Prefs(val context: Context) {
         val editor: SharedPreferences.Editor = sharedPref.edit()
         editor.putString(SWITCH_MODE_MESSAGE, status)
         editor.apply()
+    }
+
+    fun setIsMultiServer(status: Boolean) {
+        val editor: SharedPreferences.Editor = sharedPref.edit()
+        editor.putBoolean(MULTI_SERVER_MODE, status)
+        editor.apply()
+    }
+
+
+
+    fun setMultiServers(serverArrayJoinToString: String) {
+        val editor: SharedPreferences.Editor = sharedPref.edit()
+        editor.putString(MULTI_SERVER, serverArrayJoinToString)
+        editor.apply()
+    }
+
+    fun getMultiServers(): Array<Int>? {
+
+        val ints = sharedPref.getString(MULTI_SERVER,"0")!!.split(",").map { it.trim().toInt() }.toTypedArray()
+        return ints
+    }
+
+    fun getIsMultiServer(): Boolean {
+        return sharedPref.getBoolean(MULTI_SERVER_MODE, false)
     }
 
     fun getSwitchModeMessage(): String? {

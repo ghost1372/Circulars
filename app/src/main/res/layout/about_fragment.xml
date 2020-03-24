@@ -6,51 +6,6 @@
     android:paddingTop="@dimen/spacing_medium">
 
     <LinearLayout
-        android:background="?attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/spacing_middle"
-        android:paddingTop="@dimen/spacing_middle"
-        android:paddingRight="@dimen/spacing_middle"
-        android:paddingBottom="@dimen/spacing_medium">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:src="@drawable/appicon"
-            android:layout_width="60dp"
-            android:layout_height="60dp" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/developer"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:textColor="?attr/PrimaryTextColor" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:text="@string/programmer"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-                android:textColor="?attr/PrimaryTextColor" />
-        </LinearLayout>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#424242" />
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -66,6 +21,50 @@
             android:text="@string/about_detail"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             android:textColor="?attr/PrimaryTextColor" />
+
+        <LinearLayout
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/spacing_middle"
+            android:paddingTop="@dimen/spacing_middle"
+            android:paddingRight="@dimen/spacing_middle"
+            android:paddingBottom="@dimen/spacing_medium">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:src="@drawable/appicon"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/developer"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textColor="?attr/PrimaryTextColor" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:text="@string/programmer"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    android:textColor="?attr/PrimaryTextColor" />
+            </LinearLayout>
+        </LinearLayout>
 
         <RelativeLayout
             android:id="@+id/lv_changelog"
@@ -106,13 +105,13 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
                 android:orientation="vertical">
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/txtVersion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_weight="1"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:textColor="?attr/PrimaryTextColor" />
@@ -122,17 +121,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginEnd="25dp"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
                     android:textColor="?attr/PrimaryTextColor" />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="#424242" />
+        android:background="?attr/DividerColor" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -156,6 +156,7 @@
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
+            android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -165,8 +166,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/sendPM"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:textColor="?attr/PrimaryTextColor" />
 
@@ -174,21 +175,46 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginRight="15dp"
-                android:layout_marginEnd="15dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="25dp"
                 android:text="@string/sendPM_developer"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
                 android:textColor="?attr/PrimaryTextColor" />
 
         </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="#424242" />
-
         <LinearLayout
             android:id="@+id/lv_email"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/askQ"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textColor="?attr/PrimaryTextColor" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="25dp"
+                android:text="@string/askQ_details"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:textColor="?attr/PrimaryTextColor" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lv_star"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
@@ -201,60 +227,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/askQ"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
+                android:text="@string/support"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:textColor="?attr/PrimaryTextColor" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="25dp"
                 android:layout_weight="1"
-                android:layout_marginRight="15dp"
-                android:layout_marginEnd="15dp"
-                android:text="@string/askQ_details"
+                android:text="@string/support_details"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
                 android:textColor="?attr/PrimaryTextColor" />
+
         </LinearLayout>
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#424242" />
-    <LinearLayout
-        android:id="@+id/lv_star"
-        android:background="?attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/support"
-            android:layout_marginRight="10dp"
-            android:layout_marginEnd="10dp"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:textColor="?attr/PrimaryTextColor" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_weight="1"
-            android:text="@string/support_details"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-            android:textColor="?attr/PrimaryTextColor" />
-
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#424242" />
 </LinearLayout>

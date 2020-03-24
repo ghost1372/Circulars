@@ -8,40 +8,134 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/spacing_middle">
-        <LinearLayout
-            android:id="@+id/lv_region"
-            android:layout_width="match_parent"
+        android:paddingTop="@dimen/spacing_middle">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:minHeight="60dp"
-            android:orientation="horizontal">
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/spacing_large"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:text="@string/select_location"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:textColor="?attr/PrimaryTextColor" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtCurrentServer"
-                android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/lv_region"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                android:textColor="@color/SecondaryTextColor" />
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:minHeight="60dp"
+                android:orientation="horizontal">
 
-            <View
-                android:layout_width="@dimen/spacing_middle"
-                android:layout_height="wrap_content" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCurrentServer"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                    android:textColor="@color/SecondaryTextColor" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
+                <View
+                    android:layout_width="@dimen/spacing_middle"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:text="@string/select_location"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:textColor="?attr/PrimaryTextColor" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/select_location"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-                android:textColor="?attr/PrimaryTextColor" />
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:minHeight="60dp"
+                android:orientation="horizontal">
 
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/swMultiServer"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:text="@string/select_MultiServer"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:textColor="?attr/PrimaryTextColor" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lv_MultiRegion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:minHeight="60dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCurrentMultiServer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                    android:textColor="@color/SecondaryTextColor" />
+
+                <View
+                    android:layout_width="@dimen/spacing_middle"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/select_location"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:textColor="?attr/PrimaryTextColor" />
+            </LinearLayout>
         </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/spacing_large"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:text="@string/theme"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:textColor="?attr/PrimaryTextColor" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,6 +148,8 @@
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/swTheme"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -61,10 +157,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
                 android:text="@string/select_theme"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 android:textColor="?attr/PrimaryTextColor" />
         </LinearLayout>
+
     </LinearLayout>
+
 
 </androidx.core.widget.NestedScrollView>
