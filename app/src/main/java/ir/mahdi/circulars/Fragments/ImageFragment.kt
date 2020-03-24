@@ -76,35 +76,35 @@ class ImageFragment : Fragment() {
            if (img.extension.toLowerCase().contains("tif")) {
                 isFileTif = true
                TiffBitmapFactory.decodeFile(img, options)
-               var dirCount: Int = options.outDirectoryCount;
+               var dirCount: Int = options.outDirectoryCount
 
                // we need some btn for changing page
                binding.fabNext.visibility = View.VISIBLE
                binding.fabPrev.visibility = View.VISIBLE
                binding.tifViewNumber.visibility = View.VISIBLE
 
-               binding.tifViewNumber.setText(tifPages.toString() + " از " + dirCount)
+               binding.tifViewNumber.text = "$tifPages از $dirCount"
 
                var bmp: Bitmap = TiffBitmapFactory.decodeFile(img, options)
                binding.imgActivity.setImageBitmap(bmp)
 
                binding.fabNext.setOnClickListener {
                    if (tifPages < dirCount) {
-                       tifPages++;
+                       tifPages++
                        options.inDirectoryNumber = tifPages
                        bmp = TiffBitmapFactory.decodeFile(img, options)
                        binding.imgActivity.setImageBitmap(bmp)
-                       binding.tifViewNumber.setText(tifPages.toString() + " از " + dirCount)
+                       binding.tifViewNumber.text = "$tifPages از $dirCount"
                    }
                }
 
                binding.fabPrev.setOnClickListener {
                    if (tifPages > 0) {
-                       tifPages--;
-                       options.inDirectoryNumber = tifPages;
-                       bmp = TiffBitmapFactory.decodeFile(img, options);
+                       tifPages--
+                       options.inDirectoryNumber = tifPages
+                       bmp = TiffBitmapFactory.decodeFile(img, options)
                        binding.imgActivity.setImageBitmap(bmp)
-                       binding.tifViewNumber.setText(tifPages.toString() + " از " + dirCount);
+                       binding.tifViewNumber.text = "$tifPages از $dirCount"
                    }
                }
            } else {

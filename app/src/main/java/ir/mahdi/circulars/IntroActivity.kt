@@ -65,7 +65,7 @@ class IntroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         if (Prefs(applicationContext).getIsFirstRun()){
             requestWindowFeature(Window.FEATURE_NO_TITLE);
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
             setContentView(R.layout.intro_activity)
             initIntro()

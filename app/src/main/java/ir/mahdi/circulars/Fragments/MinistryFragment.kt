@@ -1,7 +1,6 @@
 package ir.mahdi.circulars.Fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -79,7 +78,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
             // However it is not allowed to be added twice even if the parent is same.
             // So we must remove rootView from the existing parent view group
             // (it will be added back).
-            (rootView?.getParent() as? ViewGroup)?.removeView(rootView)
+            (rootView?.parent as? ViewGroup)?.removeView(rootView)
         }
         return rootView
     }
@@ -92,7 +91,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
         initSearch()
 
         // Get Curent Region Text
-        (activity as MainActivity).currentRegion.setText(Tools().getCurrentRegion(context))
+        (activity as MainActivity).currentRegion.text = Tools().getCurrentRegion(context, false)
 
         if (!hasInitializedRootView) {
             hasInitializedRootView = true
@@ -149,7 +148,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
         binding.lytNoitem.visibility = View.GONE
         binding.rc.visibility = View.GONE
         binding.lytProgress.visibility = View.VISIBLE
-        binding.progress.progress = 0;
+        binding.progress.progress = 0
         binding.progress.isIndeterminate = true
 
         itemsData.clear()
@@ -162,21 +161,19 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                     var doc: Document = Jsoup.connect(url).timeout(0).maxBodySize(0).ignoreHttpErrors(true).get()
                     val table: Elements = doc.select("table[class=\"table table-striped table-hover\"]")
                     for (myTable in table) {
-                        Log.d("asdads", myTable.id())
-
                         val rows: Elements = myTable.select("tr")
                         withContext(Dispatchers.Main){
                             binding.progress.isIndeterminate = false
                         }
                         for (i in 1 until rows.size) {
                             binding.progress.progress = i
-                            val row: Element = rows.get(i)
+                            val row: Element = rows[i]
                             val cols: Elements = row.select("td")
                             val href: Elements = row.select("a")
                             val strhref: String = href.attr("href")
 
                             var status: String = ""
-                            var date: String = cols.get(3).text()
+                            var date: String = cols[3].text()
                             var title: String = Tools().FixIlegalCharacter(cols[2].text())
 
                             val existCirculars =
@@ -222,7 +219,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
 
         // If PDF File Exist, So Selected File is a PDF and We Can Navigate to Show pdf
         if (exist_pdf.exists()) {
-            Tools().navigate( exist_pdf.absolutePath, "pdf",navController,activity,view!!);
+            Tools().navigate( exist_pdf.absolutePath, "pdf",navController,activity,view!!)
         }
         else
         {
@@ -261,12 +258,12 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
             positiveButton(R.string.download) { dialog ->
 
                 // is_Busy = False So We Need to Download or Show File Chooser, If is_Busy = True, Download Button Not Work Until Download Finish
-                if (is_Busy == false) {
+                if (!is_Busy) {
                     // If File Not Exist We Need To Download it
-                    if (is_File_Exist == false) {
+                    if (!is_File_Exist) {
                         val status: MaterialTextView =
                             dialog.getCustomView().findViewById(R.id.sheet_status)
-                        val sheet_progress: ContentLoadingProgressBar =
+                        val sheetProgress: ContentLoadingProgressBar =
                             dialog.getCustomView().findViewById(R.id.sheet_progress)
 
                         dialog.cancelable(false) // While Downloading User Cant Cancel Dialog, Only Cancel Button Work for Canceling
@@ -275,7 +272,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                         status.setText(R.string.downloading)
 
                         downloadId = download(
-                            "http://edari.medu.ir/" + link,
+                            "http://edari.medu.ir/$link",
                             Tools()._PathMinistry(context),
                             Tools()._RawFileName
                         )
@@ -283,23 +280,21 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                             .setOnProgressListener { progress ->
                                 val progressPercent =
                                     progress.currentBytes * 100 / progress.totalBytes
-                                sheet_progress.setProgress(progressPercent.toInt())
+                                sheetProgress.progress = progressPercent.toInt()
                                 positiveButton(R.string.wait)
                                 is_Busy = true
                             }
-                            .setOnCancelListener(object : OnCancelListener {
-                                override fun onCancel() {
-                                    status.setText(R.string.cancel)
-                                    binding.progress.setProgress(0)
-                                    is_File_Exist = false
-                                    is_Busy = false
-                                }
-                            })
+                            .setOnCancelListener {
+                                status.setText(R.string.cancel)
+                                binding.progress.progress = 0
+                                is_File_Exist = false
+                                is_Busy = false
+                            }
                             .start(object : OnDownloadListener {
                                 override fun onDownloadComplete() {
                                     try {
                                         dialog.cancelable(true)
-                                        status.setText(getString(R.string.downloadCompleted))
+                                        status.text = getString(R.string.downloadCompleted)
                                         positiveButton(R.string.preview)
 
                                         Tools().runCommand(
@@ -315,8 +310,8 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                                 }
 
                                 override fun onError(error: com.downloader.Error?) {
-                                    status.setText(getString(R.string.error))
-                                    binding.progress.setProgress(0)
+                                    status.text = getString(R.string.error)
+                                    binding.progress.progress = 0
                                     is_File_Exist = false
                                     is_Busy = false
                                 }
@@ -330,7 +325,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
             }
 
             negativeButton(R.string.cancelTask) {
-                PRDownloader.cancel(downloadId);
+                PRDownloader.cancel(downloadId)
                 is_File_Exist = false
                 dismiss()
             }
@@ -338,7 +333,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
 
         val customView = dialog.getCustomView()
         val titleDesc: MaterialTextView = customView.findViewById(R.id.sheet_Desc)
-        titleDesc.setText(title)
+        titleDesc.text = title
     }
 
     // Swipe Refresh

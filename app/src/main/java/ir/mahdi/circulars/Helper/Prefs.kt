@@ -2,7 +2,6 @@ package ir.mahdi.circulars.Helper
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.text.TextUtils
 
 class Prefs(val context: Context) {
     private val PREFS_NAME = "User_Data_KEY"

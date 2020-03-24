@@ -13,7 +13,6 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.StrictMode
-import android.text.TextUtils
 import android.view.View
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
@@ -34,7 +33,6 @@ import ir.mahdi.circulars.R
 import java.io.File
 import java.net.URLConnection
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class Tools {
@@ -75,19 +73,27 @@ class Tools {
         val localeNew = Locale(lang)
         Locale.setDefault(localeNew)
         val res: Resources = context!!.resources
-        val newConfig = Configuration(res.getConfiguration())
+        val newConfig = Configuration(res.configuration)
         newConfig.locale = localeNew
-        newConfig.setLayoutDirection(localeNew)
-        res.updateConfiguration(newConfig, res.getDisplayMetrics())
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            newConfig.setLayoutDirection(localeNew)
+            res.updateConfiguration(newConfig, res.displayMetrics)
             newConfig.setLocale(localeNew)
             context.createConfigurationContext(newConfig)
         }
     }
 
     // Return Current Region Text
-    fun getCurrentRegion(context: Context?) : String {
-        return context!!.resources.getStringArray(R.array.server)[Prefs(context).getServerIndex()]
+    fun getCurrentRegion(context: Context?, IsSettingView: Boolean) : String {
+        return if (IsSettingView){
+            context!!.resources.getStringArray(R.array.server)[Prefs(context).getServerIndex()]
+        }else{
+            if (Prefs(context!!).getIsMultiServer()){
+                ""
+            }else{
+                context.resources.getStringArray(R.array.server)[Prefs(context).getServerIndex()]
+            }
+        }
     }
 
     // Return Current Multi Region Text
@@ -95,7 +101,7 @@ class Tools {
         val arrServer: Array<String> = context!!.resources.getStringArray(R.array.server)
         var arrText: String = ""
         for (item in Prefs(context).getMultiServers()!!.iterator()){
-            arrText += " " + arrServer[item]
+            arrText += "\n" + arrServer[item]
         }
         return arrText
     }
@@ -112,11 +118,11 @@ class Tools {
             ) {
                 true
             } else {
-                val PERMISSIONS = arrayOf(
+                val permissions = arrayOf(
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
                     READ_EXTERNAL_STORAGE
                 )
-                ActivityCompat.requestPermissions(activity!!, PERMISSIONS, 1)
+                ActivityCompat.requestPermissions(activity!!, permissions, 1)
                 false
             }
         } else { //permission is automatically granted on sdk<23 upon installation
@@ -234,40 +240,32 @@ class Tools {
         // Extract Compressed File
         var cmd: String = getExtractCmd(path + _RawFileName, path + titleForPdf)
 
-        io.reactivex.Observable.create(object : ObservableOnSubscribe<Int?> {
-            override fun subscribe(e: ObservableEmitter<Int?>) {
-                val ret = P7ZipApi.executeCommand(cmd)
-                e.onNext(ret)
-            }
-
+        io.reactivex.Observable.create(ObservableOnSubscribe<Int?> { e ->
+            val ret = P7ZipApi.executeCommand(cmd)
+            e.onNext(ret)
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : io.reactivex.functions.Consumer<Int?>{
-                override fun accept(integer: Int?) {
-                    try {
-                        val file = File(path + titleForPdf)
+            .subscribe {
+                try {
+                    val file = File(path + titleForPdf)
 
-                        if (file.exists()) {
-                            val fileToDelete = File(path + _RawFileName)
-                            fileToDelete.delete()
-                        }
-                        else
-                        {
-                            //if file not exist so it must be pdf because it cant extracted
-                            //select raw file for renaming
-                            val fileToMovePdf = File(path + _RawFileName)
-                            //select path for pdf
-                            val destination = File("$file.pdf")
-                            //rename raw to pdf in new path
-                            fileToMovePdf.renameTo(destination)
+                    if (file.exists()) {
+                        val fileToDelete = File(path + _RawFileName)
+                        fileToDelete.delete()
+                    } else {
+                        //if file not exist so it must be pdf because it cant extracted
+                        //select raw file for renaming
+                        val fileToMovePdf = File(path + _RawFileName)
+                        //select path for pdf
+                        val destination = File("$file.pdf")
+                        //rename raw to pdf in new path
+                        fileToMovePdf.renameTo(destination)
 
-                            dialog.dismiss()
-                            //load pdf
-                            navigate(destination.toString(),"pdf" ,navController,activity,view)
-                        }
+                        dialog.dismiss()
+                        //load pdf
+                        navigate(destination.toString(),"pdf" ,navController,activity,view)
                     }
-                    catch (e:Exception){}
-                }
-            })
+                } catch (e:Exception){}
+            }
     }
 
     // P7ZipApi Command

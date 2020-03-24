@@ -35,7 +35,7 @@ class StoredFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.pager.setAdapter(ViewPager2Adapter())
+        binding.pager.adapter = ViewPager2Adapter()
         TabLayoutMediator(binding.tabLayout, binding.pager, TabLayoutMediator.TabConfigurationStrategy{tab, position ->
             when (position) {
                 0 -> tab.text = getString(R.string.tabState)

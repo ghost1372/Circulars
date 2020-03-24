@@ -165,7 +165,7 @@ class StoredContentFragment : Fragment(), CoroutineScope, OfflineAdapter.Circula
         // if All Item Select we can easily Delete Whole Folder
         if (isSelectAll){
             val dir = File(_path)
-            if (dir.isDirectory()) {
+            if (dir.isDirectory) {
                 deleteAll(dir)
                 itemsData.clear()
             }
@@ -252,11 +252,11 @@ class StoredContentFragment : Fragment(), CoroutineScope, OfflineAdapter.Circula
                 if (Tools().isStoragePermissionGranted(activity,context!!)){
                     var file: File = File(_path)
                     if (!file.listFiles().isNullOrEmpty()){
-                        if (file.isDirectory() == false) {
-                            return@async;
+                        if (!file.isDirectory) {
+                            return@async
                         }
                         for (f in file.listFiles()){
-                            if (f.isFile() || f.isDirectory()) {
+                            if (f.isFile || f.isDirectory) {
                                 itemsData.add(OfflineModel(f.name))
                             }
                         }

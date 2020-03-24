@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var swTheme: SwitchMaterial
     lateinit var drawer: DrawerLayout
     lateinit var searchView: SearchView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         if (Prefs(applicationContext).getIsDark()){
             setTheme(R.style.Dark)
@@ -93,7 +92,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             Analytics::class.java, Crashes::class.java
         )
 
-        PushPole.initialize(this,true);
+        PushPole.initialize(this,true)
     }
 
     private fun showEmergencyMessage() {
@@ -114,12 +113,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     // hide or show current server text when SearchView is open/close
     fun currentServerVisibility(){
-        searchView.setOnCloseListener(object : SearchView.OnCloseListener {
-            override fun onClose(): Boolean {
-                txtCurrent_Region.visibility = View.VISIBLE
-                return false
-            }
-        })
+        searchView.setOnCloseListener {
+            txtCurrent_Region.visibility = View.VISIBLE
+            false
+        }
 
         searchView.setOnSearchClickListener{
             txtCurrent_Region.visibility = View.GONE
@@ -131,8 +128,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         //Require API 17
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            if (getWindow().getDecorView().getLayoutDirection() == View.LAYOUT_DIRECTION_LTR){
-                getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL)
+            if (window.decorView.layoutDirection == View.LAYOUT_DIRECTION_LTR){
+                window.decorView.layoutDirection = View.LAYOUT_DIRECTION_RTL
             }
         }
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
@@ -143,15 +140,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Select First Item for Default
         onNavigationItemSelected(navigation.menu.getItem(0))
 
-        if (Prefs(applicationContext).getIsMultiServer()){
-            txtCurrent_Region.setText("")
-        }else{
-            txtCurrent_Region.setText(Tools().getCurrentRegion(applicationContext))
-        }
+        txtCurrent_Region.text = Tools().getCurrentRegion(applicationContext, false)
 
         // set Drawer Footer items text
-        txtVersion.setText(getString(R.string.version, BuildConfig.VERSION_NAME))
-        txtBuild.setText(getString(R.string.build, BuildConfig.VERSION_CODE.toString()))
+        txtVersion.text = getString(R.string.version, BuildConfig.VERSION_NAME)
+        txtBuild.text = getString(R.string.build, BuildConfig.VERSION_CODE.toString())
 
         // Change Theme
         swTheme.isChecked = Prefs(applicationContext).getIsDark()
@@ -185,15 +178,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     // Handle Drawer item selected
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        item.setChecked(true)
+        item.isChecked = true
         drawer.closeDrawers()
-        val id: Int = item.getItemId()
+        val id: Int = item.itemId
 
         when(id){
             R.id.ministry -> {
                 toolbarElementsVisiblity(false)
                 navController.navigate(R.id.ministryFragment)
-                item.setChecked(true)
+                item.isChecked = true
             }
             R.id.stored -> {
                 toolbarElementsVisiblity(false)
@@ -254,7 +247,4 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
 }

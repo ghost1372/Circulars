@@ -44,8 +44,8 @@ class AboutFragment : Fragment() {
     fun init(){
 
         //get App Version from Build.gradle
-        binding.txtVersion.setText(getString(R.string.version, BuildConfig.VERSION_NAME))
-        binding.txtBuild.setText(getString(R.string.build, BuildConfig.VERSION_CODE.toString()))
+        binding.txtVersion.text = getString(R.string.version, BuildConfig.VERSION_NAME)
+        binding.txtBuild.text = getString(R.string.build, BuildConfig.VERSION_CODE.toString())
 
         binding.lvEmail.setOnClickListener{
             sendFeedback()
