@@ -3,6 +3,7 @@ package ir.mahdi.circulars.Fragments
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import ir.mahdi.circulars.Helper.Prefs
 import ir.mahdi.circulars.Helper.Tools
 import ir.mahdi.circulars.R
 import ir.mahdi.circulars.databinding.PdfFragmentBinding
@@ -51,10 +52,22 @@ class PdfFragment : Fragment() {
         try {
             var pdf: File = File(arguments?.getString(Tools().FILE_KEY))
             sharefile = pdf
-            binding.pdfView.fromFile(pdf)
-                .enableDoubletap(true)
-                .enableSwipe(true)
-                .load()
+
+            if (Prefs(context!!).getIsDark()){
+                binding.pdfView.fromFile(pdf)
+                    .enableDoubletap(true)
+                    .enableSwipe(true)
+                    .enableAntialiasing(true)
+                    .nightMode(true)
+                    .load()
+            }else{
+                binding.pdfView.fromFile(pdf)
+                    .enableDoubletap(true)
+                    .enableSwipe(true)
+                    .enableAntialiasing(true)
+                    .load()
+            }
+
 
         } catch (ex: Exception) {
             Tools().snack(view, "فایل خراب است")
