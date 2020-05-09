@@ -25,7 +25,7 @@
     <string name="programmer">سید مهدی حسینی قیداری</string>
     <string name="developer">برنامه نویس و توسعه دهنده</string>
     <string name="select_location">انتخاب منطقه</string>
-    <string name="select_theme">پوسته تاریک (مطالعه در شب)</string>
+    <string name="select_theme">انتخاب پوسته</string>
     <string name="dark_them">تم تاریک</string>
     <string name="history">تاریخچه نسخه ها</string>
     <string name="history_details">مشاهده جزئیات تغییرات</string>
@@ -63,4 +63,13 @@
     <string name="sliderSkip">رد کن</string>
     <string name="theme">پوسته</string>
     <string name="select_MultiServer">استفاده از چند سرور همزمان</string>
+    <array name="skinQ">
+        <item>روشن</item>
+        <item>تاریک</item>
+        <item>هماهنگ با پیشفرض سیستم</item>
+    </array>
+    <array name="skin">
+        <item>روشن</item>
+        <item>تاریک</item>
+    </array>
 </resources>

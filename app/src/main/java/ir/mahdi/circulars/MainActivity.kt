@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.CompoundButton
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.SearchView
@@ -46,12 +47,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var swTheme: SwitchMaterial
     lateinit var drawer: DrawerLayout
     lateinit var searchView: SearchView
+    lateinit var lvSkin: LinearLayout
     override fun onCreate(savedInstanceState: Bundle?) {
-        if (Prefs(applicationContext).getIsDark()){
-            setTheme(R.style.Dark)
-        }else{
-            setTheme(R.style.Light)
+        when(Prefs(applicationContext).getSkin()){
+            0->setTheme(R.style.Light)
+            1->setTheme(R.style.Dark)
+            2->{
+                if (Prefs(applicationContext).getIsDark())
+                    setTheme(R.style.Dark)
+                else
+                    setTheme(R.style.Light)
+            }
         }
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         // Initialize Elements
@@ -63,7 +71,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         txtCurrent_Region = findViewById(R.id.currentRegion)
         swTheme = findViewById(R.id.sw_theme)
         searchView = findViewById(R.id.searchView)
-
+        lvSkin = findViewById(R.id.lv_Main_Skin)
         val headerview: View = navigation.getHeaderView(0)
         icMoon =
             headerview.findViewById<View>(R.id.ic_moon) as AppCompatImageView
@@ -146,23 +154,32 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         txtVersion.text = getString(R.string.version, BuildConfig.VERSION_NAME)
         txtBuild.text = getString(R.string.build, BuildConfig.VERSION_CODE.toString())
 
-        // Change Theme
-        swTheme.isChecked = Prefs(applicationContext).getIsDark()
-        swTheme.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
-            Prefs(applicationContext).setIsDark(isChecked)
-            recreate()
-        })
+        if (!IsSystemDefaultTheme()){
+            // Change Theme
+            swTheme.isChecked = Prefs(applicationContext).getIsDark()
+            swTheme.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+                if (isChecked){
+                    Prefs(applicationContext).setSkin(1)
+                }else{
+                    Prefs(applicationContext).setSkin(0)
+                }
+                recreate()
+            })
+        }else{
+            lvSkin.visibility = View.GONE
+        }
 
         // Change Theme When Clicking on Moon icon
         icMoon.setOnClickListener{
             swTheme.isChecked = !swTheme.isChecked
         }
-
     }
 
-    // This Method can be Called from Setting Fragment
-    fun changeTheme(isDark: Boolean){
-        swTheme.isChecked = isDark
+    fun IsSystemDefaultTheme() : Boolean{
+        return if (Prefs(applicationContext).getSkin().equals(2))
+            true
+        else
+            false
     }
 
     // hide or show SearchView and CurrentRegion text

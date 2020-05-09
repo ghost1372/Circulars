@@ -1,12 +1,16 @@
 package ir.mahdi.circulars.Fragments
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.fragment.app.Fragment
+import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.bottomsheets.BottomSheet
+import com.afollestad.materialdialogs.list.listItems
 import com.afollestad.materialdialogs.list.listItemsMultiChoice
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import ir.mahdi.circulars.Helper.Prefs
@@ -14,6 +18,7 @@ import ir.mahdi.circulars.Helper.Tools
 import ir.mahdi.circulars.MainActivity
 import ir.mahdi.circulars.R
 import ir.mahdi.circulars.databinding.SettingFragmentBinding
+
 
 class SettingFragment : Fragment() {
 
@@ -50,21 +55,34 @@ class SettingFragment : Fragment() {
             binding.lvMultiRegion.visibility = View.GONE
 
         binding.txtCurrentMultiServer.text = Tools().getCurrentMultiRegion(context)
-        binding.swTheme.isChecked = Prefs(context!!).getIsDark()
+
+        binding.txtCurrentSkin.text = Prefs(context!!).getSkinName()
+
         binding.swMultiServer.isChecked = Prefs(context!!).getIsMultiServer()
         binding.lvRegion.setOnClickListener{
             setRegion()
         }
 
+        binding.lvSkin.setOnClickListener{
+            MaterialDialog(context!!, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
+                var items = R.array.skin
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    items = R.array.skinQ
+                }
+                listItems(items) { _, index, text ->
+                    Prefs(context).setSkin(index)
+                    binding.txtCurrentSkin.text = Prefs(context).getSkinName()
+                    activity!!.finish();
+                    startActivity(activity!!.getIntent());
+                }
+                positiveButton(R.string.select_theme)
+                negativeButton(R.string.NegativeButton)
+            }
+        }
+
         binding.lvMultiRegion.setOnClickListener{
             setMultiRegion()
         }
-
-        // Change Theme
-        binding.swTheme.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
-            Prefs(context!!).setIsDark(isChecked)
-            (activity as MainActivity).changeTheme(isChecked)
-        })
 
         binding.swMultiServer.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener{buttonView, isChecked->
             Prefs(context!!).setIsMultiServer(isChecked)
@@ -76,7 +94,7 @@ class SettingFragment : Fragment() {
     }
 
     fun setRegion(){
-        MaterialDialog(context!!).show {
+        MaterialDialog(context!!, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
             title(R.string.select_region)
             cancelable(false)
             listItemsSingleChoice(R.array.server, initialSelection =  Prefs(context).getServerIndex()) { _, index, text ->
@@ -89,7 +107,7 @@ class SettingFragment : Fragment() {
     }
 
     fun setMultiRegion(){
-        MaterialDialog(context!!).show {
+        MaterialDialog(context!!, BottomSheet(LayoutMode.WRAP_CONTENT)).show {
             title(R.string.select_region)
 
             listItemsMultiChoice(

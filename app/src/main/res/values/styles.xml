@@ -2,7 +2,7 @@
 
     <!-- Theme.AppCompat.Light.DarkActionBar -->
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">#fff</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -15,6 +15,10 @@
         <item name="DividerColor">#E3E3E3</item>
 
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransation</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
     <style name="AppThemeDark" parent="Theme.MaterialComponents.NoActionBar">
@@ -30,24 +34,15 @@
         <item name="DividerColor">#424242</item>
 
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransation</item>
-    </style>
 
-
-    <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
 
-    <style name="AppThemeDark.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowTranslucentStatus">true</item>
-    </style>
-
-    <style name="Light" parent="AppTheme.NoActionBar"/>
-    <style name="Dark" parent="AppThemeDark.NoActionBar"/>
+    <style name="Light" parent="AppTheme"/>
+    <style name="Dark" parent="AppThemeDark"/>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar" />
 

@@ -31,6 +31,7 @@
             android:focusable="true"
             android:orientation="vertical">
            <LinearLayout
+               android:id="@+id/lv_Main_Skin"
                android:layout_width="match_parent"
                android:layout_height="match_parent"
                android:layout_marginBottom="20dp"

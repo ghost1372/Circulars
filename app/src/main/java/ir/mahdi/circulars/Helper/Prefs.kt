@@ -2,12 +2,14 @@ package ir.mahdi.circulars.Helper
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Configuration
+import android.os.Build
 
 class Prefs(val context: Context) {
     private val PREFS_NAME = "User_Data_KEY"
     private val SERVER = "SERVER_KEY"
     private val IS_FIRST_RUN = "IS_FIRST_RUN_KEY"
-    private val IS_Dark = "IS_DARK_KEY"
+    private val SKIN_MODE = "SKIN_KEY"
     private val SWITCH_MODE = "SWITCH_MODE_KEY"
     private val SWITCH_MODE_MESSAGE = "SWITCH_MODE_MESSAGE_KEY"
     private val MULTI_SERVER_MODE = "MULTI_SERVER_MODE_KEY"
@@ -21,9 +23,9 @@ class Prefs(val context: Context) {
         editor.apply()
     }
 
-    fun setIsDark(value: Boolean) {
+    fun setSkin(value: Int) {
         val editor: SharedPreferences.Editor = sharedPref.edit()
-        editor.putBoolean(IS_Dark, value)
+        editor.putInt(SKIN_MODE, value)
         editor.apply()
     }
 
@@ -81,8 +83,31 @@ class Prefs(val context: Context) {
         return sharedPref.getBoolean(IS_FIRST_RUN, true)
     }
 
-    fun getIsDark(): Boolean {
-        return sharedPref.getBoolean(IS_Dark, false)
+    fun getSkin(): Int {
+        return sharedPref.getInt(SKIN_MODE, 0)
+    }
+    fun getIsDark() : Boolean{
+        when(sharedPref.getInt(SKIN_MODE,0)){
+            1->return true
+            2->{
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    val currentNightMode: Int = context.getResources()
+                        .getConfiguration().uiMode and Configuration.UI_MODE_NIGHT_MASK
+                    when(currentNightMode){
+                        Configuration.UI_MODE_NIGHT_YES->return true
+                    }
+                }
+            }
+        }
+        return false
+    }
+    fun getSkinName(): String {
+        when(sharedPref.getInt(SKIN_MODE,0)){
+            0->return "روشن"
+            1->return "تاریک"
+            2->return "هماهنگ با پیشفرض سیستم"
+        }
+        return ""
     }
 
     // 321 is Bezine Rod
