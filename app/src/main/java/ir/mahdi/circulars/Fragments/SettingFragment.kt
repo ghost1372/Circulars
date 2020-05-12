@@ -70,13 +70,13 @@ class SettingFragment : Fragment() {
                     items = R.array.skinQ
                 }
                 listItems(items) { _, index, text ->
-                    Prefs(context).setSkin(index)
-                    binding.txtCurrentSkin.text = Prefs(context).getSkinName()
-                    activity!!.finish();
-                    startActivity(activity!!.getIntent());
+                    if (!Prefs(context).getSkin().equals(index)){
+                        Prefs(context).setSkin(index)
+                        binding.txtCurrentSkin.text = Prefs(context).getSkinName()
+                        activity!!.finish();
+                        startActivity(activity!!.getIntent());
+                    }
                 }
-                positiveButton(R.string.select_theme)
-                negativeButton(R.string.NegativeButton)
             }
         }
 

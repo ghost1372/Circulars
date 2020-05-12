@@ -14,6 +14,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.StrictMode
 import android.view.View
+import android.webkit.MimeTypeMap
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
@@ -26,7 +27,6 @@ import com.hzy.libp7zip.P7ZipApi
 import io.reactivex.ObservableOnSubscribe
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import ir.mahdi.circulars.BuildConfig
 import ir.mahdi.circulars.MainActivity
 import ir.mahdi.circulars.R
 import java.io.File
@@ -144,25 +144,22 @@ class Tools {
     // Open Excel and Word files in aa External Application
     private fun luanchOfficeReader(path: String, activity: Activity?, view: View){
         val file = File(path)
-        val uri = FileProvider.getUriForFile(
-            activity!!.applicationContext,
-            BuildConfig.APPLICATION_ID.toString() + ".provider",
-            file
-        )
-        val intent = Intent(Intent.ACTION_VIEW)
 
-        //file is word
-        if (file.extension.contains("doc")){
-            intent.setDataAndType(uri, "application/word")
+        val myMime: MimeTypeMap = MimeTypeMap.getSingleton()
+        val newIntent = Intent(Intent.ACTION_VIEW)
 
+        val mimeType: String =
+            myMime.getMimeTypeFromExtension(file.extension).toString()
+        if (Build.VERSION.SDK_INT >= 24) {
+            newIntent.setDataAndType(FileProvider.getUriForFile(activity!!.applicationContext, activity.applicationContext.packageName.toString() +
+                ".provider", file), mimeType)
         }else{
-            // file is excel
-            intent.setDataAndType(uri, "application/excel")
+            newIntent.setDataAndType(Uri.fromFile(file), mimeType)
         }
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
+        newIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        newIntent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
         try {
-            activity.startActivity(intent)
+            activity!!.startActivity(newIntent)
         } catch (e: ActivityNotFoundException) {
             snack(view,"برنامه ای برای نمایش فایل ورد/اکسل روی گوشی پیدا نشد، لطفا برنامه آفیس را روی گوشی خود نصب کنید")
         }
