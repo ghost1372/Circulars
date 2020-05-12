@@ -174,7 +174,8 @@ class Tools {
         var bundle = bundleOf(FILE_KEY to path) // passing argument to a bundle
         if (ext == "pdf"){
             navController.navigate(R.id.pdfFragment, bundle)
-        }else if (ext == "xls" || ext == "xlsx" || ext == "csv" || ext == "doc" || ext == "docx") {
+        }else if (ext == "xls" || ext == "xlsx" || ext == "csv" || ext == "doc" || ext == "docx" || ext == "rar" ||
+                ext == "zip") {
             luanchOfficeReader(path, activity, view)
         } else{
             // everything that isnt pdf and office like Images
