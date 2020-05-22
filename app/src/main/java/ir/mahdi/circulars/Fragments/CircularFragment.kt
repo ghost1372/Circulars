@@ -198,7 +198,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
         try {
             for (urlx in Prefs(context!!).getMultiServers()!!.iterator()){
 
-                var doc: Document = Jsoup.connect(arrUrl[urlx]).timeout(0).maxBodySize(0).ignoreHttpErrors(true).get()
+                var doc: Document = Jsoup.connect(arrUrl[urlx]).timeout(0).maxBodySize(0).ignoreHttpErrors(true).sslSocketFactory(Tools().trustServer()).get()
                 val table: Elements = doc.select("table[class=\"table table-striped table-hover\"]")
                 for (myTable in table) {
                     val rows: Elements = myTable.select("tr")
@@ -239,8 +239,9 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
         }
     }
     suspend fun SingleServer(url: String){
+
         try {
-            var doc: Document = Jsoup.connect(url).timeout(0).maxBodySize(0).ignoreHttpErrors(true).get()
+            var doc: Document = Jsoup.connect(url).timeout(0).maxBodySize(0).ignoreHttpErrors(true).sslSocketFactory(Tools().trustServer()).get()
             val table: Elements = doc.select("table[class=\"table table-striped table-hover\"]")
             for (myTable in table) {
                 val rows: Elements = myTable.select("tr")

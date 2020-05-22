@@ -31,7 +31,10 @@ import ir.mahdi.circulars.MainActivity
 import ir.mahdi.circulars.R
 import java.io.File
 import java.net.URLConnection
+import java.security.SecureRandom
+import java.security.cert.CertificateException
 import java.util.*
+import javax.net.ssl.*
 
 
 class Tools {
@@ -292,4 +295,28 @@ class Tools {
             }
         }
     }
+    fun trustServer(): SSLSocketFactory {
+        try {
+            val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
+                @Throws(CertificateException::class)
+                override fun checkClientTrusted(chain: Array<java.security.cert.X509Certificate>, authType: String) {
+                }
+
+                @Throws(CertificateException::class)
+                override fun checkServerTrusted(chain: Array<java.security.cert.X509Certificate>, authType: String) {
+                }
+
+                override fun getAcceptedIssuers(): Array<java.security.cert.X509Certificate> {
+                    return arrayOf()
+                }
+            })
+            val sc: SSLContext = SSLContext.getInstance("SSL")
+            sc.init(null, trustAllCerts, SecureRandom())
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory())
+            return sc.socketFactory
+        } catch (e: java.lang.Exception) {
+            throw RuntimeException(e)
+        }
+    }
+
 }

@@ -157,7 +157,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
         lifecycleScope.launch {
             val operation = async(Dispatchers.IO) {
                 try {
-                    var doc: Document = Jsoup.connect(url).timeout(0).maxBodySize(0).ignoreHttpErrors(true).get()
+                    var doc: Document = Jsoup.connect(url).timeout(0).maxBodySize(0).ignoreHttpErrors(true).sslSocketFactory(Tools().trustServer()).get()
                     val table: Elements = doc.select("table[class=\"table table-striped table-hover\"]")
                     for (myTable in table) {
                         val rows: Elements = myTable.select("tr")
