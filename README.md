@@ -1,10 +1,10 @@
-# Circulars-v9.0
+# Circulars
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ghost1372/Circulars-v9.0?color=green&label=Release)
 ![GitHub](https://img.shields.io/github/license/ghost1372/Circulars-v9.0?color=purple&label=License)
 
 <div dir="rtl">
-نمایش بخشنامه مناطق مختلف سازمان آموزش و پرورش- نسخه 9
+نمایش بخشنامه مناطق مختلف سازمان آموزش و پرورش
   
 این اپلیکیشن وابسته به هیچ سازمان و ارگانی نمی باشد و بصورت پروژه شخصی و آزاد ایجاد شده است. همراه این پروژه نکات آموزشی بسیاری برای علاقه مندان به برنامه نویسی موجود می باشد. این اپلیکیشن می تواند فایل ها را در حافظه گوشی دانلود کرده و آنها را از حالت فشرده (فرمت های Rar و Zip) خارج کند و امکان نمایش فایل های Pdf و انواع تصاویر (Tiff, Png, Jpeg) را بصورت داخلی و فایل های آفیس را توسط برنامه های خارجی دارد.
 
@@ -18,7 +18,7 @@
 - Async-Await
 - lifecycle
 - Material Design 2
-- Support Android 16 -> 29
+- Support Android > 16
 - Dark and Light Theme
 - Kotlin
 - AndroidX

@@ -91,8 +91,8 @@ class Prefs(val context: Context) {
             1->return true
             2->{
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                    val currentNightMode: Int = context.getResources()
-                        .getConfiguration().uiMode and Configuration.UI_MODE_NIGHT_MASK
+                    val currentNightMode: Int = context.resources
+                        .configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
                     when(currentNightMode){
                         Configuration.UI_MODE_NIGHT_YES->return true
                     }

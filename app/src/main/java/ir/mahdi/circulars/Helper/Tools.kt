@@ -270,7 +270,7 @@ class Tools {
 
     // P7ZipApi Command
     fun getExtractCmd(archivePath: String, outPath: String): String {
-        return String.format("7z x '%s' '-o%s' -aoa", archivePath, outPath);
+        return String.format("7z x '%s' '-o%s' -aoa", archivePath, outPath)
     }
 
     // Fix IlegalCharacter and Limit to 120 Character
@@ -312,7 +312,7 @@ class Tools {
             })
             val sc: SSLContext = SSLContext.getInstance("SSL")
             sc.init(null, trustAllCerts, SecureRandom())
-            HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory())
+            HttpsURLConnection.setDefaultSSLSocketFactory(sc.socketFactory)
             return sc.socketFactory
         } catch (e: java.lang.Exception) {
             throw RuntimeException(e)

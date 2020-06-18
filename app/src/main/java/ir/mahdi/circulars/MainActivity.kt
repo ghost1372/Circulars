@@ -176,10 +176,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     fun IsSystemDefaultTheme() : Boolean{
-        return if (Prefs(applicationContext).getSkin().equals(2))
-            true
-        else
-            false
+        return Prefs(applicationContext).getSkin().equals(2)
     }
 
     // hide or show SearchView and CurrentRegion text

@@ -66,7 +66,7 @@ class StoredFragment : Fragment() {
             }
         }
     }
-    private inner class ViewPager2Adapter() : FragmentStateAdapter(this) {
+    private inner class ViewPager2Adapter : FragmentStateAdapter(this) {
         private val int_items = 3
 
         override fun createFragment(position: Int): Fragment {

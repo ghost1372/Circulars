@@ -73,8 +73,8 @@ class SettingFragment : Fragment() {
                     if (!Prefs(context).getSkin().equals(index)){
                         Prefs(context).setSkin(index)
                         binding.txtCurrentSkin.text = Prefs(context).getSkinName()
-                        activity!!.finish();
-                        startActivity(activity!!.getIntent());
+                        activity!!.finish()
+                        startActivity(activity!!.intent)
                     }
                 }
             }

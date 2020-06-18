@@ -82,3 +82,4 @@ lint/outputs/
 lint/tmp/
 # lint/reports/
 app/release/release/output.json
+.idea/jarRepositories.xml
