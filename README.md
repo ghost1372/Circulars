@@ -61,13 +61,3 @@
 [Push-Pole](http://push-pole.com)
 
 [Jsoup](https://github.com/jhy/jsoup)
-
-## <div dir="rtl"> نسخه های قبلی</div>
-
-https://github.com/ghost1372/Circulars-Version6
-<br>
-https://github.com/ghost1372/Circulars-Version4
-<br>
-https://github.com/ghost1372/Circulars-Version3
-<br>
-https://github.com/ghost1372/Circulars
