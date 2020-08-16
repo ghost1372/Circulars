@@ -15,7 +15,6 @@ import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.LinearLayoutManager
 import ir.mahdi.circulars.Adapter.MyItemDetailsLookup
 import ir.mahdi.circulars.Adapter.OfflineAdapter
-import ir.mahdi.circulars.Helper.DividerItemDecoration
 import ir.mahdi.circulars.Helper.Tools
 import ir.mahdi.circulars.MainActivity
 import ir.mahdi.circulars.Model.OfflineModel
@@ -114,7 +113,6 @@ class StoredContentFragment : Fragment(), CoroutineScope, OfflineAdapter.Circula
 
         binding.rc.layoutManager = LinearLayoutManager(activity)
         binding.rc.setHasFixedSize(true)
-        binding.rc.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL,10,10))
         binding.rc.adapter = ofAdapter
 
         initSearch()

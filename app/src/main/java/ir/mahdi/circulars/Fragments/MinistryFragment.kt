@@ -22,7 +22,6 @@ import com.downloader.PRDownloader
 import com.downloader.PRDownloader.download
 import com.google.android.material.textview.MaterialTextView
 import ir.mahdi.circulars.Adapter.CircularAdapter
-import ir.mahdi.circulars.Helper.DividerItemDecoration
 import ir.mahdi.circulars.Helper.NullHostNameVerifier
 import ir.mahdi.circulars.Helper.Tools
 import ir.mahdi.circulars.MainActivity
@@ -109,10 +108,6 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
             binding.rc.apply {
                 layoutManager = LinearLayoutManager(activity)
                 setHasFixedSize(true)
-                addItemDecoration(
-                    DividerItemDecoration(context,
-                        LinearLayoutManager.VERTICAL, 60,0)
-                )
                 adapter = CircularAdapter(itemsData, this@MinistryFragment)
             }
 
@@ -173,6 +168,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
 
                             var status: String = ""
                             var date: String = cols[3].text()
+                            var type: String = cols[4].text()
                             var title: String = Tools().FixIlegalCharacter(cols[2].text())
 
                             val existCirculars =
@@ -183,7 +179,7 @@ class MinistryFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                                 status = getString(R.string.downloaded_Message)
                             }
 
-                            itemsData.add(CircularModel(title,status,date,strhref,Tools().getRandomMaterialColor("400",resources,activity!!),""))
+                            itemsData.add(CircularModel(title,status,date, type,strhref,Tools().getRandomMaterialColor("400",resources,activity!!),""))
                         }
                     }
                 }catch (e: Exception){

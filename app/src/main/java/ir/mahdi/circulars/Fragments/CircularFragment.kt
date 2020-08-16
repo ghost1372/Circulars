@@ -23,7 +23,6 @@ import com.downloader.PRDownloader
 import com.downloader.PRDownloader.download
 import com.google.android.material.textview.MaterialTextView
 import ir.mahdi.circulars.Adapter.CircularAdapter
-import ir.mahdi.circulars.Helper.DividerItemDecoration
 import ir.mahdi.circulars.Helper.NullHostNameVerifier
 import ir.mahdi.circulars.Helper.Prefs
 import ir.mahdi.circulars.Helper.Tools
@@ -120,7 +119,6 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
             binding.rc.apply {
                 layoutManager = LinearLayoutManager(activity)
                 setHasFixedSize(true)
-                addItemDecoration(DividerItemDecoration(context,LinearLayoutManager.VERTICAL, 60,0))
                 adapter = CircularAdapter(itemsData, this@CircularFragment)
             }
 
@@ -215,6 +213,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                         var server: String = arrServer[urlx]
                         var status: String = ""
                         var date: String = cols[3].text()
+                        var type: String = cols[4].text()
                         val title: String = Tools().FixIlegalCharacter(cols[2].text())
 
                         val existCirculars =
@@ -225,7 +224,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                             status = getString(R.string.downloaded_Message)
                         }
                         if (strhref.contains("fileLoader"))
-                            itemsData.add(CircularModel(title, status, date, strhref, Tools().getRandomMaterialColor("400",resources,activity!!), server))
+                            itemsData.add(CircularModel(title, status, date, type, strhref, Tools().getRandomMaterialColor("400",resources,activity!!), server))
 
                     }
                 }
@@ -257,6 +256,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
 
                     var status: String = ""
                     var date: String = cols[3].text()
+                    var type: String = cols[4].text()
                     val title: String = Tools().FixIlegalCharacter(cols[2].text())
 
                     val existCirculars =
@@ -267,7 +267,7 @@ class CircularFragment : Fragment(), CircularAdapter.CircularsAdapterListener, C
                         status = getString(R.string.downloaded_Message)
                     }
                     if (strhref.contains("fileLoader"))
-                        itemsData.add(CircularModel(title, status, date, strhref, Tools().getRandomMaterialColor("400",resources,activity!!),""))
+                        itemsData.add(CircularModel(title, status, date, type, strhref, Tools().getRandomMaterialColor("400",resources,activity!!),""))
 
                 }
             }

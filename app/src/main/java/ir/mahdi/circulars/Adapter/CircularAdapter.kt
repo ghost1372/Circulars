@@ -42,6 +42,7 @@ class CircularAdapter (private val itemsCells: ArrayList<CircularModel>, private
         holder.itemView.txt_Title.text = itemsFilterList[position].title
         holder.itemView.txt_Status.text = itemsFilterList[position].status
         holder.itemView.txt_Date.text = itemsFilterList[position].date
+        holder.itemView.txt_Type.text = itemsFilterList[position].type
         holder.itemView.txt_Region.text = itemsFilterList[position].server
 
         if (Prefs(context).getIsMultiServer())
