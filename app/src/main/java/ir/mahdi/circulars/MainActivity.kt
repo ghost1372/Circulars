@@ -157,7 +157,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (!IsSystemDefaultTheme()){
             // Change Theme
             swTheme.isChecked = Prefs(applicationContext).getIsDark()
-            swTheme.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+            swTheme.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { _, isChecked ->
                 if (isChecked){
                     Prefs(applicationContext).setSkin(1)
                 }else{
@@ -236,7 +236,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         MaterialDialog(this).show {
             title(R.string.select_region)
             cancelable(false)
-            listItemsSingleChoice(R.array.server, initialSelection =  Prefs(context).getServerIndex()) { _, index, text ->
+            listItemsSingleChoice(R.array.server, initialSelection =  Prefs(context).getServerIndex()) { _, index, _ ->
                 Prefs(context).setServerIndex(index)
                 if (Prefs(applicationContext).getIsFirstRun())
                 {
@@ -244,7 +244,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
             }
             positiveButton(R.string.select_location)
-            negativeButton(R.string.NegativeButton){checked->
+            negativeButton(R.string.NegativeButton){_->
                 if (Prefs(context).getIsFirstRun()){
                     finishAffinity()
                 }

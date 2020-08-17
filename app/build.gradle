@@ -12,8 +12,8 @@ android {
         applicationId "ir.mahdi.circulars"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 990401
-        versionName "9.5"
+        versionCode 990601
+        versionName "10"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
